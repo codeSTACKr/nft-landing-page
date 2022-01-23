@@ -33,7 +33,7 @@ body {
 .container {
   max-width: 960px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 1rem 2rem;
 }
 
 /* HEADER */
@@ -143,10 +143,30 @@ section {
   font-style: italic;
   margin: 2rem 0;
   font-size: 3.5rem;
+  text-align: center;
 }
 
 .countdown p {
   font-size: 1.1rem;
   font-family: var(--font-secondary);
   margin-bottom: 2rem;
+  text-align: center;
 }
+
+@media screen and (max-width: 768px) {
+  .menu {
+    gap: 1rem;
+  }
+  .wallet-btn {
+    margin-left: 0;
+    padding: 1rem;
+    max-width: 8rem;
+  }
+  .countdown h1 {
+    font-size: 2rem;
+  }
+  .countdown p {
+    font-size: 1rem;
+  }
+}
+ 
