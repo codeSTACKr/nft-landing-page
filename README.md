@@ -4,7 +4,7 @@ This repo is a work-in-progress and pairs with the Mint 10k NFT project.
 
 ## Video Walkthrough
 
-[video here]()
+[![Thumbnail](https://img.youtube.com/vi/WZQSVv67NBc/maxresdefault.jpg)](https://youtu.be/WZQSVv67NBc)
 
 ## How to Create and Mint 10k NFTs
 
