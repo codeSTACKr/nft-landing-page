@@ -1,4 +1,4 @@
-# Basic DAPP Landing Page
+# Basic dApp NFT Landing Page
 
 This repo is a work-in-progress and pairs with the Mint 10k NFT project. 
 
