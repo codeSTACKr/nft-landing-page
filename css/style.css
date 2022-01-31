@@ -31,6 +31,8 @@ body {
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
   max-width: 960px;
   margin: 0 auto;
   padding: 1rem 2rem;
@@ -43,7 +45,7 @@ header {
 }
 
 header .container {
-  display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
@@ -152,6 +154,15 @@ section {
   margin-bottom: 2rem;
   text-align: center;
 }
+
+/* OWNER STYLES */
+
+.owner-status {
+  font-size: 2rem;
+  text-align: center;
+}
+
+/* MEDIA QUERIES */
 
 @media screen and (max-width: 768px) {
   .menu {
