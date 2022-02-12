@@ -199,10 +199,10 @@ section {
   width: 200px;
   height: 200px;
   position: absolute;
-  -webkit-animation: moveX 10s linear 0s infinite alternate, moveY 13s linear 0s infinite alternate, spin 5s linear infinite;
-  -moz-animation: moveX 10s linear 0s infinite alternate, moveY 13s linear 0s infinite alternate, spin 5s linear infinite;
-  -o-animation: moveX 10s linear 0s infinite alternate, moveY 13s linear 0s infinite alternate, spin 5s linear infinite;
-  animation: moveX 10s linear 0s infinite alternate, moveY 13s linear 0s infinite alternate, spin 5s linear infinite;
+  -webkit-animation: moveX 13s linear 0s infinite alternate, moveY 13s linear 0s infinite alternate, spin 5s linear infinite;
+  -moz-animation: moveX 13s linear 0s infinite alternate, moveY 13s linear 0s infinite alternate, spin 5s linear infinite;
+  -o-animation: moveX 13s linear 0s infinite alternate, moveY 13s linear 0s infinite alternate, spin 5s linear infinite;
+  animation: moveX 13s linear 0s infinite alternate, moveY 13s linear 0s infinite alternate, spin 5s linear infinite;
 }
 
 .box img:nth-child(1)
