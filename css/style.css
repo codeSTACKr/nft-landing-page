@@ -54,6 +54,7 @@ header .container {
   display: flex;
   gap: 2rem;
   align-items: center;
+  z-index: 1;
 }
 
 /* BUTTONS */
@@ -74,6 +75,7 @@ header .container {
   position: relative;
   text-decoration: none;
   outline: none;
+  z-index: 2;
 }
 .btn:hover {
   box-shadow: none;
@@ -83,18 +85,21 @@ header .container {
   border-radius: 5rem;
   margin-left: 2rem;
   border-color: transparent;
+  z-index: 2;
 }
 
 .hero-btn {
   border-radius: 4px;
   font-size: 1.2rem;
   padding: 1.5rem 3rem;
+  z-index: 2;
 }
 
 /* COUNTDOWN SECTION */
 
 section {
   flex: 1 1 auto;
+  z-index: 3;
 }
 
 .countdown {
@@ -181,3 +186,94 @@ section {
   }
 }
  
+.box{
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  overflow: hidden;
+}
+
+.box img {
+  display: block;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  z-index: 99;
+  -webkit-animation: moveX 10s linear 0s infinite alternate, moveY 13s linear 0s infinite alternate, spin 5s linear infinite;
+  -moz-animation: moveX 10s linear 0s infinite alternate, moveY 13s linear 0s infinite alternate, spin 5s linear infinite;
+  -o-animation: moveX 10s linear 0s infinite alternate, moveY 13s linear 0s infinite alternate, spin 5s linear infinite;
+  animation: moveX 10s linear 0s infinite alternate, moveY 13s linear 0s infinite alternate, spin 5s linear infinite;
+}
+
+.box img:nth-child(1)
+ {
+  display: block;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  -webkit-animation: moveX1 12s linear 0s infinite alternate, moveY1 12s linear 0s infinite alternate, spin 5s linear infinite;
+  -moz-animation: moveX 12s linear 0s infinite alternate, moveY1 12s linear 0s infinite alternate, spin 5s linear infinite;
+  -o-animation: moveX1 12s linear 0s infinite alternate, moveY1 12s linear 0s infinite alternate, spin 5s linear infinite;
+  animation: moveX1 12s linear 0s infinite alternate, moveY1 12s linear 0s infinite alternate, spin 5s linear infinite;
+}
+
+@-webkit-keyframes moveX {
+  from { left: 0; } to { left: 100vw; }
+}
+@-moz-keyframes moveX {
+  from { left: 0; } to { left: 100vw; }
+}
+@-o-keyframes moveX {
+  from { left: 0; } to { left: 100vw; }
+}
+@keyframes moveX {
+  from { left: 0; } to { left: 100vw; }
+}
+
+@-webkit-keyframes moveY {
+  from { top: 0; } to { top: 100vh; }
+}
+@-moz-keyframes moveY {
+  from { top: 0; } to { top: 100vw; }
+}
+@-o-keyframes moveY {
+  from { top: 0; } to { top: 100vh; }
+}
+@keyframes moveY {
+  from { top: 0; } to { top: 100vh; }
+}
+
+@-webkit-keyframes moveX1 {
+  from { right: 0; } to { right: 100vw; }
+}
+@-moz-keyframes moveX1 {
+  from { right: 0; } to { right: 100vw; }
+}
+@-o-keyframes moveX1 {
+  from { right: 0; } to { right: 100vw; }
+}
+@keyframes moveX1 {
+  from { right: 0; } to { right: 100vw; }
+}
+
+@-webkit-keyframes moveY1 {
+  from { bottom: 0; } to { bottom: 100vh; }
+}
+@-moz-keyframes moveY1 {
+  from { bottom: 0; } to { bottom: 100vw; }
+}
+@-o-keyframes moveY1 {
+  from { bottom: 0; } to { bottom: 100vh; }
+}
+@keyframes moveY1 {
+  from { bottom: 0; } to { bottom: 100vh; }
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
