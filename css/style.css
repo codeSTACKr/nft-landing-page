@@ -207,14 +207,10 @@ section {
 
 .box img:nth-child(1)
  {
-  display: block;
-  width: 200px;
-  height: 200px;
-  position: absolute;
-  -webkit-animation: moveX1 12s linear 0s infinite alternate, moveY1 12s linear 0s infinite alternate, spin 5s linear infinite;
-  -moz-animation: moveX 12s linear 0s infinite alternate, moveY1 12s linear 0s infinite alternate, spin 5s linear infinite;
-  -o-animation: moveX1 12s linear 0s infinite alternate, moveY1 12s linear 0s infinite alternate, spin 5s linear infinite;
-  animation: moveX1 12s linear 0s infinite alternate, moveY1 12s linear 0s infinite alternate, spin 5s linear infinite;
+  -webkit-animation: moveX1 12s linear 0s infinite alternate, moveY1 12s linear 0s infinite alternate, spin1 5s linear infinite;
+  -moz-animation: moveX 12s linear 0s infinite alternate, moveY1 12s linear 0s infinite alternate, spin1 5s linear infinite;
+  -o-animation: moveX1 12s linear 0s infinite alternate, moveY1 12s linear 0s infinite alternate, spin1 5s linear infinite;
+  animation: moveX1 12s linear 0s infinite alternate, moveY1 12s linear 0s infinite alternate, spin1 5s linear infinite;
 }
 
 @-webkit-keyframes moveX {
@@ -275,5 +271,13 @@ section {
     }
     to {
         transform:rotate(360deg);
+    }
+}
+@keyframes spin1 {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(-360deg);
     }
 }
