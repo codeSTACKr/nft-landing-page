@@ -36,6 +36,7 @@ body {
   max-width: 960px;
   margin: 0 auto;
   padding: 1rem 2rem;
+  z-index: 6;
 }
 
 /* HEADER */
@@ -198,7 +199,6 @@ section {
   width: 200px;
   height: 200px;
   position: absolute;
-  z-index: 99;
   -webkit-animation: moveX 10s linear 0s infinite alternate, moveY 13s linear 0s infinite alternate, spin 5s linear infinite;
   -moz-animation: moveX 10s linear 0s infinite alternate, moveY 13s linear 0s infinite alternate, spin 5s linear infinite;
   -o-animation: moveX 10s linear 0s infinite alternate, moveY 13s linear 0s infinite alternate, spin 5s linear infinite;
