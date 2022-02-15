@@ -23,7 +23,6 @@ img.onload = function () {
 }
 
 const updateImage = index => {
-   canvas.width = canvas.width;
     img.src = currentFrame(index);
     context.drawImage(img, 0, 0);
 }
