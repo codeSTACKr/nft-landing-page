@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="images/x-icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/x-icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/x-icon/favicon-16x16.png">
+    <link rel="manifest" href="images/x-icon/site.webmanifest">
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="/">
+                    <img src="images/x-icon/favicon-32x32.png" alt="logo" />
+                </a>
+            </div>
+            <div class="menu">
+                <a href="https://discord.gg/P2er3CMD6u" target="_blank" rel="noopener noreferrer">
+                    <img src="images/header/discord.webp" alt="Discord" />
+                </a>
+                <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="images/header/twitter.webp" alt="Twitter" />
+                </a>
+                <a href="https://opensea.io/" target="_blank" rel="noopener noreferrer">
+                    <img src="images/header/opensea.webp" alt="Opensea" />
+                </a>
+                <button class="wallet-btn btn" id="connectWallet">
+                    <span>Connect Wallet</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <div class="character">
+        <img src="images/pipi-kun/layers/1_base.png" alt="" id="base">
+        <img src="images/pipi-kun/layers/face 1.png" alt="" id="face">
+        <img src="images/pipi-kun/layers/head 3.png" alt="" id="head">
+        <img src="images/pipi-kun/layers/torso 2.png" alt="" id="torso">
+        <img src="images/pipi-kun/layers/shoes 2.png" alt="" id="shoes">
+    </div>
+
+    <div id="selection">
+        <select name="" id="select_face" onchange="changeTrait('face')">
+            <option name="face" value="1"></option>
+            <option name="face" value="2"></option>
+            <option name="face" value="3"></option>
+            <option name="face" value="4"></option>
+            <option name="face" value="5"></option>
+        </select>
+        <select name="" id="select_head" onchange="changeTrait('head')">
+            <option name="head" value="1"></option>
+            <option name="head" value="2"></option>
+            <option name="head" value="3"></option>
+            <option name="head" value="4"></option>
+            <option name="head" value="5"></option>
+            <option name="head" value="6"></option>
+        </select>
+        <select name="" id="select_torso" onchange="changeTrait('torso')">
+            <option name="torso" value="1"></option>
+            <option name="torso" value="2"></option>
+        </select>
+        <select name="" id="select_shoes" onchange="changeTrait('shoes')">
+            <option name="shoes" value="1"></option>
+            <option name="shoes" value="2"></option>
+        </select>
+    </div>
+
+    <script src="js/nft-creator.js"></script>
+</body>
+</html>

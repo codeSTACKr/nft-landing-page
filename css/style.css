@@ -350,3 +350,24 @@ canvas {
   bottom: 0;
   width: 100%;
 }
+
+.character {
+    position: absolute;
+    left: 10px;
+    top: 20px;
+    z-index: 2;
+}
+
+.character img {
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  transform: translate(25%, 50%);
+}
+
+#selection {
+  bottom: 0;
+  position: absolute;
+}
