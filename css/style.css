@@ -23,6 +23,8 @@
 
 body {
   background-image: url("../images/background/Star-bg.png");
+  background-position:center top;
+    background-attachment:fixed;
   display: flex;
   flex-flow: column;
   height: 100vh;
