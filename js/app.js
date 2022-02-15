@@ -1,6 +1,6 @@
 // METAMASK CONNECTION
 const TIMEOUT = 1000;
-const COLLECTION_NAME = 'CodeCats';
+const COLLECTION_NAME = 'Pipi-Kun';
 let editions = [];
 let dots = 1;
 
@@ -132,21 +132,4 @@ async function fetchWithRetry(url)  {
   });
 }
 
-// background animation
-const intro = document.querySelector('.intro');
-const video = intro.querySelector('video');
-const text = intro.querySelector('h1');
-// end section
-const section = document.querySelector('section');
-const end = section.querySelector('h1');
 
-// SCROLLMAGIC
-const controller = new ScrollMagic.Controller();
-
-const scene = new ScrollMagic.Scene({
-    duration: 1000,
-    triggerElemnt: intro,
-    triggerHook: 0
-})
-.addIndicators()
-.addTo(controller);
