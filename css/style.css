@@ -22,7 +22,7 @@
 }
 
 body {
-  background-color: var(--bg-color);
+  background-image: url("../images/background/Star-bg.png");
   display: flex;
   flex-flow: column;
   height: 100vh;
@@ -35,7 +35,7 @@ body {
   flex-direction: column;
   max-width: 960px;
   margin: 0 auto;
-  z-index: 6;
+  z-index: 6; 
 }
 
 /* HEADER */
@@ -99,7 +99,6 @@ header .container {
 /* COUNTDOWN SECTION */
 
 section {
-  flex: 1 1 auto;
   z-index: 3;
 }
 
@@ -146,15 +145,15 @@ section {
   border-radius: 0 0 4px 4px;
 }
 
-.countdown h1 {
-  text-shadow: 2px 2px 0 var(--accent-color);
+h1 {
+  text-shadow: 3px 5px 0 var(--accent-color);
   font-style: italic;
   margin: 2rem 0;
   font-size: 3.5rem;
   text-align: center;
 }
 
-.countdown p {
+p {
   font-size: 1.1rem;
   font-family: var(--font-secondary);
   margin-bottom: 2rem;
@@ -188,81 +187,82 @@ section {
 }
  
 .box{
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
+  width: 120vw;
+  height: 120vh;
+  position: fixed;
   overflow: hidden;
+  z-index: 1;
 }
 
 .box img {
   display: block;
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   position: absolute;
-  -webkit-animation: moveX 13s linear 0s infinite alternate, moveY 13s linear 0s infinite alternate, spin 5s linear infinite;
-  -moz-animation: moveX 13s linear 0s infinite alternate, moveY 13s linear 0s infinite alternate, spin 5s linear infinite;
-  -o-animation: moveX 13s linear 0s infinite alternate, moveY 13s linear 0s infinite alternate, spin 5s linear infinite;
-  animation: moveX 13s linear 0s infinite alternate, moveY 13s linear 0s infinite alternate, spin 5s linear infinite;
+  -webkit-animation: moveX 13s linear 0s infinite alternate, moveY 12s linear 0s infinite alternate, spin 5s linear infinite;
+  -moz-animation: moveX 13s linear 0s infinite alternate, moveY 12s linear 0s infinite alternate, spin 5s linear infinite;
+  -o-animation: moveX 13s linear 0s infinite alternate, moveY 12s linear 0s infinite alternate, spin 5s linear infinite;
+  animation: moveX 13s linear 0s infinite alternate, moveY 12s linear 0s infinite alternate, spin 5s linear infinite;
 }
 
 .box img:nth-child(1)
  {
-  -webkit-animation: moveX1 12s linear 0s infinite alternate, moveY1 12s linear 0s infinite alternate, spin1 5s linear infinite;
-  -moz-animation: moveX 12s linear 0s infinite alternate, moveY1 12s linear 0s infinite alternate, spin1 5s linear infinite;
-  -o-animation: moveX1 12s linear 0s infinite alternate, moveY1 12s linear 0s infinite alternate, spin1 5s linear infinite;
-  animation: moveX1 12s linear 0s infinite alternate, moveY1 12s linear 0s infinite alternate, spin1 5s linear infinite;
+  -webkit-animation: moveX1 12s linear 0s infinite alternate, moveY1 13s linear 0s infinite alternate, spin1 5s linear infinite;
+  -moz-animation: moveX 12s linear 0s infinite alternate, moveY1 13s linear 0s infinite alternate, spin1 5s linear infinite;
+  -o-animation: moveX1 12s linear 0s infinite alternate, moveY1 13s linear 0s infinite alternate, spin1 5s linear infinite;
+  animation: moveX1 12s linear 0s infinite alternate, moveY1 13s linear 0s infinite alternate, spin1 5s linear infinite;
 }
 
 @-webkit-keyframes moveX {
-  from { left: 0; } to { left: 100vw; }
+  from { left: -20vw; } to { left: 120vw; }
 }
 @-moz-keyframes moveX {
-  from { left: 0; } to { left: 100vw; }
+  from { left: -20vw; } to { left: 120vw; }
 }
 @-o-keyframes moveX {
-  from { left: 0; } to { left: 100vw; }
+  from { left: -20vw; } to { left: 120vw; }
 }
 @keyframes moveX {
-  from { left: 0; } to { left: 100vw; }
+  from { left: -20vw; } to { left: 120vw; }
 }
 
 @-webkit-keyframes moveY {
-  from { top: 0; } to { top: 100vh; }
+  from { top: -20vh; } to { top: 120vh; }
 }
 @-moz-keyframes moveY {
-  from { top: 0; } to { top: 100vw; }
+  from { top: -20vh; } to { top: 120vh; }
 }
 @-o-keyframes moveY {
-  from { top: 0; } to { top: 100vh; }
+  from { top: -20vh; } to { top: 120vh; }
 }
 @keyframes moveY {
-  from { top: 0; } to { top: 100vh; }
+  from { top: -20vh; } to { top: 120vh; }
 }
 
 @-webkit-keyframes moveX1 {
-  from { right: 0; } to { right: 100vw; }
+  from { right: -20vw; } to { right: 120vw; }
 }
 @-moz-keyframes moveX1 {
-  from { right: 0; } to { right: 100vw; }
+  from { right: -20vw; } to { right: 120vw; }
 }
 @-o-keyframes moveX1 {
-  from { right: 0; } to { right: 100vw; }
+  from { right: -20vw; } to { right: 120vw; }
 }
 @keyframes moveX1 {
-  from { right: 0; } to { right: 100vw; }
+  from { right: -20vw; } to { right: 120vw; }
 }
 
 @-webkit-keyframes moveY1 {
-  from { bottom: 0; } to { bottom: 100vh; }
+  from { bottom: -20vh; } to { bottom: 120vh; }
 }
 @-moz-keyframes moveY1 {
-  from { bottom: 0; } to { bottom: 100vw; }
+  from { bottom: -20vh; } to { bottom: 120vh; }
 }
 @-o-keyframes moveY1 {
-  from { bottom: 0; } to { bottom: 100vh; }
+  from { bottom: -20vh; } to { bottom: 120vh; }
 }
 @keyframes moveY1 {
-  from { bottom: 0; } to { bottom: 100vh; }
+  from { bottom: -20vh; } to { bottom: 120vh; }
 }
 
 @keyframes spin {
@@ -280,4 +280,71 @@ section {
     to {
         transform:rotate(-360deg);
     }
+}
+
+.content {
+    position: sticky;
+    position: -webkit-sticky;
+    width: 100%;
+    height: 100vh;
+}
+
+h1 {
+    font-size: 3em;
+    display: inline-block;
+}
+p { font-size: 1.5em; }
+
+section {
+    height: 100vh;
+    top: 50%; 
+    bottom: 50%;
+}
+
+.entered {
+	-webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	        animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2018-7-4 16:24:12
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation text-focus-in
+ * ----------------------------------------
+ */
+ @-webkit-keyframes text-focus-in {
+    0% {
+      -webkit-filter: blur(12px);
+              filter: blur(12px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-filter: blur(0px);
+              filter: blur(0px);
+      opacity: 1;
+    }
+  }
+  @keyframes text-focus-in {
+    0% {
+      -webkit-filter: blur(12px);
+              filter: blur(12px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-filter: blur(0px);
+              filter: blur(0px);
+      opacity: 1;
+    }
+  }
+  
+
+canvas {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
