@@ -151,15 +151,21 @@ h1 {
   text-shadow: 3px 5px 0 var(--accent-color);
   font-style: italic;
   margin: 2rem 0;
-  font-size: 3.5rem;
+  font-size: 4.5rem;
   text-align: center;
 }
 
 p {
-  font-size: 1.1rem;
+  font-size: 3rem;
   font-family: var(--font-secondary);
   margin-bottom: 2rem;
-  text-align: center;
+}
+
+strong {
+  font-size: 3.2rem;
+  font-family: var(--font-secondary);
+  text-shadow: 3px 5px 0 var(--accent-color);
+  font-style: italic;
 }
 
 /* OWNER STYLES */
@@ -349,25 +355,4 @@ canvas {
   left: 0;
   bottom: 0;
   width: 100%;
-}
-
-.character {
-    position: absolute;
-    left: 10px;
-    top: 20px;
-    z-index: 2;
-}
-
-.character img {
-  width: 500px;
-  height: 500px;
-  position: absolute;
-  top: 50%;
-  left: 25%;
-  transform: translate(25%, 50%);
-}
-
-#selection {
-  bottom: 0;
-  position: absolute;
 }
