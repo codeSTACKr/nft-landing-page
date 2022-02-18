@@ -1,2 +1,5 @@
-[build]
-  functions = "functions"
+node_modules
+.env
+package-unlock.json
+# Local Netlify folder
+.netlify
