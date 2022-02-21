@@ -30,7 +30,7 @@
   text-decoration: none;
   outline: none;
   z-index: 2;
-  bottom: 15%;
+  bottom: 0;
 }
 
 .arrow-left {
@@ -70,9 +70,6 @@
   }
   .arrow-right {
     right: 10%;
-  }
-  .select {
-    bottom: 0;
   }
 }
 
