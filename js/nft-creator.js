@@ -1,8 +1,9 @@
 const face = 8;
-const head = 8;
-const torso = 8;
+const head = 10;
+const torso = 9;
 const shoes = 6;
-const outfits = 10;
+const outfits = 9;
+const zombie = 1;
 function changeTrait(operator) {
     var selected = document.getElementById(`trait`).value;
     var img = document.getElementById(selected);
@@ -48,20 +49,27 @@ function changeTrait(operator) {
                 document.getElementById("outfit").classList.toggle("hide-layer");
             }
             break;
+        case "zombie":
+            var limit = zombie;
+            break;
         default:
         break;
     }
 
     if (operator == "plus" && trait != limit){
         var id = trait + 1;
-    } else if (operator == "minus" && trait != 1) {
+    } else if (operator == "minus" && trait != 0) {
         var id = trait - 1;
     } else if (operator == "plus" && trait == limit) {
-        var id = 1;
-    } else if (operator == "minus" && trait == 1) {
+        var id = 0;
+    } else if (operator == "minus" && trait == 0) {
         var id = limit;
     }
 
         img.alt = id;
-        img.src = `../images/pipi-kun/layers/${selected} ${id}.png`;
+        if (id == 0){
+            img.src = `../images/pipi-kun/layers/${id}.png`;
+        } else {
+            img.src = `../images/pipi-kun/layers/${selected} ${id}.png`;
+        }
 }
