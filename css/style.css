@@ -8,7 +8,7 @@
   --font-primary: 'Abel', sans-serif;
   --font-secondary: 'Exo 2', serif;
   --font-code: 'Exo 2', monospace;
-  --bg-image: "Volcano.jpg";
+  --bg-color: hsl(24, 100%, 35%);
   --font-color: #ffffff;
   --btn-bg-color: #690303;
   --accent-color: #070707;
@@ -22,7 +22,7 @@
 }
 
 body {
-  background-image: url("Volcano.jpg");
+  background-color: var(--bg-color);
   display: flex;
   flex-flow: column;
   height: 100vh;
