@@ -22,7 +22,7 @@
 }
 
 body {
-  background-color: var(--bg-color);
+  background-image: url("Volcano.jpg");
   display: flex;
   flex-flow: column;
   height: 100vh;
