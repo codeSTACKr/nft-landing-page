@@ -2,7 +2,8 @@
 const clockdiv = document.getElementById("countdown");
 const countDownTime = new Date(
   clockdiv.getAttribute("data-date")
-).getTime();
+)
+.getTime();
 
 const countdownfunction = setInterval(function () {
   const now = new Date().getTime();
