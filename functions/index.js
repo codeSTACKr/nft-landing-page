@@ -1,3 +1,18 @@
+import { initializeApp } from "firebase/app";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDi4PIOgz_D0_CiivB6ZZ2q2c2UkkgZccM",
+    authDomain: "pencil-club-nft.firebaseapp.com",
+    projectId: "pencil-club-nft",
+    storageBucket: "pencil-club-nft.appspot.com",
+    messagingSenderId: "242981681222",
+    appId: "1:242981681222:web:b13d190866adf35d98f247",
+    measurementId: "G-YR8K8CT159"
+};
+
+const app = initializeApp(firebaseConfig);
+
+
 const functions = require("firebase-functions");
 
 const {Client, resources} = require('coinbase-commerce-node');

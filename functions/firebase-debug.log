@@ -1,0 +1,477 @@
+[debug] [2022-02-21T19:17:39.071Z] ----------------------------------------------------------------------
+[debug] [2022-02-21T19:17:39.075Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Logan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2022-02-21T19:17:39.079Z] CLI Version:   10.2.1
+[debug] [2022-02-21T19:17:39.081Z] Platform:      win32
+[debug] [2022-02-21T19:17:39.081Z] Node Version:  v14.15.5
+[debug] [2022-02-21T19:17:39.085Z] Time:          Mon Feb 21 2022 13:17:39 GMT-0600 (Central Standard Time)
+[debug] [2022-02-21T19:17:39.086Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-02-21T19:17:39.472Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-02-21T19:17:39.472Z] > authorizing via signed-in user (lgwarlick@gmail.com)
+[debug] [2022-02-21T19:17:39.473Z] [iam] checking project pencil-club-nft for permissions ["firebase.projects.get"]
+[debug] [2022-02-21T19:17:39.501Z] > refreshing access token with scopes: []
+[debug] [2022-02-21T19:17:39.502Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-02-21T19:17:39.824Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Mon, 21 Feb 2022 19:17:40 GMT","pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-02-21T19:17:39.852Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/pencil-club-nft:testIamPermissions [none]
+[debug] [2022-02-21T19:17:39.852Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/pencil-club-nft:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2022-02-21T19:17:40.066Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/pencil-club-nft:testIamPermissions 200
+[debug] [2022-02-21T19:17:40.066Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/pencil-club-nft:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2022-02-21T19:17:40.068Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/pencil-club-nft [none]
+[debug] [2022-02-21T19:17:40.371Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/pencil-club-nft 200
+[debug] [2022-02-21T19:17:40.371Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/pencil-club-nft {"projectId":"pencil-club-nft","projectNumber":"242981681222","displayName":"Pencil Club NFT","name":"projects/pencil-club-nft","resources":{"hostingSite":"pencil-club-nft"},"state":"ACTIVE"}
+[info] 
+[info] === Serving from 'C:\Users\Logan\Desktop\nft-landing-page'...
+[info] 
+[warn] !  Your requested "node" version "16" doesn't match your global version "14". Using node@14 from host. {"metadata":{"emulator":{"name":"functions"},"message":"Your requested \"node\" version \"16\" doesn't match your global version \"14\". Using node@14 from host."}}
+[debug] [2022-02-21T19:17:40.426Z] defaultcredentials: writing to file C:\Users\Logan\AppData\Roaming\firebase\lgwarlick_gmail_com_application_default_credentials.json
+[debug] [2022-02-21T19:17:40.435Z] Setting GAC to C:\Users\Logan\AppData\Roaming\firebase\lgwarlick_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\Logan\\AppData\\Roaming\\firebase\\lgwarlick_gmail_com_application_default_credentials.json"}}
+[debug] [2022-02-21T19:17:40.436Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/pencil-club-nft/adminSdkConfig [none]
+[debug] [2022-02-21T19:17:40.636Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/pencil-club-nft/adminSdkConfig 200
+[debug] [2022-02-21T19:17:40.637Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/pencil-club-nft/adminSdkConfig {"projectId":"pencil-club-nft","storageBucket":"pencil-club-nft.appspot.com"}
+[info] i  functions: Watching "C:\Users\Logan\Desktop\nft-landing-page\functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\" for Cloud Functions..."}}
+[debug] [2022-02-21T19:17:40.692Z] Validating nodejs source
+[debug] [2022-02-21T19:17:45.105Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "coinbase-commerce-node": "^1.0.4",
+    "cors": "^2.8.5",
+    "firebase-admin": "^9.8.0",
+    "firebase-functions": "^3.14.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.6.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-02-21T19:17:45.106Z] Building nodejs source
+[debug] [2022-02-21T19:17:45.106Z] Analyzing nodejs backend spec
+[info] +  functions[us-central1-createCharge]: http function initialized (http://localhost:5000/pencil-club-nft/us-central1/createCharge). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://localhost:5000/pencil-club-nft/us-central1/createCharge)."}}
+[debug] [2022-02-21T19:17:53.626Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2022-02-21T19:17:53.626Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-02-21T19:17:53.627Z] Accepted request GET /pencil-club-nft/us-central1/createCharge --> us-central1-createCharge
+[debug] [2022-02-21T19:17:53.651Z] [worker-pool] addWorker(us-central1-createCharge) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-createCharge)"}}
+[debug] [2022-02-21T19:17:53.652Z] [worker-pool] Adding worker with key us-central1-createCharge, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-createCharge, total=1"}}
+[debug] [2022-02-21T19:17:53.652Z] [worker-pool] submitWork(triggerId=us-central1-createCharge) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitWork(triggerId=us-central1-createCharge)"}}
+[debug] [2022-02-21T19:17:53.657Z] [worker-us-central1-createCharge-fc885040-e9c1-4dbf-b972-d861479f4fa7]: Assigning socketPath: \\?\pipe\C:\Users\Logan\Desktop\nft-landing-page\functions\8688 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-createCharge-fc885040-e9c1-4dbf-b972-d861479f4fa7]: Assigning socketPath: \\\\?\\pipe\\C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\8688"}}
+[debug] [2022-02-21T19:17:53.659Z] [worker-us-central1-createCharge-fc885040-e9c1-4dbf-b972-d861479f4fa7]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-createCharge-fc885040-e9c1-4dbf-b972-d861479f4fa7]: BUSY"}}
+[debug] [2022-02-21T19:17:58.675Z] [runtime-status] [8688] Functions runtime initialized. {"cwd":"C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions","node_version":"14.15.5"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"[runtime-status] [8688] Functions runtime initialized. {\"cwd\":\"C:\\\\Users\\\\Logan\\\\Desktop\\\\nft-landing-page\\\\functions\",\"node_version\":\"14.15.5\"}"}}
+[debug] [2022-02-21T19:17:58.677Z] [runtime-status] [8688] Disabled runtime features: undefined {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"[runtime-status] [8688] Disabled runtime features: undefined"}}
+[debug] [2022-02-21T19:17:58.693Z] [runtime-status] [8688] Resolved module firebase-admin {"declared":true,"installed":true,"version":"9.12.0","resolution":"C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"[runtime-status] [8688] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"9.12.0\",\"resolution\":\"C:\\\\Users\\\\Logan\\\\Desktop\\\\nft-landing-page\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2022-02-21T19:17:58.696Z] [runtime-status] [8688] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.18.1","resolution":"C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"[runtime-status] [8688] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.18.1\",\"resolution\":\"C:\\\\Users\\\\Logan\\\\Desktop\\\\nft-landing-page\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2022-02-21T19:17:58.697Z] [runtime-status] [8688] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"[runtime-status] [8688] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2022-02-21T19:17:58.699Z] [runtime-status] [8688] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.18.1","resolution":"C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"[runtime-status] [8688] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.18.1\",\"resolution\":\"C:\\\\Users\\\\Logan\\\\Desktop\\\\nft-landing-page\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2022-02-21T19:17:59.046Z] [runtime-status] [8688] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"[runtime-status] [8688] Checked functions.config() {\"config\":{}}"}}
+[debug] [2022-02-21T19:17:59.047Z] [runtime-status] [8688] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"3.18.1","resolution":"C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\node_modules\\firebase-functions\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"[runtime-status] [8688] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"3.18.1\",\"resolution\":\"C:\\\\Users\\\\Logan\\\\Desktop\\\\nft-landing-page\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}}"}}
+[debug] [2022-02-21T19:17:59.048Z] [runtime-status] [8688] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.18.1","resolution":"C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"[runtime-status] [8688] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.18.1\",\"resolution\":\"C:\\\\Users\\\\Logan\\\\Desktop\\\\nft-landing-page\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2022-02-21T19:17:59.051Z] [runtime-status] [8688] Resolved module firebase-admin {"declared":true,"installed":true,"version":"9.12.0","resolution":"C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"[runtime-status] [8688] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"9.12.0\",\"resolution\":\"C:\\\\Users\\\\Logan\\\\Desktop\\\\nft-landing-page\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2022-02-21T19:17:59.057Z] [runtime-status] [8688] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.18.1","resolution":"C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"[runtime-status] [8688] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.18.1\",\"resolution\":\"C:\\\\Users\\\\Logan\\\\Desktop\\\\nft-landing-page\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2022-02-21T19:17:59.057Z] [runtime-status] [8688] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"9.12.0","resolution":"C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\node_modules\\firebase-admin\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"[runtime-status] [8688] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"9.12.0\",\"resolution\":\"C:\\\\Users\\\\Logan\\\\Desktop\\\\nft-landing-page\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}}"}}
+[debug] [2022-02-21T19:17:59.830Z] [runtime-status] [8688] Beginning invocation function createCharge! {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"[runtime-status] [8688] Beginning invocation function createCharge!"}}
+[info] i  functions: Beginning execution of "createCharge" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"Beginning execution of \"createCharge\""}}
+[debug] [2022-02-21T19:17:59.831Z] [runtime-status] [8688] Running createCharge in signature http {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"[runtime-status] [8688] Running createCharge in signature http"}}
+[debug] [2022-02-21T19:17:59.839Z] [runtime-status] [8688] Attempting to listen to socketPath: \\?\pipe\C:\Users\Logan\Desktop\nft-landing-page\functions\8688 {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"[runtime-status] [8688] Attempting to listen to socketPath: \\\\?\\pipe\\C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\8688"}}
+[debug] [2022-02-21T19:17:59.851Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2022-02-21T19:17:59.852Z] [functions] Got req.url=/pencil-club-nft/us-central1/createCharge, mapping to path=/ {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/pencil-club-nft/us-central1/createCharge, mapping to path=/"}}
+[debug] [2022-02-21T19:17:59.886Z] [runtime-status] [8688] Ephemeral server handling GET request {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"[runtime-status] [8688] Ephemeral server handling GET request"}}
+[debug] [2022-02-21T19:17:59.898Z] [runtime-status] [8688] Ephemeral server survived. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"[runtime-status] [8688] Ephemeral server survived."}}
+[warn] !  External network resource requested!
+   - URL: "https://api.commerce.coinbase.com/charges"
+ - Be careful, this may be a production service. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"External network resource requested!\n   - URL: \"https://api.commerce.coinbase.com/charges\"\n - Be careful, this may be a production service."}}
+[info] >  (node:8688) UnhandledPromiseRejectionWarning: Error: No such API key. {"user":"(node:8688) UnhandledPromiseRejectionWarning: Error: No such API key.","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"\u001b[90m> \u001b[39m (node:8688) UnhandledPromiseRejectionWarning: Error: No such API key."}}
+[info] >      at module.exports (C:\Users\Logan\Desktop\nft-landing-page\functions\node_modules\coinbase-commerce-node\lib\buildApiError.js:50:12) {"user":"    at module.exports (C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\node_modules\\coinbase-commerce-node\\lib\\buildApiError.js:50:12)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"\u001b[90m> \u001b[39m     at module.exports (C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\node_modules\\coinbase-commerce-node\\lib\\buildApiError.js:50:12)"}}
+[info] >      at Request._callback (C:\Users\Logan\Desktop\nft-landing-page\functions\node_modules\coinbase-commerce-node\lib\Client.js:137:10) {"user":"    at Request._callback (C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\node_modules\\coinbase-commerce-node\\lib\\Client.js:137:10)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"\u001b[90m> \u001b[39m     at Request._callback (C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\node_modules\\coinbase-commerce-node\\lib\\Client.js:137:10)"}}
+[info] >      at Request.self.callback (C:\Users\Logan\Desktop\nft-landing-page\functions\node_modules\request\request.js:185:22) {"user":"    at Request.self.callback (C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\node_modules\\request\\request.js:185:22)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"\u001b[90m> \u001b[39m     at Request.self.callback (C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\node_modules\\request\\request.js:185:22)"}}
+[info] >      at Request.emit (events.js:315:20) {"user":"    at Request.emit (events.js:315:20)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"\u001b[90m> \u001b[39m     at Request.emit (events.js:315:20)"}}
+[info] >      at Request.<anonymous> (C:\Users\Logan\Desktop\nft-landing-page\functions\node_modules\request\request.js:1154:10) {"user":"    at Request.<anonymous> (C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\node_modules\\request\\request.js:1154:10)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"\u001b[90m> \u001b[39m     at Request.<anonymous> (C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\node_modules\\request\\request.js:1154:10)"}}
+[info] >      at Request.emit (events.js:315:20) {"user":"    at Request.emit (events.js:315:20)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"\u001b[90m> \u001b[39m     at Request.emit (events.js:315:20)"}}
+[info] >      at IncomingMessage.<anonymous> (C:\Users\Logan\Desktop\nft-landing-page\functions\node_modules\request\request.js:1076:12) {"user":"    at IncomingMessage.<anonymous> (C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\node_modules\\request\\request.js:1076:12)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"\u001b[90m> \u001b[39m     at IncomingMessage.<anonymous> (C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\node_modules\\request\\request.js:1076:12)"}}
+[info] >      at Object.onceWrapper (events.js:421:28) {"user":"    at Object.onceWrapper (events.js:421:28)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"\u001b[90m> \u001b[39m     at Object.onceWrapper (events.js:421:28)"}}
+[info] >      at IncomingMessage.emit (events.js:327:22) {"user":"    at IncomingMessage.emit (events.js:327:22)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"\u001b[90m> \u001b[39m     at IncomingMessage.emit (events.js:327:22)"}}
+[info] >      at endReadableNT (internal/streams/readable.js:1327:12) {"user":"    at endReadableNT (internal/streams/readable.js:1327:12)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"\u001b[90m> \u001b[39m     at endReadableNT (internal/streams/readable.js:1327:12)"}}
+[info] >  (Use `node --trace-warnings ...` to show where the warning was created) {"user":"(Use `node --trace-warnings ...` to show where the warning was created)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"\u001b[90m> \u001b[39m (Use `node --trace-warnings ...` to show where the warning was created)"}}
+[info] >  (node:8688) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1) {"user":"(node:8688) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"\u001b[90m> \u001b[39m (node:8688) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1)"}}
+[info] >  (node:8688) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code. {"user":"(node:8688) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"\u001b[90m> \u001b[39m (node:8688) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code."}}
+[debug] [2022-02-21T19:18:20.218Z] Functions emulator received unknown request at path /
+[debug] [2022-02-21T19:18:20.374Z] Functions emulator received unknown request at path /favicon.ico
+[warn] !  functions: Your function timed out after ~60s. To configure this timeout, see
+      https://firebase.google.com/docs/functions/manage-functions#set_timeout_and_memory_allocation. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"Your function timed out after ~60s. To configure this timeout, see\n      https://firebase.google.com/docs/functions/manage-functions#set_timeout_and_memory_allocation."}}
+[info] >  C:\Users\Logan\AppData\Roaming\npm\node_modules\firebase-tools\lib\emulator\functionsEmulatorRuntime.js:633 {"user":"C:\\Users\\Logan\\AppData\\Roaming\\npm\\node_modules\\firebase-tools\\lib\\emulator\\functionsEmulatorRuntime.js:633\r","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"\u001b[90m> \u001b[39m C:\\Users\\Logan\\AppData\\Roaming\\npm\\node_modules\\firebase-tools\\lib\\emulator\\functionsEmulatorRuntime.js:633\r"}}
+[info] >              throw new Error("Function timed out."); {"user":"            throw new Error(\"Function timed out.\");\r","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"\u001b[90m> \u001b[39m             throw new Error(\"Function timed out.\");\r"}}
+[info] >              ^ {"user":"            ^\r","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"\u001b[90m> \u001b[39m             ^\r"}}
+[info] >   {"user":"\r","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"\u001b[90m> \u001b[39m \r"}}
+[info] >  Error: Function timed out. {"user":"Error: Function timed out.\r","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"\u001b[90m> \u001b[39m Error: Function timed out.\r"}}
+[info] >      at Timeout._onTimeout (C:\Users\Logan\AppData\Roaming\npm\node_modules\firebase-tools\lib\emulator\functionsEmulatorRuntime.js:633:19) {"user":"    at Timeout._onTimeout (C:\\Users\\Logan\\AppData\\Roaming\\npm\\node_modules\\firebase-tools\\lib\\emulator\\functionsEmulatorRuntime.js:633:19)\r","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"\u001b[90m> \u001b[39m     at Timeout._onTimeout (C:\\Users\\Logan\\AppData\\Roaming\\npm\\node_modules\\firebase-tools\\lib\\emulator\\functionsEmulatorRuntime.js:633:19)\r"}}
+[info] >      at listOnTimeout (internal/timers.js:554:17) {"user":"    at listOnTimeout (internal/timers.js:554:17)\r","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"\u001b[90m> \u001b[39m     at listOnTimeout (internal/timers.js:554:17)\r"}}
+[info] >      at processTimers (internal/timers.js:497:7) {"user":"    at processTimers (internal/timers.js:497:7)\r","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createCharge"},"message":"\u001b[90m> \u001b[39m     at processTimers (internal/timers.js:497:7)\r"}}
+[debug] [2022-02-21T19:18:59.980Z] [worker-us-central1-createCharge-fc885040-e9c1-4dbf-b972-d861479f4fa7]: exited {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-createCharge-fc885040-e9c1-4dbf-b972-d861479f4fa7]: exited"}}
+[debug] [2022-02-21T19:18:59.981Z] [worker-us-central1-createCharge-fc885040-e9c1-4dbf-b972-d861479f4fa7]: FINISHED {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-createCharge-fc885040-e9c1-4dbf-b972-d861479f4fa7]: FINISHED"}}
+[debug] [2022-02-21T19:18:59.981Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2022-02-21T19:27:42.085Z] File C:\Users\Logan\Desktop\nft-landing-page\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\index.js changed, reloading triggers"}}
+[debug] [2022-02-21T19:27:43.152Z] Validating nodejs source
+[debug] [2022-02-21T19:27:50.358Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "coinbase-commerce-node": "^1.0.4",
+    "cors": "^2.8.5",
+    "firebase-admin": "^9.8.0",
+    "firebase-functions": "^3.14.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.6.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-02-21T19:27:50.359Z] Building nodejs source
+[debug] [2022-02-21T19:27:50.359Z] Analyzing nodejs backend spec
+[debug] [2022-02-21T19:27:50.369Z] File C:\Users\Logan\Desktop\nft-landing-page\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\index.js changed, reloading triggers"}}
+[debug] [2022-02-21T19:27:51.383Z] Validating nodejs source
+[debug] [2022-02-21T19:27:58.630Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "coinbase-commerce-node": "^1.0.4",
+    "cors": "^2.8.5",
+    "firebase-admin": "^9.8.0",
+    "firebase-functions": "^3.14.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.6.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-02-21T19:27:58.630Z] Building nodejs source
+[debug] [2022-02-21T19:27:58.631Z] Analyzing nodejs backend spec
+[debug] [2022-02-21T19:27:58.640Z] File C:\Users\Logan\Desktop\nft-landing-page\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\index.js changed, reloading triggers"}}
+[info] +  functions[us-central1-webHookHandler]: http function initialized (http://localhost:5000/pencil-club-nft/us-central1/webHookHandler). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://localhost:5000/pencil-club-nft/us-central1/webHookHandler)."}}
+[debug] [2022-02-21T19:27:59.642Z] Validating nodejs source
+[debug] [2022-02-21T19:28:04.953Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "coinbase-commerce-node": "^1.0.4",
+    "cors": "^2.8.5",
+    "firebase-admin": "^9.8.0",
+    "firebase-functions": "^3.14.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.6.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-02-21T19:28:04.953Z] Building nodejs source
+[debug] [2022-02-21T19:28:04.954Z] Analyzing nodejs backend spec
+[debug] [2022-02-21T19:28:29.813Z] File C:\Users\Logan\Desktop\nft-landing-page\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\index.js changed, reloading triggers"}}
+[debug] [2022-02-21T19:28:30.862Z] Validating nodejs source
+[debug] [2022-02-21T19:28:37.979Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "coinbase-commerce-node": "^1.0.4",
+    "cors": "^2.8.5",
+    "firebase-admin": "^9.8.0",
+    "firebase-functions": "^3.14.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.6.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-02-21T19:28:37.979Z] Building nodejs source
+[debug] [2022-02-21T19:28:37.979Z] Analyzing nodejs backend spec
+[debug] [2022-02-21T19:28:55.184Z] File C:\Users\Logan\Desktop\nft-landing-page\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\index.js changed, reloading triggers"}}
+[debug] [2022-02-21T19:28:56.208Z] Validating nodejs source
+[debug] [2022-02-21T19:29:02.100Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "coinbase-commerce-node": "^1.0.4",
+    "cors": "^2.8.5",
+    "firebase-admin": "^9.8.0",
+    "firebase-functions": "^3.14.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.6.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-02-21T19:29:02.101Z] Building nodejs source
+[debug] [2022-02-21T19:29:02.101Z] Analyzing nodejs backend spec
+[debug] [2022-02-21T19:29:24.315Z] File C:\Users\Logan\Desktop\nft-landing-page\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\index.js changed, reloading triggers"}}
+[debug] [2022-02-21T19:29:25.353Z] Validating nodejs source
+[debug] [2022-02-21T19:29:34.348Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "coinbase-commerce-node": "^1.0.4",
+    "cors": "^2.8.5",
+    "firebase-admin": "^9.8.0",
+    "firebase-functions": "^3.14.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.6.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-02-21T19:29:34.349Z] Building nodejs source
+[debug] [2022-02-21T19:29:34.349Z] Analyzing nodejs backend spec
+[debug] [2022-02-21T19:29:34.360Z] File C:\Users\Logan\Desktop\nft-landing-page\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\index.js changed, reloading triggers"}}
+[debug] [2022-02-21T19:29:35.370Z] Validating nodejs source
+[debug] [2022-02-21T19:29:40.738Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "coinbase-commerce-node": "^1.0.4",
+    "cors": "^2.8.5",
+    "firebase-admin": "^9.8.0",
+    "firebase-functions": "^3.14.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.6.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-02-21T19:29:40.738Z] Building nodejs source
+[debug] [2022-02-21T19:29:40.739Z] Analyzing nodejs backend spec
+[debug] [2022-02-21T19:29:47.002Z] File C:\Users\Logan\Desktop\nft-landing-page\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\index.js changed, reloading triggers"}}
+[debug] [2022-02-21T19:29:48.018Z] Validating nodejs source
+[debug] [2022-02-21T19:29:54.855Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "coinbase-commerce-node": "^1.0.4",
+    "cors": "^2.8.5",
+    "firebase-admin": "^9.8.0",
+    "firebase-functions": "^3.14.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.6.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-02-21T19:29:54.855Z] Building nodejs source
+[debug] [2022-02-21T19:29:54.855Z] Analyzing nodejs backend spec
+[debug] [2022-02-21T19:30:05.797Z] File C:\Users\Logan\Desktop\nft-landing-page\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\index.js changed, reloading triggers"}}
+[debug] [2022-02-21T19:30:06.817Z] Validating nodejs source
+[debug] [2022-02-21T19:30:12.767Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "coinbase-commerce-node": "^1.0.4",
+    "cors": "^2.8.5",
+    "firebase-admin": "^9.8.0",
+    "firebase-functions": "^3.14.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.6.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-02-21T19:30:12.767Z] Building nodejs source
+[debug] [2022-02-21T19:30:12.767Z] Analyzing nodejs backend spec
+[debug] [2022-02-21T19:30:27.591Z] File C:\Users\Logan\Desktop\nft-landing-page\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\index.js changed, reloading triggers"}}
+[debug] [2022-02-21T19:30:28.608Z] Validating nodejs source
+[debug] [2022-02-21T19:30:33.894Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "coinbase-commerce-node": "^1.0.4",
+    "cors": "^2.8.5",
+    "firebase-admin": "^9.8.0",
+    "firebase-functions": "^3.14.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.6.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-02-21T19:30:33.894Z] Building nodejs source
+[debug] [2022-02-21T19:30:33.894Z] Analyzing nodejs backend spec
+[debug] [2022-02-21T19:30:57.889Z] File C:\Users\Logan\Desktop\nft-landing-page\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Logan\\Desktop\\nft-landing-page\\functions\\index.js changed, reloading triggers"}}
+[debug] [2022-02-21T19:30:58.930Z] Validating nodejs source
+[debug] [2022-02-21T19:31:06.251Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "coinbase-commerce-node": "^1.0.4",
+    "cors": "^2.8.5",
+    "firebase-admin": "^9.8.0",
+    "firebase-functions": "^3.14.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.6.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-02-21T19:31:06.251Z] Building nodejs source
+[debug] [2022-02-21T19:31:06.251Z] Analyzing nodejs backend spec

@@ -87,7 +87,7 @@
           const pay = document.getElementById('pay');
 
           btn.onclick = async() => {
-            const res = await fetch('http://localhost:5000/nft-landing-page/us-central1/createCharge'); //Not sure if that URL is correct
+            const res = await fetch('http://pencil-club-nft.firebaseapp.com/nft-landing-page/us-central1/createCharge'); //Not sure if that URL is correct
             const data = await res.json();
 
             console.log(data);
