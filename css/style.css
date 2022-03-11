@@ -24,6 +24,7 @@
 
 body {
   background-color: var(--bg-color);
+  background-image: var(--bg-image);
   display: flex;
   flex-flow: column;
   height: 100vh;
