@@ -13,6 +13,7 @@
   --btn-bg-color: #690303;
   --accent-color: #070707;
   --header-shadow: #000 0px 0px 5px;
+  --bg-image: url('../images/x-icon/Volcano.jpg');
 }
 
 * {
@@ -23,6 +24,7 @@
 
 body {
   background-color: var(--bg-color);
+  background-image: var(--bg-image);
   display: flex;
   flex-flow: column;
   height: 100vh;
