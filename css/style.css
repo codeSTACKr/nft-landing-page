@@ -24,7 +24,6 @@
 
 body {
   background-color: var(--bg-color);
-  background-image: var(--bg-image);
   display: flex;
   flex-flow: column;
   height: 100vh;
@@ -156,6 +155,20 @@ section {
   margin-bottom: 2rem;
   text-align: center;
 }
+
+#bodyContent{
+background-image: var(--bg-image);
+background-size: 100% 100%;
+
+
+}
+
+
+
+
+
+
+
 
 /* OWNER STYLES */
 
