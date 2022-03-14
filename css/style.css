@@ -8,7 +8,7 @@
   --font-primary: 'Abel', sans-serif;
   --font-secondary: 'Exo 2', serif;
   --font-code: 'Exo 2', monospace;
-  --bg-color: hsl(24, 100%, 35%);
+  --bg-color: hsl(30, 12%, 97%);
   --font-color: #ffffff;
   --btn-bg-color: #690303;
   --accent-color: #070707;
@@ -55,6 +55,25 @@ header .container {
   gap: 2rem;
   align-items: center;
 }
+
+/* FOOTER */
+
+footer {
+  box-shadow: var(--footer-shadow);
+}
+
+footer .container {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
 
 /* BUTTONS */
 
