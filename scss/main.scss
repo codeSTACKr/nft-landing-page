@@ -27,9 +27,9 @@ section {
 }
 
 .container {
-    width: 85%;
-    max-width: 65em;
-    margin: 0 auto;
+  width: 85%;
+  max-width: 65em;
+  margin: 0 auto;
 }
 
 .split {
@@ -38,14 +38,14 @@ section {
   flex-wrap: wrap;
   justify-content: center;
 
-  & > * {
+  &>* {
     flex-basis: 30%;
     min-width: 15em;
   }
 
 }
 
-.spacing > * + * {
+.spacing>*+* {
   margin-top: var(--spacer, 2rem)
 }
 
@@ -70,7 +70,7 @@ section {
   opacity: .9;
 }
 
-.primary-title{
+.primary-title {
   font-size: 4rem;
   font-size: clamp(3rem, calc(5vw + 1rem), 4.5rem);
   line-height: 1;
@@ -81,7 +81,7 @@ section {
   text-align: center;
   font-size: clamp(2.5rem, calc(5vw + 1rem) 4rem);
   line-height: 1;
-  color: #17353d; 
+  color: #17353d;
   margin-bottom: 5rem;
 
 }
@@ -93,7 +93,7 @@ section {
   background: #222;
 
   @supports (background-blend-mode: multiply) {
-  background: url(../images/Products/lypWebsiteIcon.png),
+    background: url(../images/Products/lypWebsiteIcon.png),
       radial-gradient(#444, #111);
     background-blend-mode: multiply;
     background-attachment: fixed;
@@ -103,46 +103,46 @@ section {
 }
 
 .featured {
-background: #eee;
+  background: #eee;
 
   &__item {
     display: block;
-   position: relative;
-   transform: scale(.85);
-   transition: transform 250ms ease-in-out;
-  text-decoration: none;
-  color: #333;
-  text-align: center;
-  line-height: 1.2;
+    position: relative;
+    transform: scale(.85);
+    transition: transform 250ms ease-in-out;
+    text-decoration: none;
+    color: #333;
+    text-align: center;
+    line-height: 1.2;
 
 
 
-  
 
-   &:hover,
-   &:focus{
-     transform: scale(1);
 
-     .featured__details {
-       opacity: 1;
-       text-shadow: 0 0 2em rgba(#fff, 1);
-     }
-   }
+    &:hover,
+    &:focus {
+      transform: scale(1);
 
-   &::after { 
-     content: '';
-     position: absolute;
-     top: 0%; 
-     left: 8%; 
-     padding: 85% 85% 0 0;
-     border-radius: 50%;
-     background: #2193b0;
-     z-index: -1;
+      .featured__details {
+        opacity: 1;
+        text-shadow: 0 0 2em rgba(#fff, 1);
+      }
+    }
 
-   }
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0%;
+      left: 8%;
+      padding: 85% 85% 0 0;
+      border-radius: 50%;
+      background: #2193b0;
+      z-index: -1;
+
+    }
   }
 
-  &__details{
+  &__details {
     opacity: 0;
     transition: opacity 250ms linear;
 
@@ -150,22 +150,74 @@ background: #eee;
       display: block;
       font-weight: 700;
       font-size: 2.5rem;
-        }
+    }
   }
 }
 
-.about{ 
-  background: radial-gradient( (var(--clr-inner, limegreen), var(--clr-outter, purple)));
-  padding: 3em 0;
+.about {
+  background: radial-gradient(var(--clr-inner, limegreen), var(--clr-outer, purple));
+  padding: 3em;
   border-radius: 1em;
-  margin-bottom: 3em;
+  margin-bottom: 5em;
   text-align: center;
 
   &__title {
-    font-size: 4rem;
-    line-height: 1.1;
+    font-size: clamp(3rem, calc(5vw + 1rem), 5.5rem);
+    line-height: 1;
     color: #fff;
     text-shadow: 0 0 .2em rgba(#000, .2);
   }
+
+  &__image {
+    margin: -5em 0 0 0;
+  }
+
+  @media (min-width: 45em) {
+    text-align: left;
+    margin-bottom: 9em;
+
+&__title {
+  margin: 0;
+}
+    
+    &__image {
+      float: right;
+      width: 50%;
+      shape-outside: url(../images/Products/lypMuaveOpenTongue_Website.png);
+      shape-margin: 1em;
+      margin: 0 -5em 0 0;
+    }
+
+    &.the-artist {
+      .product__image {
+      float: left;
+      shape-outside: url(../images/Products/lypNeonGreenOpen_Website.png);
+      margin: 0 0 0 -5em;
+      shape-margin: 2em;
+      }
+    }
+
+  }
 }
 
+.hero {
+  --clr-accent: #faa700
+}
+
+.the-collection {
+  --clr-inner: #faa700;
+  --clr-outer: #e48d00;
+  --clr-accent: #a1173c;
+}
+
+.the-artist {
+  --clr-inner: #fce4b3;
+  --clr-outer: #eac886;
+  --clr-accent: #2f4858;
+}
+
+.roots-purpose {
+  --clr-inner: #6dd5ed;
+  --clr-outer: #2193b0;
+  --clr-accent: #008951;
+}

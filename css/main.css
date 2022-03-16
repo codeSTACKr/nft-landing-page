@@ -163,17 +163,67 @@ section {
 }
 
 .about {
-  background: radial-gradient(var(--clr-inner, limegreen), var(--clr-outter, purple));
-  padding: 3em 0;
+  background: radial-gradient(var(--clr-inner, limegreen), var(--clr-outer, purple));
+  padding: 3em;
   border-radius: 1em;
-  margin-bottom: 3em;
+  margin-bottom: 5em;
   text-align: center;
 }
 
 .about__title {
-  font-size: 4rem;
-  line-height: 1.1;
+  font-size: clamp(3rem, calc(5vw + 1rem), 5.5rem);
+  line-height: 1;
   color: #fff;
   text-shadow: 0 0 0.2em rgba(0, 0, 0, 0.2);
+}
+
+.about__image {
+  margin: -5em 0 0 0;
+}
+
+@media (min-width: 45em) {
+  .about {
+    text-align: left;
+    margin-bottom: 9em;
+  }
+  .about__title {
+    margin: 0;
+  }
+  .about__image {
+    float: right;
+    width: 50%;
+    shape-outside: url(../images/Products/lypMuaveOpenTongue_Website.png);
+    shape-margin: 1em;
+    margin: 0 -5em 0 0;
+  }
+  .about.the-artist .product__image {
+    float: left;
+    shape-outside: url(../images/Products/lypNeonGreenOpen_Website.png);
+    margin: 0 0 0 -5em;
+    shape-margin: 2em;
+  }
+}
+
+.hero {
+  --clr-accent: #faa700
+;
+}
+
+.the-collection {
+  --clr-inner: #faa700;
+  --clr-outer: #e48d00;
+  --clr-accent: #a1173c;
+}
+
+.the-artist {
+  --clr-inner: #fce4b3;
+  --clr-outer: #eac886;
+  --clr-accent: #2f4858;
+}
+
+.roots-purpose {
+  --clr-inner: #6dd5ed;
+  --clr-outer: #2193b0;
+  --clr-accent: #008951;
 }
 /*# sourceMappingURL=main.css.map */
