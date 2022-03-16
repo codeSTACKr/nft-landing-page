@@ -37,6 +37,7 @@ section {
   gap: 1em;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 5em;
 
   &>* {
     flex-basis: 30%;
@@ -82,7 +83,7 @@ section {
   font-size: clamp(2.5rem, calc(5vw + 1rem) 4rem);
   line-height: 1;
   color: #17353d;
-  margin-bottom: 5rem;
+  margin-bottom: 1rem;
 
 }
 
@@ -93,7 +94,7 @@ section {
   background: #222;
 
   @supports (background-blend-mode: multiply) {
-    background: url(../images/Products/lypWebsiteIcon.png),
+    background: url(../images/Products/LyptoWebsiteBanner_PreMint-02.png),
       radial-gradient(#444, #111);
     background-blend-mode: multiply;
     background-attachment: fixed;
@@ -114,9 +115,6 @@ section {
     color: #333;
     text-align: center;
     line-height: 1.2;
-
-
-
 
 
     &:hover,
@@ -143,7 +141,7 @@ section {
   }
 
   &__details {
-    opacity: 0;
+    opacity: 85%;
     transition: opacity 250ms linear;
 
     span {
@@ -183,7 +181,7 @@ section {
     &__image {
       float: right;
       width: 50%;
-      shape-outside: url(../images/Products/lypMuaveOpenTongue_Website.png);
+      shape-outside: url(../images/Products/lyp_the-collection.png);
       shape-margin: 1em;
       margin: 0 -5em 0 0;
     }
@@ -191,7 +189,7 @@ section {
     &.the-artist {
       .product__image {
       float: left;
-      shape-outside: url(../images/Products/lypNeonGreenOpen_Website.png);
+      shape-outside: url(../images/Products/lyp_the-artist.png);
       margin: 0 0 0 -5em;
       shape-margin: 2em;
       }
@@ -205,19 +203,19 @@ section {
 }
 
 .the-collection {
-  --clr-inner: #faa700;
-  --clr-outer: #e48d00;
+  --clr-inner: #f8e369;
+  --clr-outer: #ffd700;
   --clr-accent: #a1173c;
 }
 
 .the-artist {
-  --clr-inner: #fce4b3;
-  --clr-outer: #eac886;
+  --clr-inner: #f79554;
+  --clr-outer: #ef680c;
   --clr-accent: #2f4858;
 }
 
 .roots-purpose {
-  --clr-inner: #6dd5ed;
-  --clr-outer: #2193b0;
+  --clr-inner: #7aaffd;
+  --clr-outer: #2065cc;
   --clr-accent: #008951;
 }
