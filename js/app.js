@@ -1,6 +1,6 @@
 // METAMASK CONNECTION
 const TIMEOUT = 1000;
-const COLLECTION_NAME = 'CodeCatsCitizens Of AndroMetta Boarding Pass';
+const COLLECTION_NAME = 'Citizens Of AndroMetta Boarding Pass';
 let editions = [];
 let dots = 1;
 
@@ -80,7 +80,7 @@ function updateStatusText(isOwner, checking) {
     if(isOwner) {
       statusText.innerText = `You do own ${Citizens Boarding Pass}!! 😻 Let's see how many${renderDots(dots)}`;
     } else {
-      statusText.innerText = `Checking to see if you own any ${Citizens Boarding Pass} 😻${renderDots(dots)}`;
+      statusText.innerText = `Checking to see if you own any ${CitizensBoarding Pass} 😻${renderDots(dots)}`;
     }
   } else {
     if(isOwner) {
