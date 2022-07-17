@@ -1,15 +1,15 @@
 /* FONTS */
 
-@import url("@import url('https://fonts.googleapis.com/css2?family=Nosifer&display=swap');");
+@import url("@import url('https://fonts.googleapis.com/css2?family=Nosifer&display=swap'); @import url('https://fonts.googleapis.com/css2?family=Nosifer&family=Press+Start+2P&display=swap');");
 
 /* GLOBAL STYLES */
 
 :root {
-  --font-primary: 'Nosifer', sans-serif;
-  --font-secondary: 'Nosifer', serif;
+  --font-primary: Nosifer, sans-serif;
+  --font-secondary: PressStart2P;
   --font-code: 'Roboto', monospace;
   --bg-color: #c204ed;
-  --font-color: #ffffff;
+  --font-color: #000000;
   --btn-bg-color: #ffffff;
   --accent-color: #f70157;
   --header-shadow: #000 0px 0px 5px;
@@ -89,6 +89,16 @@ header .container {
   border-radius: 4px;
   font-size: 1.2rem;
   padding: 1.5rem 3rem;
+}
+
+.titlesection{
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
 }
 
 
@@ -190,7 +200,7 @@ section {
 
 .wrapper {
   margin: 0 auto;
-  width:1200px
+  width:900px
 }
 
 video {
