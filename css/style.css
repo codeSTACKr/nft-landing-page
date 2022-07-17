@@ -21,6 +21,39 @@
   box-sizing: border-box;
 }
 
+.wrapper2{
+  width: 100%;
+  
+}
+
+.img-banner {
+  display: none;
+
+}
+
+.img-info{
+width: 100%;
+
+}
+
+.img-info h2{
+  padding: 30px 30px 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 50px;
+  color: #f70157;
+  line-height: 44px;
+  }
+
+  .img-info p{
+    padding: 0px 30px 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: #f70157;
+    line-height: 24px;
+    }
+
+
+
 body {
   background-color: var(--bg-color);
   display: flex;
