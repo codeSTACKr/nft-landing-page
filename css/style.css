@@ -8,10 +8,10 @@
   --font-primary: 'Nosifer', sans-serif;
   --font-secondary: 'Nosifer', serif;
   --font-code: 'Roboto', monospace;
-  --bg-color: #0027d6;
+  --bg-color: #c204ed;
   --font-color: #ffffff;
   --btn-bg-color: #ffffff;
-  --accent-color: #f701ca;
+  --accent-color: #f70157;
   --header-shadow: #000 0px 0px 5px;
 }
 
@@ -90,6 +90,8 @@ header .container {
   font-size: 1.2rem;
   padding: 1.5rem 3rem;
 }
+
+
 
 /* COUNTDOWN SECTION */
 
@@ -179,5 +181,19 @@ section {
   .countdown p {
     font-size: 1rem;
   }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width:1200px
+}
+
+video {
+  width: 100%;
 }
  
