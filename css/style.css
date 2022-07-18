@@ -1,17 +1,17 @@
 /* FONTS */
 
-@import url("https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("@import url('https://fonts.googleapis.com/css2?family=Nosifer&display=swap'); @import url('https://fonts.googleapis.com/css2?family=Nosifer&family=Press+Start+2P&display=swap');");
 
 /* GLOBAL STYLES */
 
 :root {
-  --font-primary: 'Poppins', sans-serif;
-  --font-secondary: 'Arvo', serif;
+  --font-primary: Nosifer, sans-serif;
+  --font-secondary: PressStart2P;
   --font-code: 'Roboto', monospace;
-  --bg-color: #00163f;
-  --font-color: #ffffff;
+  --bg-color: #c204ed;
+  --font-color: #000000;
   --btn-bg-color: #ffffff;
-  --accent-color: #be7efe;
+  --accent-color: #f70157;
   --header-shadow: #000 0px 0px 5px;
 }
 
@@ -20,6 +20,39 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+.wrapper2{
+  width: 100%;
+  
+}
+
+.img-banner {
+  display: none;
+
+}
+
+.img-info{
+width: 100%;
+
+}
+
+.img-info h2{
+  padding: 30px 30px 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 50px;
+  color: #f70157;
+  line-height: 44px;
+  }
+
+  .img-info p{
+    padding: 0px 30px 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: #f70157;
+    line-height: 24px;
+    }
+
+
 
 body {
   background-color: var(--bg-color);
@@ -91,6 +124,18 @@ header .container {
   padding: 1.5rem 3rem;
 }
 
+.titlesection{
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+}
+
+
+
 /* COUNTDOWN SECTION */
 
 section {
@@ -144,7 +189,7 @@ section {
   text-shadow: 2px 2px 0 var(--accent-color);
   font-style: italic;
   margin: 2rem 0;
-  font-size: 3.5rem;
+  font-size: 5.5rem;
   text-align: center;
 }
 
@@ -179,5 +224,19 @@ section {
   .countdown p {
     font-size: 1rem;
   }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width:900px
+}
+
+video {
+  width: 100%;
 }
  
