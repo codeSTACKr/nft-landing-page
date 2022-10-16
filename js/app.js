@@ -46,6 +46,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+
 const checkOwner = async (account) => {
   if(account) {
     let isOwner = false;
