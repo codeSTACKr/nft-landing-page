@@ -38,51 +38,6 @@ body {
   padding: 1rem 2rem;
 }
 
-.ava {
-  background:red;
-  display: flex;
-  flex-direction: column;
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 1rem 2rem;
-}
-
-.chloe {
-  background:green;
-  display: flex;
-  flex-direction: column;
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 1rem 2rem;
-}
-
-.luna {
-  background:gold;
-  display: flex;
-  flex-direction: column;
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 1rem 2rem;
-}
-
-.max {
-  background:DodgerBlue;
-  display: flex;
-  flex-direction: column;
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 1rem 2rem;
-}
-
-.rosie {
-  background:pink;
-  display: flex;
-  flex-direction: column;
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 1rem 2rem;
-}
-
 /* HEADER */
 
 header {
