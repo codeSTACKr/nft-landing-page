@@ -537,7 +537,7 @@ const chapters = [
                 options: ["HTTP", "FTP", "SMTP", "TLS"],
                 answer: 3
             }
-        ]      
+        ]
     },
     {
         title: "Identity and Access Management Design and Implementation",
@@ -637,7 +637,7 @@ const chapters = [
                 options: ["Privilege escalation", "User provisioning", "Account auditing", "Privele creep"],
                 answer: 3
             }
-        ]      
+        ]
     },
     {
         title: "Physical Security Design and Implementation",
@@ -927,7 +927,7 @@ const chapters = [
                 options: ["u", "g", "o", "a"],
                 answer: 2
             }
-        ]        
+        ]
     },
     {
         title: "Network Security Desing and Implementation",
@@ -1222,152 +1222,152 @@ const chapters = [
                 options: ["ssh", "nc", "telnet", "ftp"],
                 answer: 1
             }
-        ]        
+        ]
     },
     {
         title: "Operations and Incident Response",
         questions: [
-        {
-            q: "Who is the most effective person to lead a lessons learned review?",
-            options: ["CISO", "IT manager", "Incident responder", "Independent facilitator"],
-            answer: 3
-        },
-        {
-            q: "What type of tool assists with the automated validation of systems?",
-            options: ["Intrusion detection system", "Network scanner", "Configuration management", "SIEM"],
-            answer: 2
-        },
-        {
-            q: "Which one of the following is not a suggested criteria for evaluating containment strategies?",
-            options: ["Cost", "Effectiveness", "Speed", "Identity of attacker"],
-            answer: 3
-        },
-        {
-            q: "During an incident response, what is the highest priority of first responders?",
-            options: ["Identifying the attacker", "Restoring systems", "Analyzing malware", "Containing the damage"],
-            answer: 3
-        },
-        {
-            q: "You should rebuild any system that may have been compromised during a security incident?",
-            options: ["TRUE", "FALSE", "", ""],
-            answer: 0
-        },
-        {
-            q: "What containment strategy moves compromised systems to a separate VLAN attached to the enterprise network?",
-            options: ["Isolation", "Quarantine", "Segmentation", "Lockdown"],
-            answer: 2
-        },
-        {
-            q: "Which of these individuals would not normally be found on the incident response team?",
-            options: ["Forensic analyst", "CEO", "Legal counsel", "Public relations"],
-            answer: 1
-        },
-        {
-            q: "You are normally required to report security incidents to law enforcement if you believe a law may have been violated?",
-            options: ["TRUE", "FALSE", "", ""],
-            answer: 0
-        },
-        {
-            q: "Certifications help employees validate their skills and are an important recruiting and retention tool?",
-            options: ["TRUE", "FALSE", "", ""],
-            answer: 0
-        },
-        {
-            q: "What company developed the Cyber Kill Chain?",
-            options: ["IBM", "Symantec", "FireEye", "Lockheed Martin"],
-            answer: 3
-        },
-        {
-            q: "Which of the following is not a core feature of the Diamond Model?",
-            options: ["Infrastructure", "Adversary", "Victim", "Exploit"],
-            answer: 3
-        },
-        {
-            q: "What do the columns in the ATT&CK matrix represent?",
-            options: ["Techniques", "Procedures", "Tactics", "Tools"],
-            answer: 2
-        },
-        {
-            q: "SIEMs apply artificial intelligence techniques to log entries?",
-            options: ["TRUE", "FALSE", "", ""],
-            answer: 1
-        },
-        {
-            q: "Which component of a syslog message contains the timestamp?",
-            options: ["Body", "Header", "Facility", "Severity"],
-            answer: 1
-        },
-        {
-            q: "What type of technology prevents a forensic examiner from accidentally corrupting evidence while creating an image of a disk?",
-            options: ["Backup system", "Encryption", "Air gap", "Write blocker"],
-            answer: 3
-        },
-        {
-            q: "Which evidence source should be collected first when considering the order of volatility?",
-            options: ["Hard drive", "Network traffic", "Logs", "Memory contents"],
-            answer: 3
-        },
-        {
-            q: "What tool allows you to dump the contents of memory on a Linux system?",
-            options: ["dumpmem", "memdump", "memorydump", "memcapture"],
-            answer: 1
-        },
-        {
-            q: "Which one of the following is a hashing utility that you can use in your forensic toolkit?",
-            options: ["netstat", "wireshark", "shasum", "tcpdump"],
-            answer: 2
-        },
-        {
-            q: "Three of these choices are data elements found in NetFlow data. Which is not?",
-            options: ["Source IP address", "Destination IP address", "Packet contents", "Source port"],
-            answer: 2
-        },
-        {
-            q: "Dan is engaging in a password cracking attack where he uses precomputed hash values. What type of attack is Dan waging?",
-            options: ["Bruteforce attack", "Dictionary attack", "Rainbow table attack", "Social engineering attack"],
-            answer: 2
-        },
-        {
-            q: "What tool can you use to create a disk image?",
-            options: ["DiskCopy", "DiskImage", "dd", "clone"],
-            answer: 2
-        },
-        {
-            q: "Which one of the following is a file carving tool?",
-            options: ["dd", "grep", "Bulk Extractor", "scp"],
-            answer: 2
-        },
-        {
-            q: "The chain of custody must be updated EVERY time someone handles a piece of evidence?",
-            options: ["TRUE", "FALSE", "", ""],
-            answer: 0
-        },
-        {
-            q: "Software forensics may be used to identify the origin of malware?",
-            options: ["TRUE", "FALSE", "", ""],
-            answer: 0
-        },
-        {
-            q: "Which one of the following is a commonly used exploitation framework?",
-            options: ["Nessus", "Wireshark", "Snort", "Metasploit"],
-            answer: 3
-        },
-        {
-            q: "During what phase of ediscovery does an organization share information with the other side?",
-            options: ["Collection", "Review", "Production", "Preservation"],
-            answer: 2
-        },
-        {
-            q: "Server logs are an example of _____ evidence?",
-            options: ["Physical", "Testimonial", "Documentary", "Demonstrative"],
-            answer: 2
-        },
-        {
-            q: "What type of investigation would typically be launched in response to a report of high network latency?",
-            options: ["Criminal investigation", "Regulatory investigation", "Civil investigation", "Operational investigation"],
-            answer: 3
-        }
-    ]
+            {
+                q: "Who is the most effective person to lead a lessons learned review?",
+                options: ["CISO", "IT manager", "Incident responder", "Independent facilitator"],
+                answer: 3
+            },
+            {
+                q: "What type of tool assists with the automated validation of systems?",
+                options: ["Intrusion detection system", "Network scanner", "Configuration management", "SIEM"],
+                answer: 2
+            },
+            {
+                q: "Which one of the following is not a suggested criteria for evaluating containment strategies?",
+                options: ["Cost", "Effectiveness", "Speed", "Identity of attacker"],
+                answer: 3
+            },
+            {
+                q: "During an incident response, what is the highest priority of first responders?",
+                options: ["Identifying the attacker", "Restoring systems", "Analyzing malware", "Containing the damage"],
+                answer: 3
+            },
+            {
+                q: "You should rebuild any system that may have been compromised during a security incident?",
+                options: ["TRUE", "FALSE", "", ""],
+                answer: 0
+            },
+            {
+                q: "What containment strategy moves compromised systems to a separate VLAN attached to the enterprise network?",
+                options: ["Isolation", "Quarantine", "Segmentation", "Lockdown"],
+                answer: 2
+            },
+            {
+                q: "Which of these individuals would not normally be found on the incident response team?",
+                options: ["Forensic analyst", "CEO", "Legal counsel", "Public relations"],
+                answer: 1
+            },
+            {
+                q: "You are normally required to report security incidents to law enforcement if you believe a law may have been violated?",
+                options: ["TRUE", "FALSE", "", ""],
+                answer: 0
+            },
+            {
+                q: "Certifications help employees validate their skills and are an important recruiting and retention tool?",
+                options: ["TRUE", "FALSE", "", ""],
+                answer: 0
+            },
+            {
+                q: "What company developed the Cyber Kill Chain?",
+                options: ["IBM", "Symantec", "FireEye", "Lockheed Martin"],
+                answer: 3
+            },
+            {
+                q: "Which of the following is not a core feature of the Diamond Model?",
+                options: ["Infrastructure", "Adversary", "Victim", "Exploit"],
+                answer: 3
+            },
+            {
+                q: "What do the columns in the ATT&CK matrix represent?",
+                options: ["Techniques", "Procedures", "Tactics", "Tools"],
+                answer: 2
+            },
+            {
+                q: "SIEMs apply artificial intelligence techniques to log entries?",
+                options: ["TRUE", "FALSE", "", ""],
+                answer: 1
+            },
+            {
+                q: "Which component of a syslog message contains the timestamp?",
+                options: ["Body", "Header", "Facility", "Severity"],
+                answer: 1
+            },
+            {
+                q: "What type of technology prevents a forensic examiner from accidentally corrupting evidence while creating an image of a disk?",
+                options: ["Backup system", "Encryption", "Air gap", "Write blocker"],
+                answer: 3
+            },
+            {
+                q: "Which evidence source should be collected first when considering the order of volatility?",
+                options: ["Hard drive", "Network traffic", "Logs", "Memory contents"],
+                answer: 3
+            },
+            {
+                q: "What tool allows you to dump the contents of memory on a Linux system?",
+                options: ["dumpmem", "memdump", "memorydump", "memcapture"],
+                answer: 1
+            },
+            {
+                q: "Which one of the following is a hashing utility that you can use in your forensic toolkit?",
+                options: ["netstat", "wireshark", "shasum", "tcpdump"],
+                answer: 2
+            },
+            {
+                q: "Three of these choices are data elements found in NetFlow data. Which is not?",
+                options: ["Source IP address", "Destination IP address", "Packet contents", "Source port"],
+                answer: 2
+            },
+            {
+                q: "Dan is engaging in a password cracking attack where he uses precomputed hash values. What type of attack is Dan waging?",
+                options: ["Bruteforce attack", "Dictionary attack", "Rainbow table attack", "Social engineering attack"],
+                answer: 2
+            },
+            {
+                q: "What tool can you use to create a disk image?",
+                options: ["DiskCopy", "DiskImage", "dd", "clone"],
+                answer: 2
+            },
+            {
+                q: "Which one of the following is a file carving tool?",
+                options: ["dd", "grep", "Bulk Extractor", "scp"],
+                answer: 2
+            },
+            {
+                q: "The chain of custody must be updated EVERY time someone handles a piece of evidence?",
+                options: ["TRUE", "FALSE", "", ""],
+                answer: 0
+            },
+            {
+                q: "Software forensics may be used to identify the origin of malware?",
+                options: ["TRUE", "FALSE", "", ""],
+                answer: 0
+            },
+            {
+                q: "Which one of the following is a commonly used exploitation framework?",
+                options: ["Nessus", "Wireshark", "Snort", "Metasploit"],
+                answer: 3
+            },
+            {
+                q: "During what phase of ediscovery does an organization share information with the other side?",
+                options: ["Collection", "Review", "Production", "Preservation"],
+                answer: 2
+            },
+            {
+                q: "Server logs are an example of _____ evidence?",
+                options: ["Physical", "Testimonial", "Documentary", "Demonstrative"],
+                answer: 2
+            },
+            {
+                q: "What type of investigation would typically be launched in response to a report of high network latency?",
+                options: ["Criminal investigation", "Regulatory investigation", "Civil investigation", "Operational investigation"],
+                answer: 3
+            }
+        ]
     },
     {
         title: "Governance, Risk, and Compliance",
@@ -1486,7 +1486,7 @@ const chapters = [
                 q: "What type of security training is specifically designed to educate employees about attack techniques?",
                 options: ["Awareness training", "Technical training", "Certification training", "Capture the flag training"],
                 answer: 3
-            }            
+            }
         ]
     }
 ];
@@ -1509,6 +1509,24 @@ function resetQuizOver() {
     quizOverPage.classList.remove("show");
 }
 
+// Function to display a confirmation popup when the back button is clicked
+function showConfirmationPopup() {
+    const confirmation = confirm("Are you sure you want to leave the quiz? Your progress will not be saved.");
+    if (confirmation) {
+        // Redirect to the chapter selection page or perform other actions
+        // For now, let's assume you want to go back to the chapter selection
+        showChapterSelection();
+    }
+}
+
+// Function to show the chapter selection page
+function showChapterSelection() {
+    const chapterSelection = document.querySelector(".chapter-selection");
+    const quizContainer = document.querySelector(".quiz-container");
+    chapterSelection.style.display = "block";
+    quizContainer.style.display = "none";
+}
+
 // Update the questions and totalQuestionsSpan based on the selected chapter
 function changeChapter(selectedChapterIndex) {
     if (selectedChapterIndex >= 0 && selectedChapterIndex < chapters.length) {
@@ -1528,6 +1546,10 @@ function changeChapter(selectedChapterIndex) {
         const quizContainer = document.querySelector(".quiz-container");
         chapterSelection.style.display = "none";
         quizContainer.style.display = "block";
+
+        // Show the back button inside the quiz container
+        const backButton = document.querySelector(".back-button");
+        backButton.style.display = "block";
 
         const quizTitle = `Quiz ${selectedChapter}: ${currentChapter.title}`;
         document.querySelector(".quiz-title h2").innerHTML = quizTitle;
@@ -1569,6 +1591,13 @@ function load() {
     const selectedChapterObj = chapters[selectedChapter];
     const quizTitle = `Quiz ${selectedChapter}: ${selectedChapterObj.title}`;
     document.querySelector(".quiz-title h2").innerHTML = quizTitle;
+
+    // Display the back button inside the quiz title
+    const backButton = document.createElement("button");
+    backButton.className = "back-button";
+    backButton.textContent = "Back to Chapter Selection";
+    backButton.addEventListener("click", showConfirmationPopup);
+    document.querySelector(".quiz-title h2").appendChild(backButton);
 
     question.innerHTML = currentQuestion.q;
     opt1.innerHTML = currentQuestion.options[0];
@@ -1677,6 +1706,35 @@ function quizOver() {
 
     const tryAgainButton = document.querySelector(".quiz-over button");
     tryAgainButton.addEventListener("click", tryAgain); // Attach the tryAgain() function to the button
+}
+
+function reviewAnswers() {
+    const reviewContainer = document.querySelector('.review-container');
+    reviewContainer.innerHTML = ''; // Clear previous content
+
+    for (let i = 0; i < answeredQuestions.length; i++) {
+        const questionIndex = answeredQuestions[i];
+        const question = currentQuestions[questionIndex];
+
+        const questionDiv = document.createElement('div');
+        questionDiv.className = 'review-question';
+
+        const questionText = document.createElement('p');
+        questionText.textContent = question.q;
+        questionDiv.appendChild(questionText);
+
+        const userAnswerText = document.createElement('p');
+        userAnswerText.textContent = 'Your Answer: ' + question.options[questionIndex];
+        questionDiv.appendChild(userAnswerText);
+
+        const correctAnswerText = document.createElement('p');
+        correctAnswerText.textContent = 'Correct Answer: ' + question.options[question.answer];
+        questionDiv.appendChild(correctAnswerText);
+
+        reviewContainer.appendChild(questionDiv);
+    }
+
+    reviewContainer.style.display = 'block';
 }
 
 function tryAgain() {

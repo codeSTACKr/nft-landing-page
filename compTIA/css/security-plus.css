@@ -10,14 +10,24 @@ body {
     box-sizing: border-box;
 }
 
+.back-button {
+    background-color: #009688;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
 .chapter-selector {
-    cursor: url('img/custom-cursor.png'), url('img/custom-cursor.png'), auto;
+    cursor: url('../img/custom-cursor.png'), url('../img/custom-cursor.png'), auto;
     /* Replace 'default-cursor.png' with your custom cursor image */
     /* The cursor value is repeated twice to cover all browsers */
 }
 
 .chapter-selector:hover {
-    cursor: url('img/custom-cursor.png'), auto; /* Replace 'custom-cursor.png' with your cursor image */
+    cursor: url('../img/custom-cursor.png'), auto;
+    /* Replace 'custom-cursor.png' with your cursor image */
 }
 
 .chapter-selection {
@@ -34,8 +44,10 @@ body {
 }
 
 .chapter-selector {
-    width: 80%; /* Set a fixed width for consistent width */
-    max-width: 400px; /* Optional: Limit the max width */
+    width: 80%;
+    /* Set a fixed width for consistent width */
+    max-width: 400px;
+    /* Optional: Limit the max width */
     background-color: #ccc;
     padding: 15px 25px;
     margin: 10px auto;
@@ -57,19 +69,12 @@ body {
     border-radius: 8px;
     padding: 30px;
     /* Set default cursor style for the quiz container */
-    cursor: url('img/custom-cursor.png'), auto; 
+    cursor: url('../img/custom-cursor.png'), auto;
 }
 
 .quiz-container:hover {
     /* Set custom cursor style when hovering over the quiz container */
-    cursor: url('img/custom-cursor.png'), auto; 
-}
-
-.question-number h2 {
-    color: #0000ff;
-    border-bottom: 1px solid #ccc;
-    margin: 0;
-    padding-bottom: 10px;
+    cursor: url('../img/custom-cursor.png'), auto;
 }
 
 .question-number h3 {
@@ -84,6 +89,7 @@ body {
     border-bottom: 1px solid #ccc;
     margin: 0;
     padding-bottom: 10px;
+    padding-top: 20px; /* Add padding to the top */
 }
 
 .question {
@@ -181,7 +187,7 @@ body {
 
 .answers-tracker div.correct {
     background-color: green;
-    background-image: url('img/correct.png');
+    background-image: url('../img/correct.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 75%;
@@ -189,7 +195,7 @@ body {
 
 .answers-tracker div.wrong {
     background-color: red;
-    background-image: url('img/wrong.png');
+    background-image: url('../img/wrong.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 75%;
@@ -236,4 +242,24 @@ body {
     font-size: 16px;
     margin: 15px 0 20px;
     color: white;
+}
+
+.review-container {
+    display: none; /* Initially hidden */
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+}
+
+.review-question {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.review-question p {
+    margin: 0;
+    padding: 5px 0;
 }
