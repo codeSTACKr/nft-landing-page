@@ -1595,7 +1595,7 @@ function load() {
     // Display the back button inside the quiz title
     const backButton = document.createElement("button");
     backButton.className = "back-button";
-    backButton.textContent = "Back to Chapter Selection";
+    backButton.textContent = "Back to Chapter Quiz Selection";
     backButton.addEventListener("click", showConfirmationPopup);
     document.querySelector(".quiz-title h2").appendChild(backButton);
 

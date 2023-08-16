@@ -55,9 +55,7 @@
     <div class="quiz-container">
         <div class="quiz-title">
             <h2>
-                <button type="button" class="back-button" onclick="showConfirmationPopup()">Back to Chapter
-                    Quiz Selection</button>
-                <!-- The rest of the quiz title content will be dynamically populated by JavaScript -->
+                <!-- The quiz title and back button content will be dynamically populated by JavaScript -->
             </h2>
         </div>
         <div class="question-number">
@@ -74,9 +72,7 @@
             <div id="2" class="option3" onclick="check(this)"></div>
             <div id="3" class="option4" onclick="check(this)"></div>
         </div>
-        <div class="button btn">
-            <button type="button" onclick="next()" class="btn">Next</button>
-        </div>
+        <button type="button" class="next-button" onclick="next()">Next</button>
         <div class="answers-tracker"></div>
     </div>
     <div class="quiz-over">
@@ -87,8 +83,8 @@
                 That is <span class="percentage"></span>
                 Try a different quiz?
             </h1>
-            <button type="button" class="btn" onclick="reviewAnswers()">Review Answers</button>
-            <button type="button" onclick="tryAgain()">Try Again!</button>
+            <button type="button" class="orange-button" onclick="reviewAnswers()">Review Answers</button>
+            <button type="button" class="orange-button" onclick="tryAgain()">Try Again!</button>
         </div>
     </div>
     <div class="review-container">
