@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Test your knowledge with this CompTIA Security+ quiz.">
+    <meta name="author" content="AlienznBotz">
+    <title>CompTIA Security+ Quizes</title>
+    <link rel="stylesheet" href="css/security-plus.css">
+    <script defer src="js/security-plus.js"></script>
+</head>
+
+<body>
+
+    <audio id="hoverSound">
+        <source src="av/click-sound.mp3" type="audio/mpeg">
+        <source src="av/hover-sound.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+
+    <audio id="clickSound">
+        <source src="av/click-sound.mp3" type="audio/mpeg">
+        <source src="av/click-sound.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="chapter-selection">
+        <h2 class="chapter-selection-title">CompTIA Security+ <br> Select a Chapter Quiz:</h2>
+        <div class="chapter-selector" data-chapter="1" onmouseover="playHoverSound();" onclick="playClickSound(); changeChapter(1)">1. Threats, Attacks, and Vulnerabilities</div>
+        <div class="chapter-selector" data-chapter="2" onmouseover="playHoverSound();" onclick="playClickSound(); changeChapter(2)">2. Secure Code Design and Implementation</div>
+        <div class="chapter-selector" data-chapter="3" onmouseover="playHoverSound();" onclick="playClickSound(); changeChapter(3)">3. Cryptography Design and Implementation</div>
+        <div class="chapter-selector" data-chapter="4" onmouseover="playHoverSound();" onclick="playClickSound(); changeChapter(4)">4. Identity and Access Management Design and Implementation</div>
+        <div class="chapter-selector" data-chapter="5" onmouseover="playHoverSound();" onclick="playClickSound(); changeChapter(5)">5. Physical Security Design and Implementation</div>
+        <div class="chapter-selector" data-chapter="6" onmouseover="playHoverSound();" onclick="playClickSound(); changeChapter(6)">6. Cloud Security Design and Implementation</div>
+        <div class="chapter-selector" data-chapter="7" onmouseover="playHoverSound();" onclick="playClickSound(); changeChapter(7)">7. Endpoint Security Design and Implementation</div>
+        <div class="chapter-selector" data-chapter="8" onmouseover="playHoverSound();" onclick="playClickSound(); changeChapter(8)">8. Network Security Design and Implementation</div>
+        <div class="chapter-selector" data-chapter="9" onmouseover="playHoverSound();" onclick="playClickSound(); changeChapter(9)">9. Operations and Incident Response</div>
+        <div class="chapter-selector" data-chapter="10" onmouseover="playHoverSound();" onclick="playClickSound(); changeChapter(10)">10. Governance, Risk, and Compliance</div>
+    </div>
+
+    <div class="quiz-container">
+        <div class="quiz-title">
+            <h2><!-- Quiz title will be dynamically populated by JavaScript --></h2>
+        </div>
+        <div class="question-number">
+            <h3>Question <span class="question-num-value"></span> of
+                <span class="total-questions"></span>
+            </h3>
+        </div>
+        <div class="question">
+            If you are seeing this dummy question, your quiz didn't load.
+        </div>
+        <div class="options">
+            <div id="0" class="option1" onclick="check(this)"></div>
+            <div id="1" class="option2" onclick="check(this)"></div>
+            <div id="2" class="option3" onclick="check(this)"></div>
+            <div id="3" class="option4" onclick="check(this)"></div>
+        </div>
+        <div class="button btn">
+            <button type="button" onclick="next()" class="btn">Next</button>
+        </div>
+        <div class="answers-tracker"></div>
+    </div>
+    <div class="quiz-over">
+        <div class="box">
+            <h1>Good Job! <br />
+                You got <span class="correct-answers"></span> out of
+                <span class="total-questions2"></span> answers correct.
+                That is <span class="percentage"></span>
+                Try a different quiz?
+            </h1>
+            <button type="button" onclick="tryAgain()">Try Again!</button>
+        </div>
+    </div>
+
+</body>
+
+</html>
