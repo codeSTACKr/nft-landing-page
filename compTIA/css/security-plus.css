@@ -19,17 +19,6 @@ body {
     cursor: pointer;
 }
 
-.chapter-selector {
-    cursor: url('../img/custom-cursor.png'), url('../img/custom-cursor.png'), auto;
-    /* Replace 'default-cursor.png' with your custom cursor image */
-    /* The cursor value is repeated twice to cover all browsers */
-}
-
-.chapter-selector:hover {
-    cursor: url('../img/custom-cursor.png'), auto;
-    /* Replace 'custom-cursor.png' with your cursor image */
-}
-
 .chapter-selection {
     display: flex;
     flex-direction: column;
@@ -56,6 +45,17 @@ body {
     font-size: 18px;
     color: black;
     transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.chapter-selector {
+    cursor: url('../img/custom-cursor.png'), url('../img/custom-cursor.png'), auto;
+    /* Replace 'default-cursor.png' with your custom cursor image */
+    /* The cursor value is repeated twice to cover all browsers */
+}
+
+.chapter-selector:hover {
+    cursor: url('../img/custom-cursor.png'), auto;
+    /* Replace 'custom-cursor.png' with your cursor image */
 }
 
 .quiz-container {
@@ -163,18 +163,6 @@ body {
     animation-fill-mode: forwards;
 }
 
-.button .btn {
-    padding: 10px 30px;
-    background-color: #009688;
-    font-size: 18px;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    display: inline-block;
-    margin: 10px 0;
-}
-
 .answers-tracker div {
     height: 40px;
     width: 40px;
@@ -183,7 +171,6 @@ body {
     border-radius: 50%;
     margin-right: 5px;
 }
-
 
 .answers-tracker div.correct {
     background-color: green;
@@ -218,6 +205,7 @@ body {
     display: flex;
 }
 
+.quiz-over .box .btn,
 .quiz-over .box {
     background-color: #009688;
     padding: 30px;
@@ -232,16 +220,6 @@ body {
 .quiz-over .box h1 {
     font-size: 36px;
     margin: 0 0 20px
-}
-
-.quiz-over .box button {
-    padding: 15px 50px;
-    border: none;
-    background-color: #f7b53c;
-    border-radius: 5px;
-    font-size: 16px;
-    margin: 15px 0 20px;
-    color: white;
 }
 
 .review-container {
