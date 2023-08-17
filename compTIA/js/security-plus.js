@@ -94,7 +94,7 @@ const chapters = [
             },
             {
                 q: "The analysis of adversary TTP includes tools, techniques, and policies.",
-                options: ["TRUE", "FALSE", "", ""],
+                options: ["TRUE", "FALSE"],
                 answer: 0
             },
             {
@@ -164,7 +164,7 @@ const chapters = [
             },
             {
                 q: "It is generally a bad practice to run software after the vendor's end of life.",
-                options: ["FALSE", "TRUE", "", ""],
+                options: ["FALSE", "TRUE"],
                 answer: 1
             },
             {
@@ -214,7 +214,7 @@ const chapters = [
             },
             {
                 q: "Companies should always manage bug bounty programs internally.",
-                options: ["FALSE", "TRUE", "", ""],
+                options: ["FALSE", "TRUE"],
                 answer: 1
             },
             {
@@ -244,12 +244,12 @@ const chapters = [
             },
             {
                 q: "The DevOps model prioritizes development efforts over operational tasks.",
-                options: ["TRUE", "FALSE", "", ""],
+                options: ["TRUE", "FALSE"],
                 answer: 1
             },
             {
                 q: "Static code testing software executes code to verify that it is functioning properly?",
-                options: ["TRUE", "FALSE", "", ""],
+                options: ["TRUE", "FALSE"],
                 answer: 1
             },
             {
@@ -259,7 +259,7 @@ const chapters = [
             },
             {
                 q: "The main purpose of a code repository is to store the source files used in software development in a centralized location that allows for secure storage.",
-                options: ["TRUE", "FALSE", "", ""],
+                options: ["TRUE", "FALSE"],
                 answer: 0
             },
             {
@@ -289,7 +289,7 @@ const chapters = [
             },
             {
                 q: "Privilege escalation attacks require a normal user account to execute.",
-                options: ["FALSE", "TRUE", "", ""],
+                options: ["FALSE", "TRUE"],
                 answer: 1
             },
             {
@@ -344,12 +344,12 @@ const chapters = [
             },
             {
                 q: "Database normalization should always be used to improve database security",
-                options: ["FALSE", "TRUE", "", ""],
+                options: ["FALSE", "TRUE"],
                 answer: 1
             },
             {
                 q: "Removing names and identification numbers is usually all that is necessary to deidentify a dataset.",
-                options: ["FALSE", "TRUE", "", ""],
+                options: ["FALSE", "TRUE"],
                 answer: 1
             },
             {
@@ -529,7 +529,7 @@ const chapters = [
             },
             {
                 q: "Conducting a brute force attack requires a sample of plaintext?",
-                options: ["TRUE", "FALSE", "", ""],
+                options: ["TRUE", "FALSE"],
                 answer: 1
             },
             {
@@ -604,12 +604,12 @@ const chapters = [
             },
             {
                 q: "In a discretionary access control system, individual users have the ability to alter access permissions?",
-                options: ["TRUE", "FALSE", "", ""],
+                options: ["TRUE", "FALSE"],
                 answer: 0
             },
             {
                 q: "Windows provides a facility for administrators to implement Time of Day restrictions without requiring the use of a third party tool?",
-                options: ["TRUE", "FALSE", "", ""],
+                options: ["TRUE", "FALSE"],
                 answer: 0
             },
             {
@@ -619,7 +619,7 @@ const chapters = [
             },
             {
                 q: "When a user is terminated, administrators should first disable the account and then delete it later?",
-                options: ["TRUE", "FALSE", "", ""],
+                options: ["TRUE", "FALSE"],
                 answer: 0
             },
             {
@@ -799,7 +799,7 @@ const chapters = [
             },
             {
                 q: "When handling cross-jurisdictional issues, disputes are resolved based upon the law of the cloud service provider's home country?",
-                options: ["TRUE", "FALSE", "", ""],
+                options: ["TRUE", "FALSE"],
                 answer: 1
             },
             {
@@ -909,7 +909,7 @@ const chapters = [
             },
             {
                 q: "Embedded systems often suffer from limited access to power and bandwidth?",
-                options: ["TRUE", "FALSE", "", ""],
+                options: ["TRUE", "FALSE"],
                 answer: 0
             },
             {
@@ -1159,7 +1159,7 @@ const chapters = [
             },
             {
                 q: "Apple devices running current versions of iOS and configured with a passcode or biometric authentication use full device encryption by default?",
-                options: ["TRUE", "FALSE", "", ""],
+                options: ["TRUE", "FALSE"],
                 answer: 0
             },
             {
@@ -1249,7 +1249,7 @@ const chapters = [
             },
             {
                 q: "You should rebuild any system that may have been compromised during a security incident?",
-                options: ["TRUE", "FALSE", "", ""],
+                options: ["TRUE", "FALSE"],
                 answer: 0
             },
             {
@@ -1264,12 +1264,12 @@ const chapters = [
             },
             {
                 q: "You are normally required to report security incidents to law enforcement if you believe a law may have been violated?",
-                options: ["TRUE", "FALSE", "", ""],
+                options: ["TRUE", "FALSE"],
                 answer: 0
             },
             {
                 q: "Certifications help employees validate their skills and are an important recruiting and retention tool?",
-                options: ["TRUE", "FALSE", "", ""],
+                options: ["TRUE", "FALSE"],
                 answer: 0
             },
             {
@@ -1289,7 +1289,7 @@ const chapters = [
             },
             {
                 q: "SIEMs apply artificial intelligence techniques to log entries?",
-                options: ["TRUE", "FALSE", "", ""],
+                options: ["TRUE", "FALSE"],
                 answer: 1
             },
             {
@@ -1339,12 +1339,12 @@ const chapters = [
             },
             {
                 q: "The chain of custody must be updated EVERY time someone handles a piece of evidence?",
-                options: ["TRUE", "FALSE", "", ""],
+                options: ["TRUE", "FALSE"],
                 answer: 0
             },
             {
                 q: "Software forensics may be used to identify the origin of malware?",
-                options: ["TRUE", "FALSE", "", ""],
+                options: ["TRUE", "FALSE"],
                 answer: 0
             },
             {
@@ -1419,22 +1419,22 @@ const chapters = [
             },
             {
                 q: "Risk assessments represent a point-in-time analysis of the risks facing an organization?",
-                options: ["TRUE", "FALSE", "", ""],
+                options: ["TRUE", "FALSE"],
                 answer: 1
             },
             {
                 q: "Vendors extend your organization's technology environment. If they handle data on your behalf, you should expect they execute the same degree of care that you would in your own operations?",
-                options: ["TRUE", "FALSE", "", ""],
+                options: ["TRUE", "FALSE"],
                 answer: 0
             },
             {
                 q: "Data ownership issues often arise in supplier relationships?",
-                options: ["TRUE", "FALSE", "", ""],
+                options: ["TRUE", "FALSE"],
                 answer: 0
             },
             {
                 q: "Audits may be performed by either internal or external entities?",
-                options: ["TRUE", "FALSE", "", ""],
+                options: ["TRUE", "FALSE"],
                 answer: 1
             },
             {
@@ -1469,7 +1469,7 @@ const chapters = [
             },
             {
                 q: "ZIP code, date of birth, and gender uniquely identify 87% of people in the United States?",
-                options: ["TRUE", "FALSE", "", ""],
+                options: ["TRUE", "FALSE"],
                 answer: 1
             },
             {
