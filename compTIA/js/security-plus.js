@@ -664,7 +664,7 @@ const chapters = [
             },
             {
                 q: "Cable distribution runs are not normally included in a site's physical security plan.",
-                options: ["TRUE", "FALSE", "", ""],
+                options: ["TRUE", "FALSE"],
                 answer: 1
             },
             {
@@ -1585,21 +1585,22 @@ function answersTracker() {
 
 function load() {
     questionNumberSpan.innerHTML = index + 1;
-
-    // Update the totalQuestionsSpan with the number of questions in the current chapter
     totalQuestionsSpan.innerHTML = currentQuestions.length;
 
     const currentQuestion = currentQuestions[currentIndex];
 
-    const selectedChapterObj = chapters[selectedChapter];
-    const quizTitle = `Quiz ${selectedChapter}: ${selectedChapterObj.title}`;
-    document.querySelector(".quiz-title h2:first-child").innerHTML = quizTitle;
-
     question.innerHTML = currentQuestion.q;
-    opt1.innerHTML = currentQuestion.options[0];
-    opt2.innerHTML = currentQuestion.options[1];
-    opt3.innerHTML = currentQuestion.options[2];
-    opt4.innerHTML = currentQuestion.options[3];
+
+    // Clear previous options
+    for (let i = 0; i < options.length; i++) {
+        options[i].style.display = "none";
+    }
+
+    // Display only available options
+    for (let i = 0; i < currentQuestion.options.length; i++) {
+        options[i].innerHTML = currentQuestion.options[i];
+        options[i].style.display = "block";
+    }
 }
 
 // Function to update the answers tracker elements
@@ -1723,7 +1724,6 @@ function quizOver() {
     index = 0; // Reset the index to 0
     questionNumberSpan.innerHTML = index + 1; // Update the question number display
 }
-
 
 function reviewAnswers() {
     console.log("Review Answers button clicked");
