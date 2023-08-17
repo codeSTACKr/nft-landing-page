@@ -1568,7 +1568,7 @@ function answersTracker() {
 
     let totalQuestionsInChapter = 0; // Initialize to 0
 
-    if (selectedChapterObj) {
+    if (selectedChapterObj && selectedChapterObj.questions) {
         // Get the number of questions in the selected chapter
 
         totalQuestionsInChapter = selectedChapterObj.questions.length;
