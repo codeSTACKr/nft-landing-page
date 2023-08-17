@@ -1494,20 +1494,14 @@ const chapters = [
 
 // Function to play hover sound when user hooves over chapter selection
 function playHoverSound() {
-    if (userInteracted) {
-        const hoverSound = document.getElementById("hoverSound");
-        hoverSound.currentTime = 0;
-        hoverSound.play();
-    }
+    const hoverSound = document.getElementById("hoverSound");
+    hoverSound.play();
 }
 
 // Function to play click sound when user clicks over chapter selection
 function playClickSound() {
-    if (userInteracted) {
-        const clickSound = document.getElementById("clickSound");
-        clickSound.currentTime = 0;
-        clickSound.play();
-    }
+    const clickSound = document.getElementById("clickSound");
+    clickSound.play();
 }
 
 // Function to reset the quiz-over page
@@ -1800,14 +1794,17 @@ function attachChapterSelectionListeners() {
 // Restart the quiz and load currentQuestions based on selected chapter
 window.onload = function () {
 
+    // Add event listener to close the pop-up when the user clicks "OK"
+    document.getElementById("popupOkButton").addEventListener("click", () => {
+        document.getElementById("welcomePopup").style.display = "none"; // Hide the pop-up
+    });
+
     // Attach event listeners to chapter selectors
     attachChapterSelectionListeners();
 
     // Set up answers tracker
     answersTracker();
 
-    // Add event listener to set userInteracted flag on click
-    document.addEventListener("click", () => {
-        userInteracted = true;
-    });
+
+
 };

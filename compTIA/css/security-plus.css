@@ -10,6 +10,39 @@ body {
     box-sizing: border-box;
 }
 
+/* Add your existing CSS styles here */
+
+/* Styling for the pop-up notification */
+.popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.popup-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .quiz-over .box .review-answers-button,
 .quiz-over .box .try-again-button {
     padding: 15px 50px;
@@ -57,7 +90,8 @@ body {
 .back-button:hover,
 .quiz-container .next-button:hover,
 .quiz-container .reset-button:hover,
-.options div:hover {
+.options div:hover,
+.popup-button:hover {
     cursor: url('../img/custom-cursor.png'), url('../img/custom-cursor.png'), auto;
 }
 
