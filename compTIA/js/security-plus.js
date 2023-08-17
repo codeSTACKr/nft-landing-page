@@ -1747,10 +1747,13 @@ function populateReviewAnswers(container) {
 
         const questionText = document.createElement('p');
         questionText.textContent = question.q;
+        questionText.style.fontWeight = 'bold'; // Make the question text bold
         questionDiv.appendChild(questionText);
 
         const userAnswerText = document.createElement('p');
-        userAnswerText.textContent = 'Your Answer: ' + question.options[question.userAnswer];
+        const userAnswerIndex = question.userAnswer; // Get the user's answer index
+        userAnswerText.textContent = 'Your Answer: ' + question.options[userAnswerIndex];
+        userAnswerText.style.color = userAnswerIndex === question.answer ? 'green' : 'red'; // Green if correct, red if wrong
         questionDiv.appendChild(userAnswerText);
 
         const correctAnswerText = document.createElement('p');
@@ -1760,6 +1763,8 @@ function populateReviewAnswers(container) {
         container.appendChild(questionDiv);
     }
 }
+
+
 
 function tryAgain() {
     window.location.reload();
