@@ -1745,7 +1745,6 @@ function reviewAnswers() {
 
 function populateReviewAnswers(container) {
     container.innerHTML = ''; // Clear previous content
-    console.log("Populating review answers");
     for (let i = 0; i < answeredQuestions.length; i++) {
         const questionIndex = answeredQuestions[i];
         const question = currentQuestions[questionIndex];
