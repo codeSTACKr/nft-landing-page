@@ -1611,18 +1611,24 @@ function updateAnswersTracker(status) {
     }
 }
 
-// Check if selected answer is correct or wrong
 function check(element) {
     if (element.id == currentQuestions[currentIndex].answer) {
         element.className = "correct";
         updateAnswersTracker("correct"); // Call updateAnswersTracker here
         score++;
+
+        // Assign the user's answer to the question object
+        currentQuestions[currentIndex].userAnswer = element.id;
     } else {
         element.className = "wrong";
         updateAnswersTracker("wrong"); // Call updateAnswersTracker here
+
+        // Assign the user's answer to the question object
+        currentQuestions[currentIndex].userAnswer = element.id;
     }
     disableClick();
 }
+
 
 // Make sure the user selected an item before clicking on the Next button
 function validate() {
