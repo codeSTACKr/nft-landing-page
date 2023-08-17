@@ -1608,21 +1608,6 @@ function next() {
     }
 }
 
-function reset() {
-    const chapterSelectors = document.querySelectorAll(".chapter-selector");
-    let selectedChapterIndex = -1;
-    chapterSelectors.forEach((selector, index) => {
-        if (selector.classList.contains("selected")) {
-            selectedChapterIndex = index;
-        }
-    });
-
-    if (selectedChapterIndex >= 0) {
-        // Reload the page with the selected chapter index as a query parameter
-        window.location.href = `?chapter=${selectedChapterIndex}`;
-    }
-}
-
 //Function to disable click for the options
 function disableClick() {
     for (let i = 0; i < options.length; i++) {
@@ -1736,8 +1721,6 @@ function populateReviewAnswers(container) {
     }
 }
 
-
-
 function tryAgain() {
     window.location.reload();
 }
@@ -1759,9 +1742,6 @@ function attachChapterSelectionListeners() {
 
 // Restart the quiz and load currentQuestions based on selected chapter
 window.onload = function () {
-    // Retrieve the chapter index from the query parameter
-    const urlParams = new URLSearchParams(window.location.search);
-    const selectedChapterIndex = parseInt(urlParams.get("chapter"), 10);
 
     // Attach event listeners to chapter selectors
     attachChapterSelectionListeners();
@@ -1769,8 +1749,4 @@ window.onload = function () {
     // Set up answers tracker
     answersTracker();
 
-    // Load the selected chapter if a valid index is provided
-    if (!isNaN(selectedChapterIndex) && selectedChapterIndex >= 0) {
-        changeChapter(selectedChapterIndex);
-    }
 };
