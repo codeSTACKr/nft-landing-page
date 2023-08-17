@@ -50,7 +50,7 @@ body {
 }
 
 /* Apply custom cursor when hovering over buttons */
-    /* The cursor value is repeated twice to cover all browsers */
+/* The cursor value is repeated twice to cover all browsers */
 .chapter-selector:hover,
 .quiz-over .box .review-answers-button:hover,
 .quiz-over .box .try-again-button:hover,
@@ -251,9 +251,12 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    margin: 20px auto; /* Center the review container horizontally */
-    max-width: 700px; /* Set the maximum width to 700px */
-    text-align: left; /* Align the text to the left */
+    margin: 20px auto;
+    /* Center the review container horizontally */
+    max-width: 700px;
+    /* Set the maximum width to 700px */
+    text-align: left;
+    /* Align the text to the left */
 }
 
 .review-question {
