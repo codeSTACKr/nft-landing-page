@@ -1723,18 +1723,17 @@ function reviewAnswers() {
     const quizOverContainer = document.querySelector(".quiz-over");
     const reviewContainer = document.querySelector('.review-container');
 
-    // Hide the quiz-over container
-    quizOverContainer.style.display = 'none';
-
     // Toggle the visibility of the review container
-    if (reviewContainer.style.display === 'none') {
+    if (reviewContainer.style.display === 'none' || reviewContainer.style.display === '') {
         reviewContainer.style.display = 'block';
         populateReviewAnswers(reviewContainer); // Populate the content when showing
     } else {
         reviewContainer.style.display = 'none';
     }
-}
 
+    // Hide the quiz-over container
+    quizOverContainer.style.display = 'none';
+}
 
 function populateReviewAnswers(container) {
     container.innerHTML = ''; // Clear previous content
