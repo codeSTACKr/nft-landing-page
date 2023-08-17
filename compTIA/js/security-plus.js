@@ -16,7 +16,10 @@ let answeredQuestions = [];
 let score = 0;
 let selectedChapter = 0; // Initialize selected chapter to 0
 let currentQuestions = []; // Array of question objects
-let userInteracted = false;
+let isReset = false; // Initialize the reset flag
+let welcomePopupShown = false;
+let isFirstLoad = true;
+
 
 const opt1 = document.querySelector(".option1");
 const opt2 = document.querySelector(".option2");
@@ -1514,6 +1517,9 @@ function resetQuizOver() {
 function showConfirmationPopup() {
     const confirmation = confirm("Are you sure you want to leave the quiz? Your progress will not be saved.");
     if (confirmation) {
+        // Hide the welcome popup
+        document.getElementById("welcomePopup").style.display = "none";
+
         // Redirect to the chapter selection page or perform other actions
         // For now, let's assume you want to go back to the chapter selection
         showChapterSelection();
@@ -1522,25 +1528,33 @@ function showConfirmationPopup() {
 
 // Function to show the chapter selection page
 function showChapterSelection() {
+    document.getElementById("welcomePopup").style.display = "none"; // Hide the pop-up
+
+    window.location.replace("security-plus.html");
+
     const chapterSelection = document.querySelector(".chapter-selection");
     const quizContainer = document.querySelector(".quiz-container");
     chapterSelection.style.display = "block";
     quizContainer.style.display = "none";
 
     // Call tryAgain() to reset the quiz state when returning to chapter selection
-    tryAgain();
+    //tryAgain();
 }
+
 
 // Update the questions and totalQuestionsSpan based on the selected chapter
 function changeChapter(selectedChapterIndex) {
     if (selectedChapterIndex >= 0 && selectedChapterIndex < chapters.length) {
+        // Hide the welcome popup
+        document.getElementById("welcomePopup").style.display = "none";
+
         selectedChapter = selectedChapterIndex;
         let currentChapter = chapters[selectedChapter];
 
         answeredQuestions = [];
         score = 0;
         index = 0;
-        currentQuestions = currentChapter.questions; // Remove 'let' keyword to update the global array
+        currentQuestions = currentChapter.questions;
 
         randomQuestion();
         answersTracker();
@@ -1561,6 +1575,7 @@ function changeChapter(selectedChapterIndex) {
         console.error("Invalid selectedChapterIndex:", selectedChapterIndex);
     }
 }
+
 
 function answersTracker() {
     // Find the selected chapter in the chapters array
@@ -1584,6 +1599,18 @@ function answersTracker() {
     }
 }
 
+// Function to update the answers tracker elements
+function updateAnswersTracker(status) {
+    const currentAnswerTracker = answersTrackerContainer.children[index];
+    if (status === "correct") {
+        currentAnswerTracker.classList.add("correct");
+    } else if (status === "wrong") {
+        currentAnswerTracker.classList.add("wrong");
+    } else if (status === "selected") {
+        currentAnswerTracker.classList.add("selected");
+    }
+}
+
 function load() {
     questionNumberSpan.innerHTML = index + 1;
     totalQuestionsSpan.innerHTML = currentQuestions.length;
@@ -1601,18 +1628,6 @@ function load() {
     for (let i = 0; i < currentQuestion.options.length; i++) {
         options[i].innerHTML = currentQuestion.options[i];
         options[i].style.display = "block";
-    }
-}
-
-// Function to update the answers tracker elements
-function updateAnswersTracker(status) {
-    const currentAnswerTracker = answersTrackerContainer.children[index];
-    if (status === "correct") {
-        currentAnswerTracker.classList.add("correct");
-    } else if (status === "wrong") {
-        currentAnswerTracker.classList.add("wrong");
-    } else if (status === "selected") {
-        currentAnswerTracker.classList.add("selected");
     }
 }
 
@@ -1772,14 +1787,31 @@ function populateReviewAnswers(container) {
 }
 
 function tryAgain() {
-    window.location.reload();
+    document.getElementById("welcomePopup").style.display = "none"; // Hide the pop-up
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedChapterIndex = parseInt(urlParams.get("chapter"));
+    // Reload the page with the selected chapter index as query parameter
+    isReset = true; // Set the reset flag
+    window.location.href = `security-plus.html?chapter=${selectedChapterIndex}`;
+}
+
+// Function to reset the current quiz page
+function reset() {
+    console.log("Reset button clicked");
+    document.getElementById("welcomePopup").style.display = "none"; // Hide the pop-up
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedChapterIndex = parseInt(urlParams.get("chapter"));
+    // Reload the page with the selected chapter index as query parameter
+    isReset = true; // Set the reset flag
+    window.location.href = `security-plus.html?chapter=${selectedChapterIndex}`;
 }
 
 // Assuming there's an event listener for chapter selection
 function handleChapterSelection(event) {
     // Update the selectedChapter based on user selection
     const selectedChapterIndex = parseInt(event.target.dataset.chapter, 10);
-    changeChapter(selectedChapterIndex);
+    // Reload the page with the selected chapter index as query parameter
+    window.location.href = `security-plus.html?chapter=${selectedChapterIndex}`;
 }
 
 // Attach event listeners to chapter selectors
@@ -1792,18 +1824,31 @@ function attachChapterSelectionListeners() {
 
 // Restart the quiz and load currentQuestions based on selected chapter
 window.onload = function () {
-
-    // Add event listener to close the pop-up when the user clicks "OK"
-    document.getElementById("popupOkButton").addEventListener("click", () => {
-        document.getElementById("welcomePopup").style.display = "none"; // Hide the pop-up
-    });
-
     // Attach event listeners to chapter selectors
     attachChapterSelectionListeners();
 
     // Set up answers tracker
     answersTracker();
 
+    // Get the chapter index from the URL parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedChapterIndex = parseInt(urlParams.get("chapter"));
 
+    // Show the welcome popup only on the first page load
+    const popupOkButton = document.getElementById("popupOkButton");
+    const welcomePopup = document.getElementById("welcomePopup");
 
+    popupOkButton.addEventListener("click", () => {
+        welcomePopup.style.display = "none"; // Hide the pop-up
+    });
+
+    // Check if the page is loaded after a reset action
+    if (isReset) {
+        isReset = false; // Reset the flag
+        document.getElementById("welcomePopup").style.display = "none"; // Hide the pop-up
+    } else if (!isNaN(selectedChapterIndex) && selectedChapterIndex >= 0) {
+        changeChapter(selectedChapterIndex); // Load the selected chapter
+    }
+
+    isFirstLoad = false; // Mark the first load as completed
 };

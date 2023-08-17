@@ -17,7 +17,8 @@
 
     <div id="welcomePopup" class="popup">
         <div class="popup-content">
-            <p>Welcome to the CompTIA Security+ Quiz Training section. Click "OK" to start your quiz chapter of
+            <p>Welcome to the CompTIA Security+ Quiz Training section. </br></br>
+                Click "OK" to start your quiz chapter of
                 choice.</p>
             <button type="button" id="popupOkButton" class="popup-button">OK</button>
         </div>
@@ -34,6 +35,20 @@
         <source src="av/click-sound.wav" type="audio/wav">
         Your browser does not support the audio element.
     </audio>
+
+    <!-- Chapter selection page -->
+    <div class="chapterLinks">
+        <a href="security-plus.html?chapter=1">Chapter 1 Quiz</a>
+        <a href="security-plus.html?chapter=2">Chapter 2 Quiz</a>
+        <a href="security-plus.html?chapter=3">Chapter 3 Quiz</a>
+        <a href="security-plus.html?chapter=4">Chapter 4 Quiz</a>
+        <a href="security-plus.html?chapter=5">Chapter 5 Quiz</a>
+        <a href="security-plus.html?chapter=6">Chapter 6 Quiz</a>
+        <a href="security-plus.html?chapter=7">Chapter 7 Quiz</a>
+        <a href="security-plus.html?chapter=8">Chapter 8 Quiz</a>
+        <a href="security-plus.html?chapter=9">Chapter 9 Quiz</a>
+        <a href="security-plus.html?chapter=10">Chapter 10 Quiz</a>
+    </div>
 
     <div class="chapter-selection">
         <h2 class="chapter-selection-title">CompTIA Security+ <br> Select a Chapter Quiz:</h2>
@@ -66,8 +81,8 @@
                 <!-- The quiz title and back button content will be dynamically populated by JavaScript -->
             </h2>
             <h2>
-                <button type="button" class="back-button" onclick="showConfirmationPopup()">Back to Chapter Quiz
-                    Selection</button>
+                <button type="button" class="back-button"
+                    onclick="showConfirmationPopup(); showChapterSelection();">Back to Chapter Quiz Selection</button>
             </h2>
         </div>
         <div class="question-number">
@@ -86,7 +101,7 @@
         </div>
         <h2>
             <button type="button" class="next-button" onclick="next()">Next</button>
-            <!-- <button type="button" class="reset-button" onclick="reset()">Reset Quiz</button> -->
+            <button type="button" class="reset-quiz-button" onclick="reset()">Reset Quiz</button>
         </h2>
         <div class="answers-tracker"></div>
     </div>
