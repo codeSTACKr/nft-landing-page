@@ -16,6 +16,7 @@ let answeredQuestions = [];
 let score = 0;
 let selectedChapter = 0; // Initialize selected chapter to 0
 let currentQuestions = []; // Array of question objects
+let userInteracted = false;
 
 const opt1 = document.querySelector(".option1");
 const opt2 = document.querySelector(".option2");
@@ -1493,14 +1494,20 @@ const chapters = [
 
 // Function to play hover sound when user hooves over chapter selection
 function playHoverSound() {
-    const hoverSound = document.getElementById("hoverSound");
-    hoverSound.play();
+    if (userInteracted) {
+        const hoverSound = document.getElementById("hoverSound");
+        hoverSound.currentTime = 0;
+        hoverSound.play();
+    }
 }
 
 // Function to play click sound when user clicks over chapter selection
 function playClickSound() {
-    const clickSound = document.getElementById("clickSound");
-    clickSound.play();
+    if (userInteracted) {
+        const clickSound = document.getElementById("clickSound");
+        clickSound.currentTime = 0;
+        clickSound.play();
+    }
 }
 
 // Function to reset the quiz-over page
@@ -1726,7 +1733,6 @@ function quizOver() {
 }
 
 function reviewAnswers() {
-    console.log("Review Answers button clicked");
     const quizOverContainer = document.querySelector(".quiz-over");
     const reviewContainer = document.querySelector('.review-container');
 
@@ -1734,6 +1740,7 @@ function reviewAnswers() {
     if (reviewContainer.style.display === 'none' || reviewContainer.style.display === '') {
         reviewContainer.style.display = 'block';
         populateReviewAnswers(reviewContainer); // Populate the content when showing
+        reviewContainer.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Scroll into view
     } else {
         reviewContainer.style.display = 'none';
     }
@@ -1799,4 +1806,8 @@ window.onload = function () {
     // Set up answers tracker
     answersTracker();
 
+    // Add event listener to set userInteracted flag on click
+    document.addEventListener("click", () => {
+        userInteracted = true;
+    });
 };
