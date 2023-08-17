@@ -57,7 +57,7 @@ body {
 .back-button:hover,
 .quiz-container .next-button:hover,
 .quiz-container .reset-button:hover,
-.options:hover {
+.options div:hover {
     cursor: url('../img/custom-cursor.png'), url('../img/custom-cursor.png'), auto;
 }
 
