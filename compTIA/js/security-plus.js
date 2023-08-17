@@ -662,56 +662,6 @@ const chapters = [
                 options: ["59.0 degrees Fahrenheit", "64.4 degrees Fahrenheit", "68.0 degrees Fahrenheit", "72.2 degrees Fahrenheit"],
                 answer: 1
             },
-            {
-                q: "Cable distribution runs are not normally included in a site's physical security plan.",
-                options: ["TRUE", "FALSE", "", ""],
-                answer: 1
-            },
-            {
-                q: "Which one of the following data sanitization strategies is most secure?",
-                options: ["Overwriting", "Formatting", "Encryption", "Destruction"],
-                answer: 3
-            },
-            {
-                q: "Which one of the following security mechanisms prevents laptops from theft while they are in use?",
-                options: ["Biometric authentication", "Access control lists", "Cable lock", "Intrusion detection system"],
-                answer: 2
-            },
-            {
-                q: "What is the minimum number of disks required to perform RAID level 5?",
-                options: ["2", "3", "4", "5"],
-                answer: 1
-            },
-            {
-                q: "What type of control are we using if we supplement a single firewall with a second standby firewall ready to assume responsibility if the primary firewall fails?",
-                options: ["Redundancy", "High availability", "Failover", "Load balancing"],
-                answer: 1
-            },
-            {
-                q: "What goal of security is enhanced by a strong business continuity program?",
-                options: ["Confidentiality", "Integrity", "Availability", "Authentication"],
-                answer: 2
-            },
-            {
-                q: "Which one of the following disaster recovery tests involves the actual activation of the DR site?",
-                options: ["Tabletop test", "Full-scale test", "Partial test", "Parallel test"],
-                answer: 3
-            },
-            {
-                q: "What type of disaster recovery site is able to be activated most quickly in the event of a disruption?",
-                options: ["Warm site", "Hot site", "Cold site", "Mobile site"],
-                answer: 1
-            },
-            {
-                q: "What type of backup includes only those files that have changed since the most recent full or incremental backup?",
-                options: ["Full backup", "Differential backup", "Incremental backup", "Copy backup"],
-                answer: 2
-            },
-            {
-                q: "What disaster recovery metric provides the targeted amount of time to restore a service after a failure?",
-                options: ["RTO", "RPO", "MTBF", "MTTR"],
-                answer: 0
-            }
         ]
     },
     {
@@ -1758,7 +1708,13 @@ function populateReviewAnswers(container) {
 
         const userAnswerText = document.createElement('p');
         userAnswerText.textContent = `Your Answer: ${question.options[question.userAnswer]}`;
-        userAnswerText.style.color = question.userAnswer === question.answer ? 'green' : 'red'; // Set color based on correctness
+
+        if (question.userAnswer === question.answer) {
+            userAnswerText.style.color = 'green';
+        } else {
+            userAnswerText.style.color = 'red';
+        }
+
         questionDiv.appendChild(userAnswerText);
 
         const correctAnswerText = document.createElement('p');
@@ -1769,6 +1725,7 @@ function populateReviewAnswers(container) {
         container.appendChild(questionDiv);
     }
 }
+
 
 function tryAgain() {
     window.location.reload();
