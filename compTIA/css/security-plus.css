@@ -63,7 +63,6 @@ body {
 .quiz-container {
     /* Hide the quiz container initially */
     display: none;
-
     max-width: 700px;
     min-height: 500px;
     background-color: white;
@@ -239,8 +238,9 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    margin-top: 20px;
-    max-width: 700px; /* Set max width */
+    margin: 20px auto; /* Center the review container horizontally */
+    max-width: 700px; /* Set the maximum width to 700px */
+    text-align: left; /* Align the text to the left */
 }
 
 .review-question {

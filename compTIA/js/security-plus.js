@@ -1751,20 +1751,18 @@ function populateReviewAnswers(container) {
         questionDiv.appendChild(questionText);
 
         const userAnswerText = document.createElement('p');
-        const userAnswerIndex = question.userAnswer; // Get the user's answer index
-        userAnswerText.textContent = 'Your Answer: ' + question.options[userAnswerIndex];
-        userAnswerText.style.color = userAnswerIndex === question.answer ? 'green' : 'red'; // Green if correct, red if wrong
+        userAnswerText.textContent = `Your Answer: ${question.options[question.userAnswer]}`;
+        userAnswerText.style.color = question.userAnswer === question.answer ? 'green' : 'red'; // Set color based on correctness
         questionDiv.appendChild(userAnswerText);
 
         const correctAnswerText = document.createElement('p');
-        correctAnswerText.textContent = 'Correct Answer: ' + question.options[question.answer];
+        correctAnswerText.textContent = `Correct Answer: ${question.options[question.answer]}`;
+        correctAnswerText.style.color = 'green'; // Correct answer is always green
         questionDiv.appendChild(correctAnswerText);
 
         container.appendChild(questionDiv);
     }
 }
-
-
 
 function tryAgain() {
     window.location.reload();
