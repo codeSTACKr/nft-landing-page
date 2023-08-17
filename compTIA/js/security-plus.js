@@ -1475,6 +1475,9 @@ function showChapterSelection() {
     const quizContainer = document.querySelector(".quiz-container");
     chapterSelection.style.display = "block";
     quizContainer.style.display = "none";
+
+    // Call tryAgain() to reset the quiz state when returning to chapter selection
+    tryAgain();
 }
 
 // Update the questions and totalQuestionsSpan based on the selected chapter
@@ -1561,24 +1564,22 @@ function updateAnswersTracker(status) {
     }
 }
 
+// Check if selected answer is correct or wrong
 function check(element) {
     if (element.id == currentQuestions[currentIndex].answer) {
         element.className = "correct";
         updateAnswersTracker("correct"); // Call updateAnswersTracker here
         score++;
-
-        // Assign the user's answer to the question object
-        currentQuestions[currentIndex].userAnswer = element.id;
     } else {
         element.className = "wrong";
         updateAnswersTracker("wrong"); // Call updateAnswersTracker here
-
-        // Assign the user's answer to the question object
-        currentQuestions[currentIndex].userAnswer = element.id;
     }
+
+    // Update the user's answer for the current question
+    currentQuestions[currentIndex].userAnswer = element.id;
+
     disableClick();
 }
-
 
 // Make sure the user selected an item before clicking on the Next button
 function validate() {
@@ -1588,25 +1589,37 @@ function validate() {
         updateAnswersTracker("selected"); // Update tracker before incrementing index
         randomQuestion();
         enableClick();
-
-        // Check if all questions are answered
-        if (answeredQuestions.length === currentQuestions.length) {
-            // Delay showing the quiz-over box
-            setTimeout(() => {
-                quizOver();
-            }, 2000); // Delay in milliseconds (2 seconds)
-        }
     }
 }
 
 // Listener function for click event on Next button
 function next() {
+    if (!options[0].classList.contains("disabled")) {
+        alert("Please select an option before proceeding.");
+        return; // Stop execution if no option is selected
+    }
+
     if (currentIndex < currentQuestions.length) {
         validate();
         index++; // Increment the index
         questionNumberSpan.innerHTML = index + 1; // Update the question number
     } else {
         quizOver();
+    }
+}
+
+function reset() {
+    const chapterSelectors = document.querySelectorAll(".chapter-selector");
+    let selectedChapterIndex = -1;
+    chapterSelectors.forEach((selector, index) => {
+        if (selector.classList.contains("selected")) {
+            selectedChapterIndex = index;
+        }
+    });
+
+    if (selectedChapterIndex >= 0) {
+        // Reload the page with the selected chapter index as a query parameter
+        window.location.href = `?chapter=${selectedChapterIndex}`;
     }
 }
 
@@ -1654,6 +1667,7 @@ function quizOver() {
 
     // Attach the tryAgain() function to the "Try Again!" button
     const tryAgainButton = document.querySelector(".quiz-over .try-again-button");
+    tryAgainButton.style.marginLeft = "20px"; // Add some margin between the buttons
     tryAgainButton.addEventListener("click", function () {
         tryAgain();
         quizOverBox.style.display = "none"; // Hide the quiz-over container
@@ -1661,6 +1675,7 @@ function quizOver() {
 
     // Attach the reviewAnswers() function to the "Review Answers" button
     const reviewAnswersButton = document.querySelector(".quiz-over .review-answers-button");
+    reviewAnswersButton.style.marginRight = "20px"; // Add some margin between the buttons
     reviewAnswersButton.addEventListener("click", function () {
         reviewAnswers();
         quizOverBox.style.display = "none"; // Hide the quiz-over container
@@ -1676,6 +1691,7 @@ function quizOver() {
 
 
 function reviewAnswers() {
+    console.log("Review Answers button clicked");
     const quizOverContainer = document.querySelector(".quiz-over");
     const reviewContainer = document.querySelector('.review-container');
 
@@ -1693,7 +1709,7 @@ function reviewAnswers() {
 
 function populateReviewAnswers(container) {
     container.innerHTML = ''; // Clear previous content
-
+    console.log("Populating review answers");
     for (let i = 0; i < answeredQuestions.length; i++) {
         const questionIndex = answeredQuestions[i];
         const question = currentQuestions[questionIndex];
@@ -1707,15 +1723,9 @@ function populateReviewAnswers(container) {
         questionDiv.appendChild(questionText);
 
         const userAnswerText = document.createElement('p');
-        userAnswerText.textContent = `Your Answer: ${question.options[question.userAnswer]}`;
-
-        if (question.userAnswer === question.answer) {
-            userAnswerText.style.color = 'green';
-        } else {
-            userAnswerText.style.color = 'red';
-        }
-
+        userAnswerText.textContent = 'Your Answer: ' + question.options[question.userAnswer];
         questionDiv.appendChild(userAnswerText);
+
 
         const correctAnswerText = document.createElement('p');
         correctAnswerText.textContent = `Correct Answer: ${question.options[question.answer]}`;
@@ -1725,6 +1735,7 @@ function populateReviewAnswers(container) {
         container.appendChild(questionDiv);
     }
 }
+
 
 
 function tryAgain() {
@@ -1748,6 +1759,18 @@ function attachChapterSelectionListeners() {
 
 // Restart the quiz and load currentQuestions based on selected chapter
 window.onload = function () {
-    attachChapterSelectionListeners(); // Attach event listeners to chapter selectors
-    answersTracker(); // Set up answers tracker
+    // Retrieve the chapter index from the query parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedChapterIndex = parseInt(urlParams.get("chapter"), 10);
+
+    // Attach event listeners to chapter selectors
+    attachChapterSelectionListeners();
+
+    // Set up answers tracker
+    answersTracker();
+
+    // Load the selected chapter if a valid index is provided
+    if (!isNaN(selectedChapterIndex) && selectedChapterIndex >= 0) {
+        changeChapter(selectedChapterIndex);
+    }
 };

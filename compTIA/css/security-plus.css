@@ -52,10 +52,11 @@ body {
 /* Apply custom cursor when hovering over buttons */
     /* The cursor value is repeated twice to cover all browsers */
 .chapter-selector:hover,
-.quiz-over .box .review-answers-button,
-.quiz-over .box .try-again-button,
-.back-button,
-.quiz-container .next-button,
+.quiz-over .box .review-answers-button:hover,
+.quiz-over .box .try-again-button:hover,
+.back-button:hover,
+.quiz-container .next-button:hover,
+.quiz-container .reset-button:hover,
 .option:hover {
     cursor: url('../img/custom-cursor.png'), url('../img/custom-cursor.png'), auto;
 }
@@ -100,6 +101,19 @@ body {
     cursor: pointer;
     font-size: 16px;
     text-align: left;
+}
+
+.quiz-container .reset-button {
+    background-color: #009688;
+    color: white;
+    border: none;
+    padding: 15px 15px;
+    /* values for vertical and horizontal padding */
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    float: right;
+    text-align: right;
 }
 
 .question {
