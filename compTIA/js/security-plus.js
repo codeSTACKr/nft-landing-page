@@ -1590,14 +1590,7 @@ function load() {
 
     const selectedChapterObj = chapters[selectedChapter];
     const quizTitle = `Quiz ${selectedChapter}: ${selectedChapterObj.title}`;
-    document.querySelector(".quiz-title h2").innerHTML = quizTitle;
-
-    // Display the back button inside the quiz title
-    const backButton = document.createElement("button");
-    backButton.className = "back-button";
-    backButton.textContent = "Back to Chapter Quiz Selection";
-    backButton.addEventListener("click", showConfirmationPopup);
-    document.querySelector(".quiz-title h2").appendChild(backButton);
+    document.querySelector(".quiz-title h2:first-child").innerHTML = quizTitle;
 
     question.innerHTML = currentQuestion.q;
     opt1.innerHTML = currentQuestion.options[0];
@@ -1695,22 +1688,56 @@ function randomQuestion() {
     quizOver();
 }
 
-//Displays the quiz-over page if quiz is over
 function quizOver() {
+    const quizOverBox = document.querySelector(".quiz-over .box");
+
+    quizOverBox.addEventListener("click", function (event) {
+        // Prevent click events from propagating to parent elements
+        event.stopPropagation();
+    });
+
+    // Attach the tryAgain() function to the "Try Again!" button
+    const tryAgainButton = document.querySelector(".quiz-over .try-again-button");
+    tryAgainButton.addEventListener("click", function () {
+        tryAgain();
+        quizOverBox.style.display = "none"; // Hide the quiz-over container
+    });
+
+    // Attach the reviewAnswers() function to the "Review Answers" button
+    const reviewAnswersButton = document.querySelector(".quiz-over .review-answers-button");
+    reviewAnswersButton.addEventListener("click", function () {
+        reviewAnswers();
+        quizOverBox.style.display = "none"; // Hide the quiz-over container
+    });
+
     document.querySelector(".quiz-over").classList.add("show");
     correctAnswersSpan.innerHTML = score;
     totalQuestionsSpan2.innerHTML = currentQuestions.length;
     percentageSpan.innerHTML = Math.round((score / currentQuestions.length) * 100) + "%";
     index = 0; // Reset the index to 0
     questionNumberSpan.innerHTML = index + 1; // Update the question number display
-
-    const tryAgainButton = document.querySelector(".quiz-over button");
-    tryAgainButton.addEventListener("click", tryAgain); // Attach the tryAgain() function to the button
 }
 
+
 function reviewAnswers() {
+    const quizOverContainer = document.querySelector(".quiz-over");
     const reviewContainer = document.querySelector('.review-container');
-    reviewContainer.innerHTML = ''; // Clear previous content
+
+    // Hide the quiz-over container
+    quizOverContainer.style.display = 'none';
+
+    // Toggle the visibility of the review container
+    if (reviewContainer.style.display === 'none') {
+        reviewContainer.style.display = 'block';
+        populateReviewAnswers(reviewContainer); // Populate the content when showing
+    } else {
+        reviewContainer.style.display = 'none';
+    }
+}
+
+
+function populateReviewAnswers(container) {
+    container.innerHTML = ''; // Clear previous content
 
     for (let i = 0; i < answeredQuestions.length; i++) {
         const questionIndex = answeredQuestions[i];
@@ -1724,22 +1751,21 @@ function reviewAnswers() {
         questionDiv.appendChild(questionText);
 
         const userAnswerText = document.createElement('p');
-        userAnswerText.textContent = 'Your Answer: ' + question.options[questionIndex];
+        userAnswerText.textContent = 'Your Answer: ' + question.options[question.userAnswer];
         questionDiv.appendChild(userAnswerText);
 
         const correctAnswerText = document.createElement('p');
         correctAnswerText.textContent = 'Correct Answer: ' + question.options[question.answer];
         questionDiv.appendChild(correctAnswerText);
 
-        reviewContainer.appendChild(questionDiv);
+        container.appendChild(questionDiv);
     }
-
-    reviewContainer.style.display = 'block';
 }
 
 function tryAgain() {
     window.location.reload();
 }
+
 // Assuming there's an event listener for chapter selection
 function handleChapterSelection(event) {
     // Update the selectedChapter based on user selection

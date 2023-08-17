@@ -16,13 +16,13 @@
 <body>
 
     <audio id="hoverSound">
-        <source src="av/click-sound.mp3" type="audio/mpeg">
+        <source src="av/click-sound.mp3" type="audio/mp3">
         <source src="av/hover-sound.wav" type="audio/wav">
         Your browser does not support the audio element.
     </audio>
 
     <audio id="clickSound">
-        <source src="av/click-sound.mp3" type="audio/mpeg">
+        <source src="av/click-sound.mp3" type="audio/mp3">
         <source src="av/click-sound.wav" type="audio/wav">
         Your browser does not support the audio element.
     </audio>
@@ -57,6 +57,10 @@
             <h2>
                 <!-- The quiz title and back button content will be dynamically populated by JavaScript -->
             </h2>
+            <h2>
+                <button type="button" class="back-button" onclick="showConfirmationPopup()">Back to Chapter Quiz
+                    Selection</button>
+            </h2>
         </div>
         <div class="question-number">
             <h3>Question <span class="question-num-value"></span> of
@@ -72,7 +76,9 @@
             <div id="2" class="option3" onclick="check(this)"></div>
             <div id="3" class="option4" onclick="check(this)"></div>
         </div>
-        <button type="button" class="next-button" onclick="next()">Next</button>
+        <h2>
+            <button type="button" class="next-button" onclick="next()">Next</button>
+        </h2>
         <div class="answers-tracker"></div>
     </div>
     <div class="quiz-over">
@@ -83,8 +89,8 @@
                 That is <span class="percentage"></span>
                 Try a different quiz?
             </h1>
-            <button type="button" class="orange-button" onclick="reviewAnswers()">Review Answers</button>
-            <button type="button" class="orange-button" onclick="tryAgain()">Try Again!</button>
+            <button type="button" class="review-answers-button">Review Answers</button>
+            <button type="button" class="try-again-button">Try Again!</button>
         </div>
     </div>
     <div class="review-container">

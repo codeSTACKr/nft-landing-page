@@ -10,7 +10,8 @@ body {
     box-sizing: border-box;
 }
 
-.orange-button{
+.quiz-over .box .review-answers-button,
+.quiz-over .box .try-again-button {
     padding: 15px 50px;
     border: none;
     background-color: #f7b53c;
@@ -48,15 +49,15 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.chapter-selector {
-    cursor: url('../img/custom-cursor.png'), url('../img/custom-cursor.png'), auto;
-    /* Replace 'default-cursor.png' with your custom cursor image */
+/* Apply custom cursor when hovering over buttons */
     /* The cursor value is repeated twice to cover all browsers */
-}
-
-.chapter-selector:hover {
-    cursor: url('../img/custom-cursor.png'), auto;
-    /* Replace 'custom-cursor.png' with your cursor image */
+.chapter-selector:hover,
+.quiz-over .box .review-answers-button,
+.quiz-over .box .try-again-button,
+.back-button,
+.quiz-container .next-button,
+.option:hover {
+    cursor: url('../img/custom-cursor.png'), url('../img/custom-cursor.png'), auto;
 }
 
 .quiz-container {
@@ -70,18 +71,13 @@ body {
     border-radius: 8px;
     padding: 30px;
     /* Set default cursor style for the quiz container */
-    cursor: url('../img/custom-cursor.png'), auto;
-}
-
-.quiz-container:hover {
-    /* Set custom cursor style when hovering over the quiz container */
-    cursor: url('../img/custom-cursor.png'), auto;
 }
 
 .question-number h3 {
     color: #009788;
     border-bottom: 1px solid #ccc;
     margin: 0;
+    padding-top: 10px;
     padding-bottom: 10px;
 }
 
@@ -90,19 +86,21 @@ body {
     border-bottom: 1px solid #ccc;
     margin: 0;
     padding-bottom: 10px;
-    padding-top: 20px; /* Add padding to the top */
-    
+    padding-top: 10px;
+    /* Add padding to the top */
 }
 
-.back-button, 
-.quiz-container .next-button{
+.back-button,
+.quiz-container .next-button {
     background-color: #009688;
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 15px 15px;
+    /* values for vertical and horizontal padding */
     border-radius: 4px;
     cursor: pointer;
-    overflow-wrap: break-word; /* Add a break line */
+    font-size: 16px;
+    text-align: left;
 }
 
 .question {
@@ -235,7 +233,8 @@ body {
 }
 
 .review-container {
-    display: none; /* Initially hidden */
+    display: none;
+    /* Initially hidden */
     background-color: white;
     padding: 20px;
     border-radius: 8px;
