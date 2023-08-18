@@ -127,10 +127,6 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Apply custom cursor when hovering over buttons */
-/* The cursor value is repeated twice to cover all browsers */
-
-
 .quiz-container {
     /* Hide the quiz container initially */
     display: none;
@@ -144,57 +140,93 @@ body {
     /* Set default cursor style for the quiz container */
 }
 
-.question-number h3 {
+.quiz-container .navi-button.hide,
+.quiz-container .question-number.hide,
+.quiz-container .question.hide,
+.quiz-container .options.hide {
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-out;
+    /* Adjust duration and easing as needed */
+    display: none;
+}
+
+/* Apply consistent styling to action buttons */
+.quiz-container .action-buttons {
+    display: flex;
+    /* Use Flexbox */
+    justify-content: space-between;
+    /* Distribute items evenly along the container */
+    align-items: center;
+    /* Vertically center items */
+}
+
+.quiz-container .action-buttons button,
+.quiz-container .navi-button .next-button {
+    background-color: #009688;
+    color: white;
+    border: none;
+    padding: 15px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Apply consistent styling to timer elements */
+.question-timer,
+.quiz-timer {
+    font-size: 16px;
     color: #009788;
-    border-bottom: 1px solid #ccc;
+    padding: 5px;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+/* Flexbox layout for timer elements and Next button */
+.navi-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Distribute items evenly along the container */
+}
+
+/* Align "Next" button to the left */
+.navi-button .next-button {
+    float: left;
+}
+
+/* Align timer elements to the center and right respectively */
+.navi-button .question-timer {
+    text-align: center;
+}
+
+.navi-button .quiz-timer {
+    text-align: right;
+}
+
+.question-number h3 {
+    font-size: 18px;
+    color: #009788;
     margin: 0;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ccc;
 }
 
 .quiz-title h2 {
     color: #0000ff;
     border-bottom: 1px solid #ccc;
     margin: 0;
-    padding-bottom: 10px;
-    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
     /* Add padding to the top */
-}
-
-.quiz-container .navi-button.hide,
-.quiz-container .question-number.hide,
-.quiz-container .question.hide,
-.quiz-container .options.hide {
-    transform: translateY(-100%);
-    transition: transform 0.3s ease-out; /* Adjust duration and easing as needed */
-    display: none;
-}
-
-.quiz-container .quiz-title .action-buttons .back-button,
-.quiz-container .quiz-title .action-buttons .reset-quiz-button,
-.quiz-container .navi-button .next-button {
-    background-color: #009688;
-    color: white;
-    border: none;
-    padding: 15px 15px;
-    /* values for vertical and horizontal padding */
-    border-radius: 4px;
-    margin-top: 10px;
-    margin-bottom: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    text-align: left;
-}
-
-.quiz-container .quiz-title .action-buttons .reset-quiz-button {
-    float: right;
 }
 
 .question {
     font-size: 24px;
     color: black;
     padding: 15px 0;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 
 .options div {
@@ -262,7 +294,8 @@ body {
 }
 
 .answers-tracker {
-    margin: 10px 0; /* Add margin to the top and bottom */
+    margin: 10px 0;
+    /* Add margin to the top and bottom */
 }
 
 .answers-tracker div {

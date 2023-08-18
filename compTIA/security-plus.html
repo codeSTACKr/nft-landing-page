@@ -80,14 +80,15 @@
     </div>
 
     <div class="quiz-container">
+        <div class="action-buttons">
+            <button type="button" class="back-button">Quiz Selector</button>
+            <button type="button" class="reset-quiz-button">Reset Quiz</button>
+        </div>
+
         <div class="quiz-title">
             <h2>
                 <!-- The quiz title and back button content will be dynamically populated by JavaScript -->
             </h2>
-            <div class="action-buttons">
-                <button type="button" class="back-button">Back to Chapter Quiz Selection</button>
-                <button type="button" class="reset-quiz-button">Reset Quiz</button>
-            </div>
         </div>
 
         <div class="question-number">
@@ -109,9 +110,17 @@
 
         <div class="navi-button">
             <button type="button" class="next-button">Next</button>
+            <div class="question-timer">
+                <span class="question-timer">00:00:00</span>
+            </div>
+            <div class="quiz-timer">
+                <span class="quiz-timer">00:00:00</span>
+            </div>
         </div>
 
-        <div class="answers-tracker"></div>
+        <div class="answers-tracker">
+            <!-- answers tracker content will be dynamically populated by JavaScript -->
+        </div>
     </div>
 
     <div class="quiz-over">
@@ -120,7 +129,9 @@
                 You got <span class="correct-answers"></span> out of
                 <span class="total-questions2"></span> answers correct.
                 That is <span class="percentage"></span>
-                Try a different quiz?
+                You took <span class="total-time"></span> to complete this quiz.
+                That's an average of <span class="question-time"></span> per question.
+                Try again?
             </h1>
             <button type="button" class="review-answers-button">Review Answers</button>
             <button type="button" class="try-again-button">Try Again!</button>

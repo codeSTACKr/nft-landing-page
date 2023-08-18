@@ -7,6 +7,8 @@ const question = document.querySelector(".question");
 const totalQuestionsSpan = document.querySelector(".total-questions");
 const correctAnswersSpan = document.querySelector(".correct-answers");
 const totalQuestionsSpan2 = document.querySelector(".total-questions2");
+const totalTime = document.querySelector(".total-time");
+const questionTime = document.querySelector(".question-time");
 const percentageSpan = document.querySelector(".percentage");
 const chapterSelect = document.getElementById("chapter");
 
@@ -19,7 +21,12 @@ let currentQuestions = []; // Array of question objects
 let isReset = false; // Initialize the reset flag
 let backToChapterPopup = null; // Initialize it to null
 let resetQuizPopup = null; // Initialize it to null
-
+let quizTimerInterval; // To store the quiz timer interval
+let totalQuizElapsedTime = 0; // To store the total elapsed time for the quiz
+let quizStartTime; // To store the start time of the quiz
+let quizEndTime;   // To store the end time of the quiz
+let questionStartTime; // To store the start time of each question
+let questionEndTime;   // To store the end time of each question
 
 const chapters = [
     {}, // Placeholder for chapter 0
@@ -1551,6 +1558,15 @@ function resetQuizOver() {
 
 // Load questions and answers
 function load() {
+    // Capture the start time of the quiz
+    quizStartTime = new Date();
+
+    // Capture the start time of the current question
+    questionStartTime = new Date();
+
+    // Start the timer interval to update the live timer display
+    quizTimerInterval = setInterval(updateLiveTimer, 1000);
+
     questionNumberSpan.innerHTML = index + 1;
     totalQuestionsSpan.innerHTML = currentQuestions.length;
 
@@ -1628,6 +1644,10 @@ function answersTracker() {
 
 // Check if selected answer is correct or wrong
 function check(element) {
+    // ...
+    // Capture the end time of the current question
+    questionEndTime = new Date();
+    // ...
     if (element.id == currentQuestions[currentIndex].answer) {
         element.className = "correct";
         updateAnswersTracker("correct"); // Call updateAnswersTracker here
@@ -1674,6 +1694,11 @@ function next() {
 
 // Function to reset the current quiz page
 function reset() {
+    // Clear the timer interval and reset the live timer display
+    clearInterval(quizTimerInterval);
+    const liveTimerElement = document.querySelector(".question-timer");
+    liveTimerElement.textContent = `Question: ${formattedQuestionTime}`;
+
     const urlParams = new URLSearchParams(window.location.search);
     const selectedChapterIndex = parseInt(urlParams.get("chapter"));
     // Reload the page with the selected chapter index as query parameter
@@ -1681,8 +1706,55 @@ function reset() {
     window.location.href = `security-plus.html?chapter=${selectedChapterIndex}`;
 }
 
+// Function to update the quiz timer display
+function updateQuizTimer() {
+    totalQuizElapsedTime += 1000; // Increment by 1 second (1000 milliseconds)
+    const formattedQuizTime = formatTime(totalQuizElapsedTime);
+
+    const quizTimerElement = document.querySelector(".quiz-timer");
+    quizTimerElement.textContent = `Quiz: ${formattedQuizTime}`;
+}
+
+// Function to update the live timer display
+function updateLiveTimer() {
+    const currentTime = new Date();
+    const elapsedMilliseconds = currentTime - questionStartTime; // Calculate time for current question
+    const formattedQuestionTime = formatTime(elapsedMilliseconds); // Format time for current question
+
+    const liveTimerElement = document.querySelector(".question-timer");
+    liveTimerElement.textContent = `Question: ${formattedQuestionTime}`;
+
+    updateQuizTimer(); // Update the quiz timer as well
+}
+
+
+function formatTime(milliseconds) {
+    const totalSeconds = Math.floor(milliseconds / 1000);
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    const formattedTime = `${padZero(hours)}:${padZero(minutes)}:${padZero(seconds)}`;
+    return formattedTime;
+}
+
+function padZero(number) {
+    return number < 10 ? `0${number}` : number;
+}
+
+
 // Function to display  quizOver div
 function quizOver() {
+    // Capture the end time of the quiz
+    quizEndTime = new Date();
+
+    // Clear the quiz timer interval
+    clearInterval(quizTimerInterval);
+
+    // Calculate the times
+    const totalQuizTime = quizEndTime - quizStartTime;
+    const averageQuestionTime = totalQuizTime / currentQuestions.length;
+
     const quizOverContent = document.querySelector(".quiz-over .quiz-over-content");
 
     quizOverContent.addEventListener("click", function (event) {
@@ -1712,6 +1784,9 @@ function quizOver() {
     percentageSpan.innerHTML = Math.round((score / currentQuestions.length) * 100) + "%";
     index = 0; // Reset the index to 0
     questionNumberSpan.innerHTML = index + 1; // Update the question number display
+    // You can define a function to format the time if needed
+    totalTime.innerHTML = formatTime(totalQuizTime);
+    questionTime.innerHTML = formatTime(averageQuestionTime);
 }
 
 // Function to display  reviewAnswers div
@@ -1782,23 +1857,6 @@ function tryAgain() {
     // Reload the page with the selected chapter index as query parameter
     isReset = true; // Set the reset flag
     window.location.href = `security-plus.html?chapter=${selectedChapterIndex}`;
-}
-
-// Function to showAlert message when the next button is clicked without selecting any answer
-function showAlert(message) {
-    const customAlert = document.getElementById("customAlert");
-    const customAlertMessage = document.getElementById("customAlertMessage");
-    customAlertMessage.textContent = message;
-    customAlert.style.display = "flex";
-
-    const customAlertButton = document.getElementById("customAlertButton");
-    customAlertButton.addEventListener("click", hideAlert);
-}
-
-// Function to hideAlert message after clicking "OK" on the alert button
-function hideAlert() {
-    const customAlert = document.getElementById("customAlert");
-    customAlert.style.display = "none";
 }
 
 // Function to handle actions when the confirm button is clicked
