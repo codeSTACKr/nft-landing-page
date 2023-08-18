@@ -17,7 +17,7 @@ let score = 0;
 let selectedChapter = 0; // Initialize selected chapter to 0
 let currentQuestions = []; // Array of question objects
 let isReset = false; // Initialize the reset flag
-let confirmationPopup = null; // Initialize it to null
+let backToChapterPopup = null; // Initialize it to null
 let resetQuizPopup = null; // Initialize it to null
 
 
@@ -1528,10 +1528,6 @@ function changeChapter(selectedChapterIndex) {
         chapterSelection.style.display = "none";
         quizContainer.style.display = "block";
 
-        // Show the back button inside the quiz container
-        const backButton = document.querySelector(".back-button");
-        backButton.style.display = "block";
-
         const quizTitle = `Quiz ${selectedChapter}: ${currentChapter.title}`;
         document.querySelector(".quiz-title h2").innerHTML = quizTitle;
     } else {
@@ -1647,17 +1643,6 @@ function check(element) {
     disableClick();
 }
 
-// Make sure the user selected an item before clicking on the Next button
-function validate() {
-    if (!options[0].classList.contains("disabled")) {
-        alert("Please select an option");
-    } else {
-        updateAnswersTracker("selected"); // Update tracker before incrementing index
-        randomQuestion();
-        enableClick();
-    }
-}
-
 // Function to update the answers tracker elements
 function updateAnswersTracker(status) {
     const currentAnswerTracker = answersTrackerContainer.children[index];
@@ -1672,20 +1657,20 @@ function updateAnswersTracker(status) {
 
 // Listener function for click event on Next button
 function next() {
-    if (!options[0].classList.contains("disabled")) {
-        showAlert("Please select an option before proceeding.");
-        return; // Stop execution if no option is selected
-    }
-
     if (currentIndex < currentQuestions.length) {
-        validate();
-        index++; // Increment the index
-        questionNumberSpan.innerHTML = index + 1; // Update the question number
+        if (!options[0].classList.contains("disabled")) {
+            showAlert("Please select an option before proceeding.");
+        } else {
+            updateAnswersTracker("selected"); // Update tracker before incrementing index
+            randomQuestion();
+            enableClick();
+            index++; // Increment the index
+            questionNumberSpan.innerHTML = index + 1; // Update the question number
+        }
     } else {
         quizOver();
     }
 }
-
 
 // Function to reset the current quiz page
 function reset() {
@@ -1698,9 +1683,9 @@ function reset() {
 
 // Function to display  quizOver div
 function quizOver() {
-    const quizOverBox = document.querySelector(".quiz-over .box");
+    const quizOverContent = document.querySelector(".quiz-over .quiz-over-content");
 
-    quizOverBox.addEventListener("click", function (event) {
+    quizOverContent.addEventListener("click", function (event) {
         // Prevent click events from propagating to parent elements
         event.stopPropagation();
     });
@@ -1710,7 +1695,7 @@ function quizOver() {
     tryAgainButton.style.marginLeft = "20px"; // Add some margin between the buttons
     tryAgainButton.addEventListener("click", function () {
         tryAgain();
-        quizOverBox.style.display = "none"; // Hide the quiz-over container
+        quizOverContent.style.display = "none"; // Hide the quiz-over container
     });
 
     // Attach the reviewAnswers() function to the "Review Answers" button
@@ -1718,7 +1703,7 @@ function quizOver() {
     reviewAnswersButton.style.marginRight = "20px"; // Add some margin between the buttons
     reviewAnswersButton.addEventListener("click", function () {
         reviewAnswers();
-        quizOverBox.style.display = "none"; // Hide the quiz-over container
+        quizOverContent.style.display = "none"; // Hide the quiz-over container
     });
 
     document.querySelector(".quiz-over").classList.add("show");
@@ -1733,11 +1718,25 @@ function quizOver() {
 function reviewAnswers() {
     const quizOverContainer = document.querySelector(".quiz-over");
     const reviewContainer = document.querySelector('.review-container');
+    const naviButtonContainer = document.querySelector(".navi-button");
+    const questionNumberContainer = document.querySelector(".question-number");
+    const questionContainer = document.querySelector(".question");
+    const optionsContainer = document.querySelector(".options");
 
     // Toggle the visibility of the review container
     if (reviewContainer.style.display === 'none' || reviewContainer.style.display === '') {
+
+        naviButtonContainer.classList.add("hide");
+        questionNumberContainer.classList.add("hide");
+        questionContainer.classList.add("hide");
+        optionsContainer.classList.add("hide");
+
+        // Shrink the white space after hiding the above containers
+        document.querySelector(".quiz-container").style.minHeight = "250px"; // Adjust the value as needed
+        // Show review container
         reviewContainer.style.display = 'block';
-        populateReviewAnswers(reviewContainer); // Populate the content when showing
+        // Populate the content when showing
+        populateReviewAnswers(reviewContainer);
         reviewContainer.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Scroll into view
     } else {
         reviewContainer.style.display = 'none';
@@ -1804,15 +1803,15 @@ function hideAlert() {
 
 // Function to handle actions when the confirm button is clicked
 function confirmButtonClicked() {
-    // Hide the confirmation popup
-    confirmationPopup.style.display = "none";
+    // Hide the backToChapter popup
+    backToChapterPopup.style.display = "none";
     showChapterSelection();
 }
 
 // Function to handle actions when the cancel button is clicked
 function cancelButtonClicked() {
-    // Hide the confirmation popup
-    confirmationPopup.style.display = "none";
+    // Hide the backToChapter popup
+    backToChapterPopup.style.display = "none";
 }
 
 // Function to handle actions when the reset quiz confirm button is clicked
@@ -1848,8 +1847,9 @@ function hideAlert() {
 
 // items that get initialized once the page loads
 window.onload = function () {
-    // Get references to the confirmation and reset quiz popup elements
-    confirmationPopup = document.querySelector("#confirmationPopup");
+
+    // Get references to the backToChapter and reset quiz popup elements
+    backToChapterPopup = document.querySelector("#backToChapterPopup");
     resetQuizPopup = document.querySelector("#resetQuizPopup");
 
     // Attach event listener to the document to handle clicks
@@ -1866,7 +1866,7 @@ window.onload = function () {
 
         // Handle back button click
         if (target.classList.contains("back-button")) {
-            confirmationPopup.style.display = "flex";
+            backToChapterPopup.style.display = "flex";
         }
 
         // Handle reset quiz button click
@@ -1880,9 +1880,9 @@ window.onload = function () {
     const nextButton = document.querySelector(".next-button");
     const resetButton = document.querySelector(".reset-quiz-button");
 
-    // Event listeners for confirm and cancel buttons within the confirmation popup
-    const confirmButton = document.getElementById("confirmButton");
-    const cancelButton = document.getElementById("cancelButton");
+    // Event listeners for confirm and cancel buttons within the backToChapter popup
+    const backToChapterConfirmButton = document.getElementById("backToChapterConfirmButton");
+    const backToChapterCancelButton = document.getElementById("backToChapterCancelButton");
 
     options.forEach(option => {
         option.addEventListener("click", function () {
@@ -1891,8 +1891,8 @@ window.onload = function () {
     });
 
     // Event listeners for confirm, cancel, next, and reset buttons
-    confirmButton.addEventListener("click", confirmButtonClicked);
-    cancelButton.addEventListener("click", cancelButtonClicked);
+    backToChapterConfirmButton.addEventListener("click", confirmButtonClicked);
+    backToChapterCancelButton.addEventListener("click", cancelButtonClicked);
     nextButton.addEventListener("click", next);
 
 

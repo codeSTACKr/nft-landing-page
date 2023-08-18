@@ -23,19 +23,19 @@
         Your browser does not support the audio element.
     </audio>
 
-    <div id="confirmationPopup">
-        <div class="confirmation-popup-content">
+    <div id="backToChapterPopup">
+        <div class="backToChapter-popup-content">
             <p>Are you sure you want to go back to the chapter quiz selector? </br> Your progress will not be saved.</p>
-            <div class="confirmation-popup-buttons">
-                <button type="button" id="confirmButton">Confirm</button>
-                <button type="button" id="cancelButton">Cancel</button>
+            <div class="backToChapter-popup-buttons">
+                <button type="button" id="backToChapterConfirmButton">Confirm</button>
+                <button type="button" id="backToChapterCancelButton">Cancel</button>
             </div>
         </div>
     </div>
 
     <div id="customAlert">
         <p id="customAlertMessage"></p>
-        <div class="confirmation-popup-buttons">
+        <div class="customAlertButton">
             <button type="button" id="customAlertButton">OK</button>
         </div>
     </div>
@@ -84,9 +84,10 @@
             <h2>
                 <!-- The quiz title and back button content will be dynamically populated by JavaScript -->
             </h2>
-            <h2>
+            <div class="action-buttons">
                 <button type="button" class="back-button">Back to Chapter Quiz Selection</button>
-            </h2>
+                <button type="button" class="reset-quiz-button">Reset Quiz</button>
+            </div>
         </div>
 
         <div class="question-number">
@@ -106,16 +107,15 @@
             <div id="3" class="option4"></div>
         </div>
 
-        <h2>
+        <div class="navi-button">
             <button type="button" class="next-button">Next</button>
-            <button type="button" class="reset-quiz-button">Reset Quiz</button>
-        </h2>
+        </div>
 
         <div class="answers-tracker"></div>
     </div>
 
     <div class="quiz-over">
-        <div class="box">
+        <div class="quiz-over-content">
             <h1>Good Job! <br />
                 You got <span class="correct-answers"></span> out of
                 <span class="total-questions2"></span> answers correct.

@@ -10,7 +10,7 @@ body {
     box-sizing: border-box;
 }
 
-#confirmationPopup,
+#backToChapterPopup,
 #resetQuizPopup {
     display: none;
     /* Set to none by default */
@@ -25,7 +25,7 @@ body {
     z-index: 9999;
 }
 
-.confirmation-popup-content,
+.backToChapter-popup-content,
 .reset-quiz-popup-content {
     border-radius: 10px;
     box-shadow: #009688;
@@ -40,14 +40,14 @@ body {
     text-align: center;
 }
 
-.confirmation-popup-buttons,
+.backToChapter-popup-buttons,
 .reset-quiz-popup-buttons {
     display: flex;
     justify-content: center;
     margin-top: 15px;
 }
 
-.confirmation-popup-buttons button,
+.backToChapter-popup-buttons button,
 .reset-quiz-popup-buttons button {
     border-radius: 5px;
     padding: 10px 20px;
@@ -56,6 +56,7 @@ body {
     font-size: 16px;
     color: white;
     border: 1px solid #ccc;
+    cursor: pointer;
 }
 
 #customAlert {
@@ -81,7 +82,7 @@ body {
 #customAlertMessage {
     color: white;
     font-size: 18px;
-    margin-bottom: 15px;
+    margin: 15px;
 }
 
 #customAlertButton {
@@ -93,7 +94,6 @@ body {
     border: none;
     cursor: pointer;
 }
-
 
 .chapterLinks {
     display: none;
@@ -129,22 +129,12 @@ body {
 
 /* Apply custom cursor when hovering over buttons */
 /* The cursor value is repeated twice to cover all browsers */
-.chapter-selector:hover,
-.quiz-over .box .review-answers-button:hover,
-.quiz-over .box .try-again-button:hover,
-.back-button:hover,
-.quiz-container .next-button:hover,
-.quiz-container .reset-button:hover,
-.options div:hover,
-.quiz-container .reset-quiz-button:hover,
-.confirmation-popup-buttons button:hover,
-.reset-quiz-popup-buttons button:hover {
-    cursor: url('../img/custom-cursor.png'), url('../img/custom-cursor.png'), auto;
-}
+
 
 .quiz-container {
     /* Hide the quiz container initially */
     display: none;
+    position: relative;
     max-width: 700px;
     min-height: 500px;
     background-color: white;
@@ -171,29 +161,33 @@ body {
     /* Add padding to the top */
 }
 
-.back-button,
-.quiz-container .next-button {
+.quiz-container .navi-button.hide,
+.quiz-container .question-number.hide,
+.quiz-container .question.hide,
+.quiz-container .options.hide {
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-out; /* Adjust duration and easing as needed */
+    display: none;
+}
+
+.quiz-container .quiz-title .action-buttons .back-button,
+.quiz-container .quiz-title .action-buttons .reset-quiz-button,
+.quiz-container .navi-button .next-button {
     background-color: #009688;
     color: white;
     border: none;
     padding: 15px 15px;
     /* values for vertical and horizontal padding */
     border-radius: 4px;
+    margin-top: 10px;
+    margin-bottom: 5px;
     cursor: pointer;
     font-size: 16px;
     text-align: left;
 }
 
-.quiz-container .reset-quiz-button {
-    background-color: #009688;
-    color: white;
-    border: none;
-    padding: 15px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
+.quiz-container .quiz-title .action-buttons .reset-quiz-button {
     float: right;
-    text-align: right;
 }
 
 .question {
@@ -267,6 +261,10 @@ body {
     animation-fill-mode: forwards;
 }
 
+.answers-tracker {
+    margin: 10px 0; /* Add margin to the top and bottom */
+}
+
 .answers-tracker div {
     height: 40px;
     width: 40px;
@@ -309,7 +307,7 @@ body {
     display: flex;
 }
 
-.quiz-over .box {
+.quiz-over .quiz-over-content {
     background-color: #009688;
     padding: 30px;
     border-radius: 10px;
@@ -321,13 +319,13 @@ body {
     box-shadow: #009688;
 }
 
-.quiz-over .box h1 {
+.quiz-over .quiz-over-content h1 {
     font-size: 28px;
     margin: 0 0 20px
 }
 
-.quiz-over .box .review-answers-button,
-.quiz-over .box .try-again-button {
+.quiz-over .quiz-over-content .review-answers-button,
+.quiz-over .quiz-over-content .try-again-button {
     padding: 15px 50px;
     border: 1px solid #ccc;
     background-color: #f7b53c;
@@ -335,6 +333,7 @@ body {
     font-size: 18px;
     margin: 15px 0 20px;
     color: white;
+    cursor: pointer;
 }
 
 .review-container {
