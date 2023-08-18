@@ -10,49 +10,90 @@ body {
     box-sizing: border-box;
 }
 
-/* Add your existing CSS styles here */
-
-/* Styling for the pop-up notification */
-.popup {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#confirmationPopup,
+#resetQuizPopup {
+    display: none;
+    /* Set to none by default */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
 }
 
-.popup-content {
-    background-color: white;
-    padding: 20px;
+.confirmation-popup-content,
+.reset-quiz-popup-content {
     border-radius: 10px;
+    box-shadow: #009688;
+    background-color: #009688;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: white;
+    font-size: 18px;
+    max-width: 400px;
+    width: 80%;
     text-align: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.popup-button {
-    background-color: #009688;
+.confirmation-popup-buttons,
+.reset-quiz-popup-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.confirmation-popup-buttons button,
+.reset-quiz-popup-buttons button {
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #f7b53c;
+    font-size: 16px;
+    color: white;
+    border: 1px solid #ccc;
+}
+
+#customAlert {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    /* Move the box down by 50% of the viewport height */
+    left: 50%;
+    /* Move the box horizontally by 50% of the viewport width */
+    transform: translate(-50%, -50%);
+    /* Center the box both vertically and horizontally */
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+}
+
+#customAlertMessage {
+    color: white;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+#customAlertButton {
+    border-radius: 5px;
+    padding: 10px 20px;
+    background-color: #f7b53c;
+    font-size: 16px;
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
     cursor: pointer;
 }
 
-.quiz-over .box .review-answers-button,
-.quiz-over .box .try-again-button {
-    padding: 15px 50px;
-    border: none;
-    background-color: #f7b53c;
-    border-radius: 5px;
-    font-size: 16px;
-    margin: 15px 0 20px;
-    color: white;
-}
 
 .chapterLinks {
     display: none;
@@ -95,8 +136,9 @@ body {
 .quiz-container .next-button:hover,
 .quiz-container .reset-button:hover,
 .options div:hover,
-.popup-button:hover,
-.quiz-container .reset-quiz-button:hover {
+.quiz-container .reset-quiz-button:hover,
+.confirmation-popup-buttons button:hover,
+.reset-quiz-popup-buttons button:hover {
     cursor: url('../img/custom-cursor.png'), url('../img/custom-cursor.png'), auto;
 }
 
@@ -275,12 +317,24 @@ body {
     flex-basis: 700px;
     max-width: 700px;
     color: white;
+    border: 1px solid #ccc;
     box-shadow: #009688;
 }
 
 .quiz-over .box h1 {
-    font-size: 36px;
+    font-size: 28px;
     margin: 0 0 20px
+}
+
+.quiz-over .box .review-answers-button,
+.quiz-over .box .try-again-button {
+    padding: 15px 50px;
+    border: 1px solid #ccc;
+    background-color: #f7b53c;
+    border-radius: 5px;
+    font-size: 18px;
+    margin: 15px 0 20px;
+    color: white;
 }
 
 .review-container {

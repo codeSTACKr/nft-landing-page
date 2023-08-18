@@ -17,14 +17,9 @@ let score = 0;
 let selectedChapter = 0; // Initialize selected chapter to 0
 let currentQuestions = []; // Array of question objects
 let isReset = false; // Initialize the reset flag
-let welcomePopupShown = false;
-let isFirstLoad = true;
+let confirmationPopup = null; // Initialize it to null
+let resetQuizPopup = null; // Initialize it to null
 
-
-const opt1 = document.querySelector(".option1");
-const opt2 = document.querySelector(".option2");
-const opt3 = document.querySelector(".option3");
-const opt4 = document.querySelector(".option4");
 
 const chapters = [
     {}, // Placeholder for chapter 0
@@ -1495,40 +1490,14 @@ const chapters = [
     }
 ];
 
-// Function to play hover sound when user hooves over chapter selection
-function playHoverSound() {
-    const hoverSound = document.getElementById("hoverSound");
-    hoverSound.play();
-}
-
 // Function to play click sound when user clicks over chapter selection
 function playClickSound() {
     const clickSound = document.getElementById("clickSound");
     clickSound.play();
 }
 
-// Function to reset the quiz-over page
-function resetQuizOver() {
-    const quizOverPage = document.querySelector(".quiz-over");
-    quizOverPage.classList.remove("show");
-}
-
-// Function to display a confirmation popup when the back button is clicked
-function showConfirmationPopup() {
-    const confirmation = confirm("Are you sure you want to leave the quiz? Your progress will not be saved.");
-    if (confirmation) {
-        // Hide the welcome popup
-        document.getElementById("welcomePopup").style.display = "none";
-
-        // Redirect to the chapter selection page or perform other actions
-        // For now, let's assume you want to go back to the chapter selection
-        showChapterSelection();
-    }
-}
-
 // Function to show the chapter selection page
 function showChapterSelection() {
-    document.getElementById("welcomePopup").style.display = "none"; // Hide the pop-up
 
     window.location.replace("security-plus.html");
 
@@ -1537,17 +1506,11 @@ function showChapterSelection() {
     chapterSelection.style.display = "block";
     quizContainer.style.display = "none";
 
-    // Call tryAgain() to reset the quiz state when returning to chapter selection
-    //tryAgain();
 }
-
 
 // Update the questions and totalQuestionsSpan based on the selected chapter
 function changeChapter(selectedChapterIndex) {
     if (selectedChapterIndex >= 0 && selectedChapterIndex < chapters.length) {
-        // Hide the welcome popup
-        document.getElementById("welcomePopup").style.display = "none";
-
         selectedChapter = selectedChapterIndex;
         let currentChapter = chapters[selectedChapter];
 
@@ -1576,6 +1539,74 @@ function changeChapter(selectedChapterIndex) {
     }
 }
 
+// Assuming there's an event listener for chapter selection
+function handleChapterSelection(event) {
+    // Update the selectedChapter based on user selection
+    const selectedChapterIndex = parseInt(event.target.dataset.chapter, 10);
+    // Reload the page with the selected chapter index as query parameter
+    window.location.href = `security-plus.html?chapter=${selectedChapterIndex}`;
+}
+
+// Function to reset the quiz-over page
+function resetQuizOver() {
+    const quizOverPage = document.querySelector(".quiz-over");
+    quizOverPage.classList.remove("show");
+}
+
+// Load questions and answers
+function load() {
+    questionNumberSpan.innerHTML = index + 1;
+    totalQuestionsSpan.innerHTML = currentQuestions.length;
+
+    const currentQuestion = currentQuestions[currentIndex];
+
+    question.innerHTML = currentQuestion.q;
+
+    // Clear previous options
+    for (let i = 0; i < options.length; i++) {
+        options[i].style.display = "none";
+    }
+
+    // Display only available options
+    for (let i = 0; i < currentQuestion.options.length; i++) {
+        options[i].innerHTML = currentQuestion.options[i];
+        options[i].style.display = "block";
+    }
+}
+
+// Function to select a random question
+function randomQuestion() {
+    while (answeredQuestions.length < currentQuestions.length) {
+        let randomNumber = Math.floor(Math.random() * currentQuestions.length);
+        if (!answeredQuestions.includes(randomNumber)) {
+            currentIndex = randomNumber;
+            load();
+            answeredQuestions.push(randomNumber);
+            return;
+        }
+    }
+    // If all questions are answered, trigger quizOver()
+    quizOver();
+}
+
+//Function to reanable click in the options
+function enableClick() {
+    for (let i = 0; i < options.length; i++) {
+        options[i].classList.remove("disabled", "correct", "wrong")
+
+    }
+}
+
+//Function to disable click for the options
+function disableClick() {
+    for (let i = 0; i < options.length; i++) {
+        options[i].classList.add("disabled")
+
+        if (options[i].id == currentQuestions[currentIndex].answer) {
+            options[i].classList.add('correct');
+        }
+    }
+}
 
 function answersTracker() {
     // Find the selected chapter in the chapters array
@@ -1596,38 +1627,6 @@ function answersTracker() {
     for (let i = 0; i < totalQuestionsInChapter; i++) {
         const div = document.createElement("div");
         answersTrackerContainer.appendChild(div);
-    }
-}
-
-// Function to update the answers tracker elements
-function updateAnswersTracker(status) {
-    const currentAnswerTracker = answersTrackerContainer.children[index];
-    if (status === "correct") {
-        currentAnswerTracker.classList.add("correct");
-    } else if (status === "wrong") {
-        currentAnswerTracker.classList.add("wrong");
-    } else if (status === "selected") {
-        currentAnswerTracker.classList.add("selected");
-    }
-}
-
-function load() {
-    questionNumberSpan.innerHTML = index + 1;
-    totalQuestionsSpan.innerHTML = currentQuestions.length;
-
-    const currentQuestion = currentQuestions[currentIndex];
-
-    question.innerHTML = currentQuestion.q;
-
-    // Clear previous options
-    for (let i = 0; i < options.length; i++) {
-        options[i].style.display = "none";
-    }
-
-    // Display only available options
-    for (let i = 0; i < currentQuestion.options.length; i++) {
-        options[i].innerHTML = currentQuestion.options[i];
-        options[i].style.display = "block";
     }
 }
 
@@ -1659,10 +1658,22 @@ function validate() {
     }
 }
 
+// Function to update the answers tracker elements
+function updateAnswersTracker(status) {
+    const currentAnswerTracker = answersTrackerContainer.children[index];
+    if (status === "correct") {
+        currentAnswerTracker.classList.add("correct");
+    } else if (status === "wrong") {
+        currentAnswerTracker.classList.add("wrong");
+    } else if (status === "selected") {
+        currentAnswerTracker.classList.add("selected");
+    }
+}
+
 // Listener function for click event on Next button
 function next() {
     if (!options[0].classList.contains("disabled")) {
-        alert("Please select an option before proceeding.");
+        showAlert("Please select an option before proceeding.");
         return; // Stop execution if no option is selected
     }
 
@@ -1675,40 +1686,17 @@ function next() {
     }
 }
 
-//Function to disable click for the options
-function disableClick() {
-    for (let i = 0; i < options.length; i++) {
-        options[i].classList.add("disabled")
 
-        if (options[i].id == currentQuestions[currentIndex].answer) {
-            options[i].classList.add('correct');
-        }
-    }
+// Function to reset the current quiz page
+function reset() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedChapterIndex = parseInt(urlParams.get("chapter"));
+    // Reload the page with the selected chapter index as query parameter
+    isReset = true; // Set the reset flag
+    window.location.href = `security-plus.html?chapter=${selectedChapterIndex}`;
 }
 
-//Function to reanable click in the options
-function enableClick() {
-    for (let i = 0; i < options.length; i++) {
-        options[i].classList.remove("disabled", "correct", "wrong")
-
-    }
-}
-
-// Function to select a random question
-function randomQuestion() {
-    while (answeredQuestions.length < currentQuestions.length) {
-        let randomNumber = Math.floor(Math.random() * currentQuestions.length);
-        if (!answeredQuestions.includes(randomNumber)) {
-            currentIndex = randomNumber;
-            load();
-            answeredQuestions.push(randomNumber);
-            return;
-        }
-    }
-    // If all questions are answered, trigger quizOver()
-    quizOver();
-}
-
+// Function to display  quizOver div
 function quizOver() {
     const quizOverBox = document.querySelector(".quiz-over .box");
 
@@ -1741,6 +1729,7 @@ function quizOver() {
     questionNumberSpan.innerHTML = index + 1; // Update the question number display
 }
 
+// Function to display  reviewAnswers div
 function reviewAnswers() {
     const quizOverContainer = document.querySelector(".quiz-over");
     const reviewContainer = document.querySelector('.review-container');
@@ -1758,6 +1747,7 @@ function reviewAnswers() {
     quizOverContainer.style.display = 'none';
 }
 
+// Function to populateReviewAnswers for reviewAnswers div
 function populateReviewAnswers(container) {
     container.innerHTML = ''; // Clear previous content
     for (let i = 0; i < answeredQuestions.length; i++) {
@@ -1787,7 +1777,7 @@ function populateReviewAnswers(container) {
 }
 
 function tryAgain() {
-    document.getElementById("welcomePopup").style.display = "none"; // Hide the pop-up
+
     const urlParams = new URLSearchParams(window.location.search);
     const selectedChapterIndex = parseInt(urlParams.get("chapter"));
     // Reload the page with the selected chapter index as query parameter
@@ -1795,60 +1785,136 @@ function tryAgain() {
     window.location.href = `security-plus.html?chapter=${selectedChapterIndex}`;
 }
 
-// Function to reset the current quiz page
-function reset() {
-    console.log("Reset button clicked");
-    document.getElementById("welcomePopup").style.display = "none"; // Hide the pop-up
-    const urlParams = new URLSearchParams(window.location.search);
-    const selectedChapterIndex = parseInt(urlParams.get("chapter"));
-    // Reload the page with the selected chapter index as query parameter
-    isReset = true; // Set the reset flag
-    window.location.href = `security-plus.html?chapter=${selectedChapterIndex}`;
+// Function to showAlert message when the next button is clicked without selecting any answer
+function showAlert(message) {
+    const customAlert = document.getElementById("customAlert");
+    const customAlertMessage = document.getElementById("customAlertMessage");
+    customAlertMessage.textContent = message;
+    customAlert.style.display = "flex";
+
+    const customAlertButton = document.getElementById("customAlertButton");
+    customAlertButton.addEventListener("click", hideAlert);
 }
 
-// Assuming there's an event listener for chapter selection
-function handleChapterSelection(event) {
-    // Update the selectedChapter based on user selection
-    const selectedChapterIndex = parseInt(event.target.dataset.chapter, 10);
-    // Reload the page with the selected chapter index as query parameter
-    window.location.href = `security-plus.html?chapter=${selectedChapterIndex}`;
+// Function to hideAlert message after clicking "OK" on the alert button
+function hideAlert() {
+    const customAlert = document.getElementById("customAlert");
+    customAlert.style.display = "none";
 }
 
-// Attach event listeners to chapter selectors
-function attachChapterSelectionListeners() {
-    const chapterSelectors = document.querySelectorAll(".chapter-selector");
-    chapterSelectors.forEach(selector => {
-        selector.addEventListener("click", handleChapterSelection);
-    });
+// Function to handle actions when the confirm button is clicked
+function confirmButtonClicked() {
+    // Hide the confirmation popup
+    confirmationPopup.style.display = "none";
+    showChapterSelection();
 }
 
-// Restart the quiz and load currentQuestions based on selected chapter
+// Function to handle actions when the cancel button is clicked
+function cancelButtonClicked() {
+    // Hide the confirmation popup
+    confirmationPopup.style.display = "none";
+}
+
+// Function to handle actions when the reset quiz confirm button is clicked
+function resetQuizConfirmButtonClicked() {
+    // Hide the reset quiz popup
+    resetQuizPopup.style.display = "none";
+    // Call the reset quiz function
+    reset();
+}
+
+// Function to handle actions when the reset quiz cancel button is clicked
+function resetQuizCancelButtonClicked() {
+    // Hide the reset quiz popup
+    resetQuizPopup.style.display = "none";
+}
+
+// Function to show an alert message when the next button is clicked without selecting any answer
+function showAlert(message) {
+    const customAlert = document.getElementById("customAlert");
+    const customAlertMessage = document.getElementById("customAlertMessage");
+    customAlertMessage.textContent = message;
+    customAlert.style.display = "flex";
+
+    const customAlertButton = document.getElementById("customAlertButton");
+    customAlertButton.addEventListener("click", hideAlert);
+}
+
+// Function to hide the alert message after clicking "OK" on the alert button
+function hideAlert() {
+    const customAlert = document.getElementById("customAlert");
+    customAlert.style.display = "none";
+}
+
+// items that get initialized once the page loads
 window.onload = function () {
-    // Attach event listeners to chapter selectors
-    attachChapterSelectionListeners();
+    // Get references to the confirmation and reset quiz popup elements
+    confirmationPopup = document.querySelector("#confirmationPopup");
+    resetQuizPopup = document.querySelector("#resetQuizPopup");
 
-    // Set up answers tracker
+    // Attach event listener to the document to handle clicks
+    document.addEventListener("click", function (event) {
+        const target = event.target;
+
+        // Handle chapter selector clicks
+        if (target.classList.contains("chapter-selector")) {
+            const selectedChapterIndex = parseInt(target.getAttribute("data-chapter"), 10);
+            playClickSound();
+            changeChapter(selectedChapterIndex);
+            window.location.href = `security-plus.html?chapter=${selectedChapterIndex}`;
+        }
+
+        // Handle back button click
+        if (target.classList.contains("back-button")) {
+            confirmationPopup.style.display = "flex";
+        }
+
+        // Handle reset quiz button click
+        if (target.classList.contains("reset-quiz-button")) {
+            resetQuizPopup.style.display = "flex";
+        }
+    });
+
+    // Attach event listeners to options and buttons
+    const options = document.querySelectorAll(".options > div");
+    const nextButton = document.querySelector(".next-button");
+    const resetButton = document.querySelector(".reset-quiz-button");
+
+    // Event listeners for confirm and cancel buttons within the confirmation popup
+    const confirmButton = document.getElementById("confirmButton");
+    const cancelButton = document.getElementById("cancelButton");
+
+    options.forEach(option => {
+        option.addEventListener("click", function () {
+            check(this);
+        });
+    });
+
+    // Event listeners for confirm, cancel, next, and reset buttons
+    confirmButton.addEventListener("click", confirmButtonClicked);
+    cancelButton.addEventListener("click", cancelButtonClicked);
+    nextButton.addEventListener("click", next);
+
+
+    // Get references to reset quiz popup buttons
+    const resetQuizConfirmButton = document.getElementById("resetQuizConfirmButton");
+    const resetQuizCancelButton = document.getElementById("resetQuizCancelButton");
+
+    // Event listeners for reset quiz confirm and cancel buttons
+    resetQuizConfirmButton.addEventListener("click", resetQuizConfirmButtonClicked);
+    resetQuizCancelButton.addEventListener("click", resetQuizCancelButtonClicked);
+
+    // Initialize answers tracker
     answersTracker();
 
-    // Get the chapter index from the URL parameter
+    // Parse selected chapter from URL parameter
     const urlParams = new URLSearchParams(window.location.search);
     const selectedChapterIndex = parseInt(urlParams.get("chapter"));
 
-    // Show the welcome popup only on the first page load
-    const popupOkButton = document.getElementById("popupOkButton");
-    const welcomePopup = document.getElementById("welcomePopup");
-
-    popupOkButton.addEventListener("click", () => {
-        welcomePopup.style.display = "none"; // Hide the pop-up
-    });
-
-    // Check if the page is loaded after a reset action
+    // Check for reset and selected chapter conditions
     if (isReset) {
-        isReset = false; // Reset the flag
-        document.getElementById("welcomePopup").style.display = "none"; // Hide the pop-up
+        isReset = false; // Clear reset flag
     } else if (!isNaN(selectedChapterIndex) && selectedChapterIndex >= 0) {
-        changeChapter(selectedChapterIndex); // Load the selected chapter
+        changeChapter(selectedChapterIndex); // Load selected chapter
     }
-
-    isFirstLoad = false; // Mark the first load as completed
 };

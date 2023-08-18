@@ -15,26 +15,40 @@
 
 <body>
 
-    <div id="welcomePopup" class="popup">
-        <div class="popup-content">
-            <p>Welcome to the CompTIA Security+ Quiz Training section. </br></br>
-                Click "OK" to start your quiz chapter of
-                choice.</p>
-            <button type="button" id="popupOkButton" class="popup-button">OK</button>
+    <audio id="clickSound">
+        <source src="av/click-sound.mp3" type="audio/mp3">
+        </source>
+        <source src="av/click-sound.wav" type="audio/wav">
+        </source>
+        Your browser does not support the audio element.
+    </audio>
+
+    <div id="confirmationPopup">
+        <div class="confirmation-popup-content">
+            <p>Are you sure you want to go back to the chapter quiz selector? </br> Your progress will not be saved.</p>
+            <div class="confirmation-popup-buttons">
+                <button type="button" id="confirmButton">Confirm</button>
+                <button type="button" id="cancelButton">Cancel</button>
+            </div>
         </div>
     </div>
 
-    <audio id="hoverSound">
-        <source src="av/click-sound.mp3" type="audio/mp3">
-        <source src="av/hover-sound.wav" type="audio/wav">
-        Your browser does not support the audio element.
-    </audio>
+    <div id="customAlert">
+        <p id="customAlertMessage"></p>
+        <div class="confirmation-popup-buttons">
+            <button type="button" id="customAlertButton">OK</button>
+        </div>
+    </div>
 
-    <audio id="clickSound">
-        <source src="av/click-sound.mp3" type="audio/mp3">
-        <source src="av/click-sound.wav" type="audio/wav">
-        Your browser does not support the audio element.
-    </audio>
+    <div id="resetQuizPopup">
+        <div class="reset-quiz-popup-content">
+            <p>Are you sure you want to reset and randomize the quiz questions? </br> Your progress will be lost.</p>
+            <div class="reset-quiz-popup-buttons">
+                <button type="button" id="resetQuizConfirmButton">Confirm</button>
+                <button type="button" id="resetQuizCancelButton">Cancel</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Chapter selection page -->
     <div class="chapterLinks">
@@ -51,28 +65,18 @@
     </div>
 
     <div class="chapter-selection">
-        <h2 class="chapter-selection-title">CompTIA Security+ <br> Select a Chapter Quiz:</h2>
-        <div class="chapter-selector" data-chapter="1" onmouseover="playHoverSound();"
-            onclick="playClickSound(); changeChapter(1)">1. Threats, Attacks, and Vulnerabilities</div>
-        <div class="chapter-selector" data-chapter="2" onmouseover="playHoverSound();"
-            onclick="playClickSound(); changeChapter(2)">2. Secure Code Design and Implementation</div>
-        <div class="chapter-selector" data-chapter="3" onmouseover="playHoverSound();"
-            onclick="playClickSound(); changeChapter(3)">3. Cryptography Design and Implementation</div>
-        <div class="chapter-selector" data-chapter="4" onmouseover="playHoverSound();"
-            onclick="playClickSound(); changeChapter(4)">4. Identity and Access Management Design and Implementation
-        </div>
-        <div class="chapter-selector" data-chapter="5" onmouseover="playHoverSound();"
-            onclick="playClickSound(); changeChapter(5)">5. Physical Security Design and Implementation</div>
-        <div class="chapter-selector" data-chapter="6" onmouseover="playHoverSound();"
-            onclick="playClickSound(); changeChapter(6)">6. Cloud Security Design and Implementation</div>
-        <div class="chapter-selector" data-chapter="7" onmouseover="playHoverSound();"
-            onclick="playClickSound(); changeChapter(7)">7. Endpoint Security Design and Implementation</div>
-        <div class="chapter-selector" data-chapter="8" onmouseover="playHoverSound();"
-            onclick="playClickSound(); changeChapter(8)">8. Network Security Design and Implementation</div>
-        <div class="chapter-selector" data-chapter="9" onmouseover="playHoverSound();"
-            onclick="playClickSound(); changeChapter(9)">9. Operations and Incident Response</div>
-        <div class="chapter-selector" data-chapter="10" onmouseover="playHoverSound();"
-            onclick="playClickSound(); changeChapter(10)">10. Governance, Risk, and Compliance</div>
+        <h2 class="chapter-selection-title">CompTIA Security+ </br> Select a Chapter Quiz:</h2>
+        <div class="chapter-selector" data-chapter="1">1. Threats, Attacks, and Vulnerabilities</div>
+        <div class="chapter-selector" data-chapter="2">2. Secure Code Design and Implementation</div>
+        <div class="chapter-selector" data-chapter="3">3. Cryptography Design and Implementation</div>
+        <div class="chapter-selector" data-chapter="4">4. Identity and Access Management Design and Implementation</div>
+        <div class="chapter-selector" data-chapter="5">5. Physical Security Design and Implementation</div>
+        <div class="chapter-selector" data-chapter="6">6. Cloud Security Design and Implementation</div>
+        <div class="chapter-selector" data-chapter="7">7. Endpoint Security Design and Implementation</div>
+        <div class="chapter-selector" data-chapter="8">8. Network Security Design and Implementation</div>
+        <div class="chapter-selector" data-chapter="9">9. Operations and Incident Response</div>
+        <div class="chapter-selector" data-chapter="10">10. Governance, Risk, and Compliance</div>
+
     </div>
 
     <div class="quiz-container">
@@ -81,30 +85,35 @@
                 <!-- The quiz title and back button content will be dynamically populated by JavaScript -->
             </h2>
             <h2>
-                <button type="button" class="back-button"
-                    onclick="showConfirmationPopup(); showChapterSelection();">Back to Chapter Quiz Selection</button>
+                <button type="button" class="back-button">Back to Chapter Quiz Selection</button>
             </h2>
         </div>
+
         <div class="question-number">
             <h3>Question <span class="question-num-value"></span> of
                 <span class="total-questions"></span>
             </h3>
         </div>
+
         <div class="question">
             If you are seeing this dummy question, your quiz didn't load.
         </div>
+
         <div class="options">
-            <div id="0" class="option1" onclick="check(this)"></div>
-            <div id="1" class="option2" onclick="check(this)"></div>
-            <div id="2" class="option3" onclick="check(this)"></div>
-            <div id="3" class="option4" onclick="check(this)"></div>
+            <div id="0" class="option1"></div>
+            <div id="1" class="option2"></div>
+            <div id="2" class="option3"></div>
+            <div id="3" class="option4"></div>
         </div>
+
         <h2>
-            <button type="button" class="next-button" onclick="next()">Next</button>
-            <button type="button" class="reset-quiz-button" onclick="reset()">Reset Quiz</button>
+            <button type="button" class="next-button">Next</button>
+            <button type="button" class="reset-quiz-button">Reset Quiz</button>
         </h2>
+
         <div class="answers-tracker"></div>
     </div>
+
     <div class="quiz-over">
         <div class="box">
             <h1>Good Job! <br />
@@ -117,9 +126,11 @@
             <button type="button" class="try-again-button">Try Again!</button>
         </div>
     </div>
+
     <div class="review-container">
         <!-- Review answers content will be dynamically populated by JavaScript -->
     </div>
+
 </body>
 
 </html>
