@@ -5,9 +5,11 @@ const options = document.querySelector(".options").children;
 const questionNumberSpan = document.querySelector(".question-num-value");
 const question = document.querySelector(".question");
 const totalQuestionsSpan = document.querySelector(".total-questions");
+
 const quizTimerElement = document.querySelector(".quiz-timer-value");
 const totalTimeSpan = document.querySelector(".total-time-value");
 const averageTimeSpan = document.querySelector(".average-time-value");
+
 const correctAnswersSpan = document.querySelector(".correct-answers");
 const totalQuestionsSpan2 = document.querySelector(".total-questions2");
 const percentageSpan = document.querySelector(".percentage");
@@ -1524,13 +1526,10 @@ function changeChapter(selectedChapterIndex) {
         index = 0;
         currentQuestions = currentChapter.questions;
 
+        startQuizTimer(); // Initialize quiz start time
         randomQuestion();
         answersTracker();
         resetQuizOver();
-        startQuizTimer(); // Initialize quiz start time
-
-        // Call updateQuizTimer every second
-        setInterval(updateQuizTimer, 1000);
 
         const chapterSelection = document.querySelector(".chapter-selection");
         const quizContainer = document.querySelector(".quiz-container");
@@ -1720,13 +1719,16 @@ function reset() {
 // Function to display  quizOver div
 function quizOver() {
 
-    // Calculate average question time
-    const averageQuestionTime = totalQuizTime / currentQuestions.length;
+    // Calculate average question time in seconds
+    const averageQuestionTimeInSeconds = totalQuizTime / answeredQuestions.length;
+
+    // Format total quiz time and average question time
+    const formattedTotalQuizTime = formatTime(totalQuizTime);
+    const formattedAverageQuestionTime = formatTime(averageQuestionTimeInSeconds);
 
     // Update the quiz-over content with time information
-    averageTimeSpan.textContent = formatTime(averageQuestionTime);
-    totalTimeSpan.textContent = formatTime(totalQuizTime); // Display total quiz time
-
+    totalTimeSpan.textContent = formattedTotalQuizTime;
+    averageTimeSpan.textContent = formattedAverageQuestionTime;
 
     const quizOverContent = document.querySelector(".quiz-over .quiz-over-content");
     quizOverContent.addEventListener("click", function (event) {
@@ -1875,6 +1877,10 @@ function hideAlert() {
 // items that get initialized once the page loads
 window.onload = function () {
     startQuizTimer();
+
+    // Call updateQuizTimer every second
+    setInterval(updateQuizTimer, 1000);
+
     // Get references to the backToChapter and reset quiz popup elements
     backToChapterPopup = document.querySelector("#backToChapterPopup");
     resetQuizPopup = document.querySelector("#resetQuizPopup");
