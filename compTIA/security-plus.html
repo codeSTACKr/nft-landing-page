@@ -41,9 +41,9 @@
     </div>
 
     <div id="resetQuizPopup">
-        <div class="reset-quiz-popup-content">
+        <div class="resetQuiz-popup-content">
             <p>Are you sure you want to reset and randomize the quiz questions? </br> Your progress will be lost.</p>
-            <div class="reset-quiz-popup-buttons">
+            <div class="resetQuiz-popup-buttons">
                 <button type="button" id="resetQuizConfirmButton">Confirm</button>
                 <button type="button" id="resetQuizCancelButton">Cancel</button>
             </div>
@@ -110,11 +110,8 @@
 
         <div class="navi-button">
             <button type="button" class="next-button">Next</button>
-            <div class="question-timer">
-                <span class="question-timer">00:00:00</span>
-            </div>
             <div class="quiz-timer">
-                <span class="quiz-timer">00:00:00</span>
+                <span class="quiz-timer-value">0:00:00</span>
             </div>
         </div>
 
@@ -129,8 +126,8 @@
                 You got <span class="correct-answers"></span> out of
                 <span class="total-questions2"></span> answers correct.
                 That is <span class="percentage"></span>
-                You took <span class="total-time"></span> to complete this quiz.
-                That's an average of <span class="question-time"></span> per question.
+                You took <span class="total-time-value"></span> to complete this quiz.
+                That's an average of <span class="average-time-value"></span> per question.
                 Try again?
             </h1>
             <button type="button" class="review-answers-button">Review Answers</button>

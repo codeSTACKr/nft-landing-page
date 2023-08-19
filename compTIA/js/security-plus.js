@@ -5,10 +5,11 @@ const options = document.querySelector(".options").children;
 const questionNumberSpan = document.querySelector(".question-num-value");
 const question = document.querySelector(".question");
 const totalQuestionsSpan = document.querySelector(".total-questions");
+const quizTimerElement = document.querySelector(".quiz-timer-value");
+const totalTimeSpan = document.querySelector(".total-time-value");
+const averageTimeSpan = document.querySelector(".average-time-value");
 const correctAnswersSpan = document.querySelector(".correct-answers");
 const totalQuestionsSpan2 = document.querySelector(".total-questions2");
-const totalTime = document.querySelector(".total-time");
-const questionTime = document.querySelector(".question-time");
 const percentageSpan = document.querySelector(".percentage");
 const chapterSelect = document.getElementById("chapter");
 
@@ -21,12 +22,9 @@ let currentQuestions = []; // Array of question objects
 let isReset = false; // Initialize the reset flag
 let backToChapterPopup = null; // Initialize it to null
 let resetQuizPopup = null; // Initialize it to null
-let quizTimerInterval; // To store the quiz timer interval
-let totalQuizElapsedTime = 0; // To store the total elapsed time for the quiz
 let quizStartTime; // To store the start time of the quiz
-let quizEndTime;   // To store the end time of the quiz
-let questionStartTime; // To store the start time of each question
-let questionEndTime;   // To store the end time of each question
+let totalQuizTime = 0; // To store the total elapsed time for the quiz
+
 
 const chapters = [
     {}, // Placeholder for chapter 0
@@ -1529,6 +1527,10 @@ function changeChapter(selectedChapterIndex) {
         randomQuestion();
         answersTracker();
         resetQuizOver();
+        startQuizTimer(); // Initialize quiz start time
+
+        // Call updateQuizTimer every second
+        setInterval(updateQuizTimer, 1000);
 
         const chapterSelection = document.querySelector(".chapter-selection");
         const quizContainer = document.querySelector(".quiz-container");
@@ -1540,6 +1542,31 @@ function changeChapter(selectedChapterIndex) {
     } else {
         console.error("Invalid selectedChapterIndex:", selectedChapterIndex);
     }
+}
+
+// Function to format time
+function formatTime(milliseconds) {
+    const totalSeconds = Math.floor(milliseconds / 1000);
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    return formattedTime;
+}
+
+
+function startQuizTimer() {
+    quizStartTime = new Date(); // Set the start time of the quiz
+    totalQuizTime = 0; // Reset total quiz time
+}
+
+// Update QuizTimer
+function updateQuizTimer() {
+    const currentTime = new Date();
+    totalQuizTime = currentTime - quizStartTime; // Calculate elapsed time from quiz start
+    const formattedQuizTime = formatTime(totalQuizTime);
+    quizTimerElement.textContent = `${formattedQuizTime}`;
 }
 
 // Assuming there's an event listener for chapter selection
@@ -1558,15 +1585,6 @@ function resetQuizOver() {
 
 // Load questions and answers
 function load() {
-    // Capture the start time of the quiz
-    quizStartTime = new Date();
-
-    // Capture the start time of the current question
-    questionStartTime = new Date();
-
-    // Start the timer interval to update the live timer display
-    quizTimerInterval = setInterval(updateLiveTimer, 1000);
-
     questionNumberSpan.innerHTML = index + 1;
     totalQuestionsSpan.innerHTML = currentQuestions.length;
 
@@ -1644,10 +1662,7 @@ function answersTracker() {
 
 // Check if selected answer is correct or wrong
 function check(element) {
-    // ...
-    // Capture the end time of the current question
-    questionEndTime = new Date();
-    // ...
+
     if (element.id == currentQuestions[currentIndex].answer) {
         element.className = "correct";
         updateAnswersTracker("correct"); // Call updateAnswersTracker here
@@ -1694,69 +1709,26 @@ function next() {
 
 // Function to reset the current quiz page
 function reset() {
-    // Clear the timer interval and reset the live timer display
-    clearInterval(quizTimerInterval);
-    const liveTimerElement = document.querySelector(".question-timer");
-    liveTimerElement.textContent = `Question: ${formattedQuestionTime}`;
-
     const urlParams = new URLSearchParams(window.location.search);
     const selectedChapterIndex = parseInt(urlParams.get("chapter"));
     // Reload the page with the selected chapter index as query parameter
     isReset = true; // Set the reset flag
     window.location.href = `security-plus.html?chapter=${selectedChapterIndex}`;
+
 }
-
-// Function to update the quiz timer display
-function updateQuizTimer() {
-    totalQuizElapsedTime += 1000; // Increment by 1 second (1000 milliseconds)
-    const formattedQuizTime = formatTime(totalQuizElapsedTime);
-
-    const quizTimerElement = document.querySelector(".quiz-timer");
-    quizTimerElement.textContent = `Quiz: ${formattedQuizTime}`;
-}
-
-// Function to update the live timer display
-function updateLiveTimer() {
-    const currentTime = new Date();
-    const elapsedMilliseconds = currentTime - questionStartTime; // Calculate time for current question
-    const formattedQuestionTime = formatTime(elapsedMilliseconds); // Format time for current question
-
-    const liveTimerElement = document.querySelector(".question-timer");
-    liveTimerElement.textContent = `Question: ${formattedQuestionTime}`;
-
-    updateQuizTimer(); // Update the quiz timer as well
-}
-
-
-function formatTime(milliseconds) {
-    const totalSeconds = Math.floor(milliseconds / 1000);
-    const hours = Math.floor(totalSeconds / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = totalSeconds % 60;
-
-    const formattedTime = `${padZero(hours)}:${padZero(minutes)}:${padZero(seconds)}`;
-    return formattedTime;
-}
-
-function padZero(number) {
-    return number < 10 ? `0${number}` : number;
-}
-
 
 // Function to display  quizOver div
 function quizOver() {
-    // Capture the end time of the quiz
-    quizEndTime = new Date();
 
-    // Clear the quiz timer interval
-    clearInterval(quizTimerInterval);
-
-    // Calculate the times
-    const totalQuizTime = quizEndTime - quizStartTime;
+    // Calculate average question time
     const averageQuestionTime = totalQuizTime / currentQuestions.length;
 
-    const quizOverContent = document.querySelector(".quiz-over .quiz-over-content");
+    // Update the quiz-over content with time information
+    averageTimeSpan.textContent = formatTime(averageQuestionTime);
+    totalTimeSpan.textContent = formatTime(totalQuizTime); // Display total quiz time
 
+
+    const quizOverContent = document.querySelector(".quiz-over .quiz-over-content");
     quizOverContent.addEventListener("click", function (event) {
         // Prevent click events from propagating to parent elements
         event.stopPropagation();
@@ -1784,9 +1756,6 @@ function quizOver() {
     percentageSpan.innerHTML = Math.round((score / currentQuestions.length) * 100) + "%";
     index = 0; // Reset the index to 0
     questionNumberSpan.innerHTML = index + 1; // Update the question number display
-    // You can define a function to format the time if needed
-    totalTime.innerHTML = formatTime(totalQuizTime);
-    questionTime.innerHTML = formatTime(averageQuestionTime);
 }
 
 // Function to display  reviewAnswers div
@@ -1807,7 +1776,7 @@ function reviewAnswers() {
         optionsContainer.classList.add("hide");
 
         // Shrink the white space after hiding the above containers
-        document.querySelector(".quiz-container").style.minHeight = "250px"; // Adjust the value as needed
+        document.querySelector(".quiz-container").style.minHeight = "200px"; // Adjust the value as needed
         // Show review container
         reviewContainer.style.display = 'block';
         // Populate the content when showing
@@ -1860,14 +1829,14 @@ function tryAgain() {
 }
 
 // Function to handle actions when the confirm button is clicked
-function confirmButtonClicked() {
+function backToChapterConfirmButtonClicked() {
     // Hide the backToChapter popup
     backToChapterPopup.style.display = "none";
     showChapterSelection();
 }
 
 // Function to handle actions when the cancel button is clicked
-function cancelButtonClicked() {
+function backToChapterCancelButtonClicked() {
     // Hide the backToChapter popup
     backToChapterPopup.style.display = "none";
 }
@@ -1905,7 +1874,7 @@ function hideAlert() {
 
 // items that get initialized once the page loads
 window.onload = function () {
-
+    startQuizTimer();
     // Get references to the backToChapter and reset quiz popup elements
     backToChapterPopup = document.querySelector("#backToChapterPopup");
     resetQuizPopup = document.querySelector("#resetQuizPopup");
@@ -1936,11 +1905,6 @@ window.onload = function () {
     // Attach event listeners to options and buttons
     const options = document.querySelectorAll(".options > div");
     const nextButton = document.querySelector(".next-button");
-    const resetButton = document.querySelector(".reset-quiz-button");
-
-    // Event listeners for confirm and cancel buttons within the backToChapter popup
-    const backToChapterConfirmButton = document.getElementById("backToChapterConfirmButton");
-    const backToChapterCancelButton = document.getElementById("backToChapterCancelButton");
 
     options.forEach(option => {
         option.addEventListener("click", function () {
@@ -1948,11 +1912,14 @@ window.onload = function () {
         });
     });
 
-    // Event listeners for confirm, cancel, next, and reset buttons
-    backToChapterConfirmButton.addEventListener("click", confirmButtonClicked);
-    backToChapterCancelButton.addEventListener("click", cancelButtonClicked);
-    nextButton.addEventListener("click", next);
+    // References for confirm and cancel buttons within the backToChapter popup
+    const backToChapterConfirmButton = document.getElementById("backToChapterConfirmButton");
+    const backToChapterCancelButton = document.getElementById("backToChapterCancelButton");
 
+    // Event listeners for backToChapterConfirm, backToChapterCancel, next, and reset buttons
+    backToChapterConfirmButton.addEventListener("click", backToChapterConfirmButtonClicked);
+    backToChapterCancelButton.addEventListener("click", backToChapterCancelButtonClicked);
+    nextButton.addEventListener("click", next);
 
     // Get references to reset quiz popup buttons
     const resetQuizConfirmButton = document.getElementById("resetQuizConfirmButton");

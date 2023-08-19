@@ -26,7 +26,7 @@ body {
 }
 
 .backToChapter-popup-content,
-.reset-quiz-popup-content {
+.resetQuiz-popup-content {
     border-radius: 10px;
     box-shadow: #009688;
     background-color: #009688;
@@ -41,14 +41,14 @@ body {
 }
 
 .backToChapter-popup-buttons,
-.reset-quiz-popup-buttons {
+.resetQuiz-popup-buttons {
     display: flex;
     justify-content: center;
     margin-top: 15px;
 }
 
 .backToChapter-popup-buttons button,
-.reset-quiz-popup-buttons button {
+.resetQuiz-popup-buttons button {
     border-radius: 5px;
     padding: 10px 20px;
     margin: 0 10px;
@@ -173,7 +173,6 @@ body {
 }
 
 /* Apply consistent styling to timer elements */
-.question-timer,
 .quiz-timer {
     font-size: 16px;
     color: #009788;
@@ -188,20 +187,6 @@ body {
     align-items: center;
     justify-content: space-between;
     /* Distribute items evenly along the container */
-}
-
-/* Align "Next" button to the left */
-.navi-button .next-button {
-    float: left;
-}
-
-/* Align timer elements to the center and right respectively */
-.navi-button .question-timer {
-    text-align: center;
-}
-
-.navi-button .quiz-timer {
-    text-align: right;
 }
 
 .question-number h3 {
