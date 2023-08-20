@@ -344,14 +344,16 @@ body {
 
 .quiz-over .quiz-over-content .review-answers-button,
 .quiz-over .quiz-over-content .try-again-button {
-    padding: 15px 50px;
+    width: 150px; /* Adjust the width value as needed */
+    padding: 15px 0; /* Keep vertical padding, remove horizontal padding */
     border: 1px solid #ccc;
     background-color: #f7b53c;
     border-radius: 5px;
     font-size: 18px;
-    margin: 15px 0 20px;
+    margin: 15px auto 20px; /* Use auto for horizontal margin to center the buttons */
     color: white;
     cursor: pointer;
+    text-align: center; /* Center the text inside the buttons */
 }
 
 .review-container {

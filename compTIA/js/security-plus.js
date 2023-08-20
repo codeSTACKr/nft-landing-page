@@ -47,186 +47,6 @@ const chapters = [
                 q: "Which of the following is a common command-and-control mechanism for botnets?",
                 options: ["SMTP", "IRC", "HTTP", "SNMP"],
                 answer: 2
-            },
-            {
-                q: "Where do fileless viruses often store themselves to maintain persistence?",
-                options: ["Program Files", "Temp Folder", "System32 Directory", "Windows Registry"],
-                answer: 3
-            },
-            {
-                q: "What type of malware delivers its payload only after certain conditions are met, such as specific date and time occurring?",
-                options: ["Trojan", "Logic Bomb", "Adware", "Ransomware"],
-                answer: 1
-            },
-            {
-                q: "Cryptolocker is an example of what type of malicious software?",
-                options: ["Worm", "Adware", "Ransomware", "Spyware"],
-                answer: 2
-            },
-            {
-                q: "What device is often used in card cloning attacks?",
-                options: ["Firewall", "Honeypot", "Keylogger", "Skimmer"],
-                answer: 3
-            },
-            {
-                q: "Which one of the following controls is not particularly effective against the insider threat?",
-                options: ["Intrusion Detection Systems", "Access Control Lists", "User Training", "Firewalls"],
-                answer: 0
-            },
-            {
-                q: "What type of attacker is primarily concerned with advancing an ideological agenda?",
-                options: ["Cybercriminal", "Hacktivist", "Script Kiddie", "Nation-state Actor"],
-                answer: 1
-            },
-            {
-                q: "It is difficult to develop defenses against APT attackers.",
-                options: ["FALSE", "TRUE", "ALWAYS", "NEVER"],
-                answer: 1
-            },
-            {
-                q: "What is the basic principle underlying threat hunting activities?",
-                options: ["Assumption of compromise", "Vulnerability assessment", "External monitoring", "Network isolation"],
-                answer: 0
-            },
-            {
-                q: "What security technology best assists with the automation of security workflows?",
-                options: ["Firewall", "SOAR", "SIEM", "IDS"],
-                answer: 1
-            },
-            {
-                q: "What approach to threat identification begins with a listing of all resources owned by the organization?",
-                options: ["Incident-focused", "Vulnerability-focused", "Threat-focused", "Asset-focused"],
-                answer: 3
-            },
-            {
-                q: "The analysis of adversary TTP includes tools, techniques, and policies.",
-                options: ["TRUE", "FALSE"],
-                answer: 0
-            },
-            {
-                q: "What type of organization facilitates cybersecurity information sharing among industry-specific communities?",
-                options: ["NGO", "CERT", "CISO", "ISAC"],
-                answer: 3
-            },
-            {
-                q: "Which of the following is a standardized language used to communicate security information between systems and organizations?",
-                options: ["HTML", "JSON", "XML", "STIX"],
-                answer: 3
-            },
-            {
-                q: "Which of the following is an example of an open-source intelligence resource?",
-                options: ["Vulnerability databases", "Dark web", "Security websites", "Social media"],
-                answer: 3
-            },
-            {
-                q: "Linda's organization recently experienced a social engineering attack. The attacker called a help desk employee and persuaded her that she was a project manager on a tight deadline and locked out of her account. The help desk technician provided the attacker with access to the account. What social engineering principle was used?",
-                options: ["Consistency", "Authority", "Urgency", "Scarcity"],
-                answer: 2
-            },
-            {
-                q: "In what type of social engineering attack does the attacker physically observe the victim's activity?",
-                options: ["Phishing", "Impersonation", "Shoulder surfing", "Baiting"],
-                answer: 2
-            },
-            {
-                q: "What type of website does the attacker use when waging a watering hole attack?",
-                options: ["Site known for malware distribution", "Site trusted by the end user", "Site with weak security", "Site with low traffic"],
-                answer: 1
-            },
-            {
-                q: "In what technique do attackers pose as their victim to elicit information from third parties?",
-                options: ["Phishing", "Pretexting", "Spear phishing", "Baiting"],
-                answer: 1
-            },
-            {
-                q: "What type of phishing attack focuses specifically on senior executives of a targeted organization?",
-                options: ["Pharming", "Spear phishing", "Whaling", "Vishing"],
-                answer: 2
-            },
-            {
-                q: "What type of artificial intelligence technique is most commonly associated with optimization?",
-                options: ["Reinforcement learning", "Prescriptive analytics", "Machine learning", "Natural language processing"],
-                answer: 1
-            },
-            {
-                q: "The reuse of passwords across multiple sites makes an individual susceptible to _____ attacks.",
-                options: ["Ransomware", "Malware", "Credential stuffing", "Phishing"],
-                answer: 2
-            },
-            {
-                q: "Dan is engaging in a password cracking attack where he uses precomputed hash values. What type of attack is Dan waging?",
-                options: ["Brute force attack", "Salting attack", "Rainbow table", "Dictionary attack"],
-                answer: 2
-            },
-            {
-                q: "Data breaches violate which principle of cybersecurity?",
-                options: ["Availability", "Integrity", "Confidentiality", "Non-repudiation"],
-                answer: 2
-            },
-            {
-                q: "Which one of the following issues is not generally associated with the use of default configurations?",
-                options: ["Insecure credentials", "Unnecessary services", "Weak encryption settings", "SQL injection flaws"],
-                answer: 3
-            },
-            {
-                q: "It is generally a bad practice to run software after the vendor's end of life.",
-                options: ["FALSE", "TRUE"],
-                answer: 1
-            },
-            {
-                q: "Jason recently investigated a vulnerability discovered during a scan and, after exhaustive research, determined that the vulnerability did not exist. What type of error occurred?",
-                options: ["False positive", "False negative", "True positive", "True negative"],
-                answer: 0
-            },
-            {
-                q: "Which one of the following metrics does not contribute to the exploitability score for a vulnerability in CVSS?",
-                options: ["Authentication", "Access vector", "Confidentiality", "Access complexity"],
-                answer: 3
-            },
-            {
-                q: "As Dave works with his colleagues in other IT disciplines, he notices that they use different names to refer to the same products and vendors. Which SCAP component would best assist him in reconciling these differences?",
-                options: ["CVE", "CCE", "CPE", "CWE"],
-                answer: 2
-            },
-            {
-                q: "Helen has vulnerability scanners located at several points on her network. Which one of the following scanners is likely to provide the most complete picture of the vulnerabilities present on a public web server?",
-                options: ["Internal Scanner", "Wireless Scanner", "External Scanner", "DMZ Scanner"],
-                answer: 2
-            },
-            {
-                q: "Matt would like to limit the tests performed by his vulnerability scanner to only those that affect operating systems installed in his environment. Which setting should he modify?",
-                options: ["Port range", "Credential settings", "Authentication settings", "Plug-ins"],
-                answer: 3
-            },
-            {
-                q: "Renee is creating a prioritized list of scanning targets. Which one of the following is the least important criteria for her prioritization?",
-                options: ["Network segment", "Business impact", "Criticality", "Operating system"],
-                answer: 0
-            },
-            {
-                q: "Randy is developing a vulnerability management program. Which one of the following is not a common source of requirements for such a program?",
-                options: ["Risk assessment", "Sales team request", "Regulatory compliance", "Industry standards"],
-                answer: 1
-            },
-            {
-                q: "What CVSS value is the threshold at which PCI DSS requires remediation to achieve a passing scan?",
-                options: ["7", "4", "6", "5"],
-                answer: 1
-            },
-            {
-                q: "In a cybersecurity exercise, what team is responsible for serving as moderators?",
-                options: ["Blue team", "Black team", "White team", "Red team"],
-                answer: 2
-            },
-            {
-                q: "Companies should always manage bug bounty programs internally.",
-                options: ["FALSE", "TRUE"],
-                answer: 1
-            },
-            {
-                q: "In a _____ penetration test, the attacker has no prior knowledge of the environment.",
-                options: ["Clear box", "Gray box", "White box", "Black box"],
-                answer: 3
             }
         ]
     },
@@ -1543,29 +1363,57 @@ function changeChapter(selectedChapterIndex) {
     }
 }
 
-// Function to format time
+// Function to format final time display on quizOver
 function formatTime(milliseconds) {
     const totalSeconds = Math.floor(milliseconds / 1000);
     const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = totalSeconds % 60;
 
-    const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    let formattedTime = '';
+
+    if (hours > 0) {
+        formattedTime += `${hours} hour${hours > 1 ? 's' : ''} `;
+    }
+
+    if (minutes > 0 && hours === 0) {
+        formattedTime += `${minutes} minute${minutes > 1 ? 's' : ''} `;
+    }
+
+    formattedTime += `${seconds} second${seconds > 1 ? 's' : ''}`;
+
     return formattedTime;
 }
 
-
 function startQuizTimer() {
     quizStartTime = new Date(); // Set the start time of the quiz
-    totalQuizTime = 0; // Reset total quiz time
+    totalQuizTime = 0; // Initial value of total quiz time
 }
 
 // Update QuizTimer
 function updateQuizTimer() {
     const currentTime = new Date();
     totalQuizTime = currentTime - quizStartTime; // Calculate elapsed time from quiz start
-    const formattedQuizTime = formatTime(totalQuizTime);
+    const formattedQuizTime = formatTimer(totalQuizTime);
     quizTimerElement.textContent = `${formattedQuizTime}`;
+}
+
+// Function to format timer
+function formatTimer(milliseconds) {
+    const totalSeconds = Math.floor(milliseconds / 1000);
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    let formattedTimer = '';
+
+    if (hours > 0) {
+        formattedTimer += `${hours}:`;
+    }
+
+    formattedTimer += `${minutes}:${String(seconds).padStart(2, '0')}`;
+
+    return formattedTimer;
 }
 
 // Assuming there's an event listener for chapter selection
