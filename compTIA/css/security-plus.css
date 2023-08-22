@@ -107,6 +107,22 @@ body {
     margin-top: 20px;
 }
 
+.chapter-selection .site-logo img {
+    border-style: inset;
+    border-radius: 1px;
+    border-color: goldenrod;
+    cursor: pointer;
+}
+
+.chapter-selection .site-logo {
+    font-size: 34px;
+    font-weight: bold;
+    color: goldenrod;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
 .chapter-selection-title {
     font-size: 24px;
     margin-bottom: 10px;
@@ -344,16 +360,20 @@ body {
 
 .quiz-over .quiz-over-content .review-answers-button,
 .quiz-over .quiz-over-content .try-again-button {
-    width: 150px; /* Adjust the width value as needed */
-    padding: 15px 0; /* Keep vertical padding, remove horizontal padding */
+    width: 150px;
+    /* Adjust the width value as needed */
+    padding: 15px 0;
+    /* Keep vertical padding, remove horizontal padding */
     border: 1px solid #ccc;
     background-color: #f7b53c;
     border-radius: 5px;
     font-size: 18px;
-    margin: 15px auto 20px; /* Use auto for horizontal margin to center the buttons */
+    margin: 15px auto 20px;
+    /* Use auto for horizontal margin to center the buttons */
     color: white;
     cursor: pointer;
-    text-align: center; /* Center the text inside the buttons */
+    text-align: center;
+    /* Center the text inside the buttons */
 }
 
 .review-container {
@@ -374,10 +394,16 @@ body {
 .review-question {
     border-bottom: 1px solid #ccc;
     padding-bottom: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 20px
 }
 
 .review-question p {
     margin: 0;
     padding: 5px 0;
+}
+
+.footer h4 {
+    font-size: 14px;
+    color: goldenrod;
+    font-family: 'Courier New', Courier, monospace;
 }
