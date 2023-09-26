@@ -130,3 +130,6 @@ async function fetchWithRetry(url) {
         return fetch_retry(url);
     });
 }
+window.addEventListener('load', () => {
+    console.log('hello');
+});
