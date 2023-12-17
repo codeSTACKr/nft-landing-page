@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "nft-landing-page",
+			"path": "../../../../New folder/nft-landing-page"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "nft-landing-page"
+	}
+}
