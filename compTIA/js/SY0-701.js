@@ -15,19 +15,19 @@ function updateQuizData(data) {
 async function loadQuiz(quizId) {
     console.log(`Clicked on Quiz ${quizId}`);
     try {
-        // Fetch data from the server endpoint
-        const response = await fetch(`https:alienznbotz.xyz/.netlify/functions/getQuiz/${quizId}`);
-        const quizData = await response.json();
-
-        // Update the quizData variable with the fetched data
-        updateQuizData(quizData);
-
-        // Call loadQuestion to display the first question
-        loadQuestion();
+      // Fetch data from the serverless function
+      const response = await fetch(`https:alienznbotz.xyz/.netlify/functions/getQuiz?quizId=${quizId}`);
+      const quizData = await response.json();
+  
+      // Update the quizData variable with the fetched data
+      updateQuizData(quizData);
+  
+      // Call loadQuestion to display the first question
+      loadQuestion();
     } catch (error) {
-        console.error('Error fetching quiz data:', error);
+      console.error('Error fetching quiz data:', error);
     }
-}
+  }
 
 function loadQuestion() {
     const questionContainer = document.querySelector('.question');
