@@ -1,4 +1,6 @@
-//SY0-701.js
+// External JS file for client-side code
+
+// Placeholder data for testing
 let quizData = {
     questions: [],
 };
@@ -11,28 +13,6 @@ function updateQuizData(data) {
     // Reset the current question index
     currentQuestionIndex = 0;
 }
-
-async function loadQuiz(quizId) {
-    console.log(`Clicked on Quiz ${quizId}`);
-    try {
-        // Fetch data from the serverless function
-        const response = await fetch('/.netlify/functions/getQuiz', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            // Any additional options or configurations
-        });
-
-        // Handle the response and update the quiz data
-        const quizData = await response.json();
-        updateQuizData(quizData);
-        loadQuestion();
-    } catch (error) {
-        console.error('Error fetching quiz data:', error);
-    }
-}
-
 
 function loadQuestion() {
     const questionContainer = document.querySelector('.question');
@@ -55,20 +35,7 @@ function loadQuestion() {
     });
 }
 
-function loadNextQuestion() {
-    // Increment the current question index
-    currentQuestionIndex++;
-
-    // Check if there are more questions
-    if (currentQuestionIndex < quizData.questions.length) {
-        // Load the next question
-        loadQuestion();
-    } else {
-        // Display a message or take appropriate action when the quiz ends
-        alert('End of Quiz. Thank you!');
-        // You can reset the quiz or navigate to another page
-    }
-}
+// Add other functions as needed (e.g., loadNextQuestion, selectOption)
 
 // Initial load
 // Note: You can load a default quiz or display a message to select a quiz
