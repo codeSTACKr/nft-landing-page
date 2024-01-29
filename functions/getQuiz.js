@@ -7,7 +7,7 @@ exports.handler = async (event, context) => {
   try {
     // Fetch quiz data from your database or data source
     // Replace the URL below with the appropriate endpoint
-    const response = await fetch(`PLANET_SCALE_URL/${quizId}`);
+    const response = await fetch(`${process.env.PLANET_SCALE_URL}/${quizId}`);
     const quizData = await response.json();
     return {
       statusCode: 200,
