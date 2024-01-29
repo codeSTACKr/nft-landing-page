@@ -5,10 +5,14 @@ exports.handler = async (event, context) => {
   const { quizId } = event.queryStringParameters;
 
   try {
-    // Fetch quiz data from your database or data source
-    // Replace the URL below with the appropriate endpoint
     const response = await fetch(`${process.env.PLANET_SCALE_URL}/${quizId}`);
+    
+    if (!response.ok) {
+      throw new Error(`Failed to fetch quiz data. Status: ${response.status}`);
+    }
+
     const quizData = await response.json();
+
     return {
       statusCode: 200,
       body: JSON.stringify(quizData),
@@ -16,7 +20,7 @@ exports.handler = async (event, context) => {
   } catch (error) {
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Internal Server Error' }),
+      body: JSON.stringify({ error: `Internal Server Error: ${error.message}` }),
     };
   }
 };
