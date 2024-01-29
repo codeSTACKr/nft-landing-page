@@ -111,7 +111,7 @@
             console.log(`Clicked on Quiz ${quizId}`);
             try {
                 // Fetch data from the serverless function
-                const response = await fetch('/.netlify/functions/getQuiz', {
+                const response = await fetch('./netlify/functions/getQuiz', {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
