@@ -1,35 +1,48 @@
-// Function to fetch data from the PlanetScale database (replace this with your actual implementation)
-async function fetchDataFromDatabase(quizId) {
-  const { PLANETSCALE_DATABASE_URL, PLANETSCALE_HOST, PLANETSCALE_PASSWORD, PLANETSCALE_USERNAME } = process.env;
+// functions/getQuiz.js
 
-  // Replace the SQL query with your actual query to fetch quiz data based on quizId
-  const query = `SELECT * FROM questions WHERE quiz_id = ${quizId}`;
-  
-  try {
-    // Extract database credentials from the URL
-    const urlParts = PLANETSCALE_DATABASE_URL.split('//');
-    const [protocol, credentials] = urlParts[1].split('@');
-    const [username, password] = credentials.split(':');
+const fetch = require('node-fetch');
+const mysql = require('mysql');
 
-    const client = new Client({
-      host: PLANETSCALE_HOST,
-      user: username,
-      password: password,
+// Define database credentials using Netlify environment variables
+const connection = mysql.createConnection({
+    host: process.env.PLANETSCALE_HOST,
+    user: process.env.PLANETSCALE_USERNAME,
+    password: process.env.PLANETSCALE_PASSWORD,
+    database: process.env.PLANETSCALE_DATABASE_URL,
+});
+
+exports.handler = async (event, context) => {
+    const { quizId } = event.queryStringParameters;
+
+    // Attempt to connect to the database
+    connection.connect((err) => {
+        if (err) {
+            console.error('Error connecting to the database:', err);
+        } else {
+            console.log('Connected to the database!');
+        }
     });
 
-    await client.connect();
+    try {
+        const response = await fetch(`https://alienznbotz.xyz/.netlify/functions/getQuiz/${quizId}`);
+        const quizData = await response.json();
 
-    const result = await client.query(query);
+        // Close the database connection after fetching data
+        connection.end();
 
-    // Format the data as needed
-    const questions = result.rows.map(row => ({
-      question: row.question,
-      options: [row.option_a, row.option_b, row.option_c, row.option_d],
-      correctAnswer: row.correct_option,
-    }));
+        return {
+            statusCode: 200,
+            body: JSON.stringify(quizData),
+        };
+    } catch (error) {
+        console.error('Error fetching quiz data:', error);
 
-    return { quizId, questions };
-  } finally {
-    await client.end();
-  }
-}
+        // Close the database connection on error
+        connection.end();
+
+        return {
+            statusCode: 500,
+            body: JSON.stringify({ error: 'Internal Server Error' }),
+        };
+    }
+};
