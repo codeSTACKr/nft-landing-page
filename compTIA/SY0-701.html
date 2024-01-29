@@ -7,8 +7,62 @@
     <meta name="description" content="Test your knowledge with these CompTIA Security+ quizzes.">
     <meta name="author" content="AlienznBotz">
     <title>CompTIA Security+ Quizzes</title>
-    <script type="module" src="./js/SY0-701.js"></script>
-    <link rel="stylesheet" href="./css/SY0-701.css">
+    <style>
+        /* Your CSS styles go here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .QuizLinks {
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+        }
+
+        .quiz-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .question {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .options div {
+            background-color: #ddd;
+            padding: 10px;
+            margin: 5px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .navi-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .quiz-timer {
+            margin-bottom: 10px;
+        }
+
+        .next-button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -24,7 +78,7 @@
             <!-- The question will be dynamically populated by JavaScript -->
         </div>
 
-        <div class="options">
+        <div class="options" onclick="selectOption()">
             <!-- The answer options will be dynamically populated by JavaScript -->
         </div>
 
@@ -39,6 +93,7 @@
     </div>
 
     <script>
+        // Your JavaScript code goes here
         let quizData = {
             questions: [],
         };
@@ -55,14 +110,18 @@
         async function loadQuiz(quizId) {
             console.log(`Clicked on Quiz ${quizId}`);
             try {
-                // Fetch data from the server endpoint
-                const response = await fetch(`./netlify/functions/getQuiz/${quizId}`);
+                // Fetch data from the serverless function
+                const response = await fetch('/.netlify/functions/getQuiz', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    // Any additional options or configurations
+                });
+
+                // Handle the response and update the quiz data
                 const quizData = await response.json();
-
-                // Update the quizData variable with the fetched data
                 updateQuizData(quizData);
-
-                // Call loadQuestion to display the first question
                 loadQuestion();
             } catch (error) {
                 console.error('Error fetching quiz data:', error);
@@ -104,11 +163,7 @@
                 // You can reset the quiz or navigate to another page
             }
         }
-
-        // Initial load
-        // Note: You can load a default quiz or display a message to select a quiz
     </script>
-
 </body>
 
 </html>
