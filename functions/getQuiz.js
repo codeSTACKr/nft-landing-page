@@ -6,7 +6,6 @@ exports.handler = async (event, context) => {
   const { quizId } = event.queryStringParameters;
 
   try {
-    // Replace 'YOUR_NETLIFY_FUNCTION_ENDPOINT' with the actual endpoint of your Netlify function
     const response = await fetch(`https:alienznbotz.xyz/.netlify/functions/getQuiz/${quizId}`);
     const quizData = await response.json();
 

@@ -16,7 +16,7 @@ async function loadQuiz(quizId) {
     console.log(`Clicked on Quiz ${quizId}`);
     try {
         // Fetch data from the server endpoint
-        const response = await fetch(`http://127.0.0.1:3000/quiz/${quizId}`);
+        const response = await fetch(`https:alienznbotz.xyz/.netlify/functions/getQuiz/${quizId}`);
         const quizData = await response.json();
 
         // Update the quizData variable with the fetched data
