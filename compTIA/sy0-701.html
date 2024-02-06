@@ -103,7 +103,7 @@
         async function updateQuizData(quizId) {
             try {
                 // Fetch data from the serverless function based on quizId
-                const response = await fetch(`https://alienznbotz.xyz/functions/getQuiz?quizId=${quizId}`, {
+                const response = await fetch(`https://alienznbotz.xyz/functions/getQuiz.js?quizId=${quizId}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
