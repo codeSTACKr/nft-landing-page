@@ -101,14 +101,15 @@
             try {
                 // Fetch data from the database using the Netlify environment variables
                 const response = await fetch(
-    `${process.env.PLANETSCALE_DATABASE_URL}/questions/${quizId}`, {
+    `${PLANETSCALE_DATABASE_URL}/questions/${quizId}`, {
     method: 'GET',
     headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Basic ${btoa(`${process.env.PLANETSCALE_USERNAME}:${process.env.PLANETSCALE_PASSWORD}`)}`
+        'Authorization': `Basic ${btoa(`${PLANETSCALE_USERNAME}:${PLANETSCALE_PASSWORD}`)}`
     },
     // Any additional options or configurations
 });
+
 
 
                 // Handle the response and update the quiz data
