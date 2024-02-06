@@ -102,33 +102,30 @@
     
         async function updateQuizData(quizId) {
     try {
-        // Fetch the JavaScript file as text
-        const response = await fetch(`https://alienznbotz.xyz/functions/getQuiz.js?quizId=${quizId}`, {
+        // Fetch JSON data from the serverless function
+        const response = await fetch(`https://alienznbotz.xyz/functions/getQuiz?quizId=${quizId}`, {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/javascript',  // Set content type to JavaScript
+                'Content-Type': 'application/json',
             },
             // Any additional options or configurations
         });
 
         // Handle the response and update the quiz data
-        const fetchedScript = await response.text();
+        const fetchedData = await response.json();
         
-        // Extract the quizData object from the JavaScript file
-        const quizDataMatch = fetchedScript.match(/let\s+quizData\s*=\s*({.*?});/);
-        
-        if (quizDataMatch && quizDataMatch[1]) {
-            const parsedQuizData = JSON.parse(quizDataMatch[1]);
-            quizData.questions = parsedQuizData.questions;  // Update the questions array
+        if (fetchedData.questions) {
+            quizData.questions = fetchedData.questions;  // Update the questions array
             console.log('Updated quiz data:', quizData); // Debugging statement
             loadQuestion();
         } else {
-            console.error('Error parsing quiz data from JavaScript file.');
+            console.error('Error fetching quiz data or missing questions property.');
         }
     } catch (error) {
         console.error('Error fetching quiz data:', error);
     }
 }
+
 
     
         function loadQuiz(quizId) {
