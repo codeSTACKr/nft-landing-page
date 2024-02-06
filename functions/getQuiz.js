@@ -6,7 +6,7 @@ exports.handler = async (event, context) => {
   const { quizId } = event.queryStringParameters;
 
   try {
-    const response = await fetch(`https://alienznbotz.xyz/functions/getQuiz/${quizId}`);
+    const response = await fetch(`https://alienznbotz.xyz/.netlify/functions/getQuiz/${quizId}`);
     
     if (!response.ok) {
       console.error(`Failed to fetch quiz data. Status: ${response.status}`);
