@@ -5,9 +5,14 @@ const fetch = require('node-fetch');
 exports.handler = async (event, context) => {
   const { quizId } = event.queryStringParameters;
 
+  console.log('Function started:', new Date().toISOString());
+  console.log('Received quizId:', quizId);
+
   try {
-    const response = await fetch(`https://alienznbotz.xyz/.netlify/functions/getQuiz/${quizId}`);
+    const response = await fetch(`https://alienznbotz.xyz/.netlify/functions/getQuiz?quizId=${quizId}`);
     
+    console.log('Response status:', response.status);
+
     if (!response.ok) {
       console.error(`Failed to fetch quiz data. Status: ${response.status}`);
       return {
@@ -31,5 +36,7 @@ exports.handler = async (event, context) => {
       statusCode: 500,
       body: JSON.stringify({ error: 'Internal Server Error' }),
     };
+  } finally {
+    console.log('Function completed:', new Date().toISOString());
   }
 };
