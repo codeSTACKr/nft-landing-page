@@ -101,25 +101,35 @@
         let currentQuestionIndex = 0;
     
         async function updateQuizData(quizId) {
-            try {
-                // Fetch data from the serverless function based on quizId
-                const response = await fetch(`https://alienznbotz.xyz/functions/getQuiz.js?quizId=${quizId}`, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    // Any additional options or configurations
-                });
-    
-                // Handle the response and update the quiz data
-                const fetchedData = await response.json();
-                quizData.questions = fetchedData.questions;  // Update the questions array
-                console.log('Updated quiz data:', quizData); // Debugging statement
-                loadQuestion();
-            } catch (error) {
-                console.error('Error fetching quiz data:', error);
-            }
+    try {
+        // Fetch the JavaScript file as text
+        const response = await fetch(`https://alienznbotz.xyz/functions/getQuiz.js?quizId=${quizId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/javascript',  // Set content type to JavaScript
+            },
+            // Any additional options or configurations
+        });
+
+        // Handle the response and update the quiz data
+        const fetchedScript = await response.text();
+        
+        // Extract the quizData object from the JavaScript file
+        const quizDataMatch = fetchedScript.match(/let\s+quizData\s*=\s*({.*?});/);
+        
+        if (quizDataMatch && quizDataMatch[1]) {
+            const parsedQuizData = JSON.parse(quizDataMatch[1]);
+            quizData.questions = parsedQuizData.questions;  // Update the questions array
+            console.log('Updated quiz data:', quizData); // Debugging statement
+            loadQuestion();
+        } else {
+            console.error('Error parsing quiz data from JavaScript file.');
         }
+    } catch (error) {
+        console.error('Error fetching quiz data:', error);
+    }
+}
+
     
         function loadQuiz(quizId) {
             console.log(`Clicked on Quiz ${quizId}`);
