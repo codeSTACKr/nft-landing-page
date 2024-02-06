@@ -68,7 +68,7 @@
 <body>
     <div class="QuizLinks">
         <a href="#" onclick="loadQuiz(1)">Quiz 1</a>
-        <!-- Add more quiz links as needed -->
+        <a href="#" onclick="loadQuiz(2)">Quiz 2</a>
     </div>
 
     <div class="quiz-container">
@@ -100,10 +100,10 @@
     
         let currentQuestionIndex = 0;
     
-        async function updateQuizData(data) {
+        async function updateQuizData(quizId) {
             try {
-                // Fetch data from the serverless function
-                const response = await fetch('https://alienznbotz.xyz/functions/getQuiz', {
+                // Fetch data from the serverless function based on quizId
+                const response = await fetch(`https://alienznbotz.xyz/functions/getQuiz?quizId=${quizId}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -113,8 +113,8 @@
     
                 // Handle the response and update the quiz data
                 const fetchedData = await response.json();
-                data.questions = fetchedData.questions;  // Update the questions array
-                console.log('Updated quiz data:', data); // Debugging statement
+                quizData.questions = fetchedData.questions;  // Update the questions array
+                console.log('Updated quiz data:', quizData); // Debugging statement
                 loadQuestion();
             } catch (error) {
                 console.error('Error fetching quiz data:', error);
@@ -123,8 +123,7 @@
     
         function loadQuiz(quizId) {
             console.log(`Clicked on Quiz ${quizId}`);
-            // You can pass the quizId to your serverless function if needed
-            updateQuizData(quizData);
+            updateQuizData(quizId);
         }
     
         function loadQuestion() {
@@ -167,10 +166,11 @@
                 // You can reset the quiz or navigate to another page
             }
         }
-    
-        // Initial load
+
+        // Initial load (you can choose a default quiz, e.g., Quiz 1)
         loadQuiz(1);
     </script>
 </body>
 
 </html>
+
