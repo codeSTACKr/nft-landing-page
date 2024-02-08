@@ -28,6 +28,9 @@ exports.handler = async function (event, context) {
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0,
+    ssl: {
+      rejectUnauthorized: false, // Set to true in production, false for testing
+    },
   });
 
   try {
@@ -54,6 +57,7 @@ exports.handler = async function (event, context) {
     };
   }
 };
+
 
 
 
