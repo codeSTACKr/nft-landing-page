@@ -1,28 +1,26 @@
-const { planetscale } = require("@netlify/planetscale");
+// YOUR_BASE_DIRECTORY/netlify/functions/sec+.js
 
-exports.handler = async function (event, context) {
+const { query } = require('@netlify/functions');
+
+document.getElementById('quizButton').addEventListener('click', async () => {
   try {
-    const connection = await planetscale.createConnection({
-      host: process.env.PLANETSCALE_HOST,
-      user: process.env.PLANETSCALE_USERNAME,
-      password: process.env.PLANETSCALE_PASSWORD,
-      database: process.env.PLANETSCALE_DATABASE_NAME,
+    console.log('Fetching quiz...');
+    
+    const response = await query({
+      method: 'GET',
+      path: '/.netlify/functions/getQuiz',
     });
 
-    const quizId = event.queryStringParameters.quizId;
+    console.log('Quiz fetched successfully:', response);
 
-    const [rows] = await connection.query('SELECT * FROM Questions WHERE quizID = ?', [quizId]);
+    // Assuming your response contains the quizId
+    const quizId = response.quizId;
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify(rows),
-    };
+    console.log('Quiz ID:', quizId);
+
+    // Do something with the quizId
+
   } catch (error) {
-    console.error('Error fetching questions:', error.message);
-
-    return {
-      statusCode: 500,
-      body: 'Internal Server Error',
-    };
+    console.error('Error loading quiz:', error.message);
   }
-};
+});
