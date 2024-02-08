@@ -3,26 +3,21 @@ const quizContainer = document.getElementById('quiz-container');
 async function loadQuiz(quizId) {
     try {
         const response = await fetchQuestions(quizId);
-        const questions = await response.json();
-        displayQuestions(questions);
+        if (response.ok) {
+            const questions = await response.json();
+            displayQuestions(questions);
+        } else {
+            throw new Error(`Failed to fetch questions: ${response.statusText}`);
+        }
     } catch (error) {
         console.error('Error loading quiz:', error.message);
     }
 }
 
 async function fetchQuestions(quizId) {
-    // Replace 'YOUR_API_ENDPOINT' with the actual URL of your server hosting getQuiz.js
-    async function fetchQuestions(quizId) {
-        const apiUrl = 'https://alienznbotz.xyz/.netlify/functions/getQuiz'; // Update with the correct URL
-        const response = await fetch(`${apiUrl}/questions?quizId=${quizId}`);
-    }
-    
-    if (!response.ok) {
-        throw new Error(`Failed to fetch questions: ${response.statusText}`);
-    }
-    return response;
+    const apiUrl = 'https://alienznbotz.xyz/.netlify/functions/getQuiz'; // Update with the correct URL
+    return await fetch(`${apiUrl}/questions?quizId=${quizId}`);
 }
-
 
 function displayQuestions(questions) {
     let quizHtml = '<h2>Quiz Questions</h2>';
