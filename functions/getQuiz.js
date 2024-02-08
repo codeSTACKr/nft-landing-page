@@ -1,7 +1,6 @@
-import { Handler, HandlerEvent, HandlerContext } from "@netlify/functions";
-import { planetscale } from "@netlify/planetscale";
+const { planetscale } = require("@netlify/planetscale");
 
-export const handler: Handler = async function (event: HandlerEvent, context: HandlerContext) {
+exports.handler = async function (event, context) {
   try {
     const connection = await planetscale.createConnection({
       host: process.env.PLANETSCALE_HOST,
