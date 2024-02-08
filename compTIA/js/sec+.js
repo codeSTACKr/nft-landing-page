@@ -13,9 +13,8 @@ async function loadQuiz(quizId) {
 async function fetchQuestions(quizId) {
     // Replace 'YOUR_API_ENDPOINT' with the actual URL of your server hosting getQuiz.js
     async function fetchQuestions(quizId) {
-        const apiUrl = 'https://alienznbotz.xyz'; // Update with the correct URL
+        const apiUrl = 'https://alienznbotz.xyz/.netlify/functions/getQuiz'; // Update with the correct URL
         const response = await fetch(`${apiUrl}/questions?quizId=${quizId}`);
-        // ...
     }
     
     if (!response.ok) {
