@@ -18,10 +18,10 @@
   },
   "homepage": "https://github.com/codeSTACKr/nft-landing-page#readme",
   "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.1",
-    "express": "^4.18.2",
-    "mysql2": "^3.9.1",
+    // "cors": "^2.8.5",
+    // "dotenv": "^16.4.1",
+    // "express": "^4.18.2",
+    // "mysql2": "^3.9.1",
     "node-fetch": "^2.6.7"
   }
 }
