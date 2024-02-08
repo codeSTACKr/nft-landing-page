@@ -32,9 +32,14 @@ exports.handler = async function (event, context) {
 
   try {
     const quizId = event.queryStringParameters.quizId;
+
+    console.log('Quiz ID:', quizId); // Log the quizId
+
     const connection = await pool.getConnection();
     const [rows] = await connection.query('SELECT * FROM Questions WHERE quizID = ?', [quizId]);
     connection.release();
+
+    console.log('Fetched rows:', rows); // Log the fetched rows
 
     return {
       statusCode: 200,
@@ -49,6 +54,7 @@ exports.handler = async function (event, context) {
     };
   }
 };
+
 
 
 
