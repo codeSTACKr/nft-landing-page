@@ -1,0 +1,23 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+div {
+    margin-bottom: 20px;
+}
+
+a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #3498db;
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: underline;
+}
