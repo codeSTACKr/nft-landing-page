@@ -12,8 +12,12 @@ async function loadQuiz(quizId) {
 
 async function fetchQuestions(quizId) {
     // Replace 'YOUR_API_ENDPOINT' with the actual URL of your server hosting getQuiz.js
-    const apiUrl = 'https://alienznbotz.xyz/questions'; // Update with the correct URL
-    const response = await fetch(`${apiUrl}?quizId=${quizId}`); // Fix the URL here
+    async function fetchQuestions(quizId) {
+        const apiUrl = 'https://alienznbotz.xyz'; // Update with the correct URL
+        const response = await fetch(`${apiUrl}/questions?quizId=${quizId}`);
+        // ...
+    }
+    
     if (!response.ok) {
         throw new Error(`Failed to fetch questions: ${response.statusText}`);
     }
