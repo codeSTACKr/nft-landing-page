@@ -1,26 +1,19 @@
-// YOUR_BASE_DIRECTORY/netlify/functions/sec+.js
+// netlify/functions/sec+.js
 
-const { query } = require('@netlify/functions');
-
-document.getElementById('quizButton').addEventListener('click', async () => {
+exports.handler = async function (event, context) {
   try {
-    console.log('Fetching quiz...');
+    console.log('Function executed successfully!');
     
-    const response = await query({
-      method: 'GET',
-      path: '/.netlify/functions/getQuiz',
-    });
-
-    console.log('Quiz fetched successfully:', response);
-
-    // Assuming your response contains the quizId
-    const quizId = response.quizId;
-
-    console.log('Quiz ID:', quizId);
-
-    // Do something with the quizId
-
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ message: 'Hello from Netlify function!' }),
+    };
   } catch (error) {
-    console.error('Error loading quiz:', error.message);
+    console.error('Error in function:', error.message);
+
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: 'Internal Server Error' }),
+    };
   }
-});
+};
