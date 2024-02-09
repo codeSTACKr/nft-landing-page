@@ -107,6 +107,10 @@ h2 {
 }
 
 .quiz-container p.explanation {
-    color: #e74c3c; /* Color for the explanation text */
+    color: #3498db; /* Color for the explanation text */
     font-style: italic;
+}
+
+.correct-option, .explanation {
+    display: none;
 }

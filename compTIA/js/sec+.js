@@ -135,12 +135,23 @@ function displayQuestions(questions) {
                     <li>${question.option3}</li>
                     <li>${question.option4}</li>
                 </ul>
-                <p class="correct-option">Correct Option: ${correctOptionText}</p>
-                <p class="explanation">Explanation: ${question.explanation}</p>
+                <button class="show-answer-btn" onclick="showAnswer(${index})">Show Answer</button>
+                <p class="correct-option" id="correct-option-${index}">Correct Option: ${correctOptionText}</p>
+                <p class="explanation" id="explanation-${index}">Explanation: ${question.explanation}</p>
             </div>
         `;
     });
+
     quizContainer.innerHTML = quizHtml;
+}
+
+function showAnswer(index) {
+    const correctOptionElement = document.getElementById(`correct-option-${index}`);
+    const explanationElement = document.getElementById(`explanation-${index}`);
+
+    // Toggle the visibility of correct option and explanation
+    correctOptionElement.style.display = (correctOptionElement.style.display === 'none' || !correctOptionElement.style.display) ? 'block' : 'none';
+    explanationElement.style.display = (explanationElement.style.display === 'none' || !explanationElement.style.display) ? 'block' : 'none';
 }
 
 function getOptionText(option, question) {
