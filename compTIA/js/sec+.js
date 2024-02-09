@@ -99,6 +99,12 @@ async function loadQuiz(quizId) {
             const questions = await response.json();
             displayQuestions(questions);
             toggleQuizOptionsAlignment(true); // Align quiz options to the left
+
+            // Change the URL without triggering a full page reload
+            const quizName = `Quiz ${quizId}`;
+            const newUrl = window.location.href.split('#')[0] + '#' + quizName;
+            history.pushState(null, null, newUrl);
+
         } else {
             throw new Error(`Failed to fetch questions: ${response.statusText}`);
         }
