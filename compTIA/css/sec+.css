@@ -95,6 +95,7 @@ h2 {
 .quiz-container ul {
     list-style: none;
     padding: 0;
+    margin-left: 20px; /* Add left margin to align with the question */
 }
 
 .quiz-container ul li {
