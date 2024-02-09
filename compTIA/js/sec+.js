@@ -122,13 +122,12 @@ async function fetchQuestions(quizId) {
 }
 
 function displayQuestions(questions) {
-    let quizHtml = `<h2>Quiz ${quizId} Questions</h2>`;
+    let quizHtml = ''; /* Remove the initial heading */
 
     questions.forEach((question, index) => {
-        // Passing the question object as a parameter to the getOptionText function to access properties like question.option1, since the question variable is not defined within the scope of the getOptionText function.
-        const correctOptionText = getOptionText(question.correctOption, question);
+        const correctOptionText = getOptionText(question.correctOption);
         quizHtml += `
-            <div>
+            <div class="quiz-container">
                 <p>Q${index + 1}: ${question.questionText}</p>
                 <ul>
                     <li>${question.option1}</li>
@@ -136,8 +135,8 @@ function displayQuestions(questions) {
                     <li>${question.option3}</li>
                     <li>${question.option4}</li>
                 </ul>
-                <p>Correct Option: ${correctOptionText}</p>
-                <p>Explanation: ${question.explanation}</p>
+                <p class="correct-option">Correct Option: ${correctOptionText}</p>
+                <p class="explanation">Explanation: ${question.explanation}</p>
             </div>
         `;
     });

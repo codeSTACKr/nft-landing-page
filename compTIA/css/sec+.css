@@ -78,3 +78,35 @@ h2 {
     display: block;
     /* Show the quiz links when active */
 }
+/* Add styles for quiz container */
+.quiz-container {
+    background-color: #fff; /* Background color for the quiz container */
+    padding: 15px; /* Padding for spacing inside the quiz container */
+    margin-bottom: 20px; /* Adjust margin between quiz containers */
+    border-radius: 5px; /* Add rounded corners to the quiz container */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+/* Adjust styles for quiz content */
+.quiz-container p {
+    margin-bottom: 10px; /* Adjust spacing between paragraphs */
+}
+
+.quiz-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.quiz-container li {
+    margin-bottom: 5px; /* Adjust spacing between answer options */
+}
+
+.quiz-container p.correct-option {
+    color: #27ae60; /* Color for the correct option text */
+    font-weight: bold;
+}
+
+.quiz-container p.explanation {
+    color: #e74c3c; /* Color for the explanation text */
+    font-style: italic;
+}
