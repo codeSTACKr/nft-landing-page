@@ -49,7 +49,7 @@ a:hover {
 main {
     padding: 20px;
     background-color: #fff;
-    text-align: center; /* Center the quiz content */
+    text-align: left; /* Center the quiz content */
 }
 
 h2 {
