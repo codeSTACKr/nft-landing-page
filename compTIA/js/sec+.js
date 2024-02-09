@@ -4,8 +4,10 @@ const quizContainer = document.getElementById('quiz-container');
 const quizLinks = document.getElementById('quiz-links');
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Trigger click event on the menu link to show the menu initially
-    document.getElementById("menu").click();
+    // Use a timeout to trigger click event after a short delay
+    setTimeout(function() {
+        document.getElementById("menu").click();
+    }, 100);
 
     // Add JavaScript to toggle the active class on click
     document.getElementById("menu").addEventListener("click", function () {
