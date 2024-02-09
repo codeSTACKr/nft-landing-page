@@ -92,13 +92,13 @@ function getOptionText(option, question) {
 }
 
 function displayQuestions(questions) {
-    let quizHtml = ''; /* Remove the initial heading */
+    let quizHtml = '';
 
     questions.forEach((question, index) => {
         const correctOptionText = getOptionText(question.correctOption, question);
         quizHtml += `
         <div class="quiz-container">
-            <p>Q${index + 1}: ${question.questionText}</p>
+            <p><strong>Q${index + 1}:</strong> ${question.questionText}</p>
             <ul>
                 <li>${question.option1}</li>
                 <li>${question.option2}</li>
@@ -106,11 +106,13 @@ function displayQuestions(questions) {
                 <li>${question.option4}</li>
             </ul>
             <button class="show-answer-btn" onclick="showAnswer(${index})">Show Answer</button>
-            <p class="correct-option" id="correct-option-${index}">Correct Option: ${correctOptionText}</p>
-            <p class="explanation" id="explanation-${index}">Explanation: ${question.explanation}</p>
+            <p class="correct-option" id="correct-option-${index}"><strong>Correct Option:</strong> ${correctOptionText}</p>
+            <p class="explanation" id="explanation-${index}"><strong>Explanation:</strong> ${question.explanation}</p>
         </div>
     `;
     });
 
-    quizContainer.innerHTML = quizHtml;
+    // Display the HTML
+    document.getElementById('quiz-container').innerHTML = quizHtml;
 }
+
