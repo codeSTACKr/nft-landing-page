@@ -3,6 +3,10 @@
 const quizContainer = document.getElementById('quiz-container');
 const quizLinks = document.getElementById('quiz-links');
 
+document.addEventListener('DOMContentLoaded', function () {
+    // Trigger click event on the menu link to show the menu initially
+    document.getElementById("menu").click();
+
 // Add JavaScript to toggle the active class on click
 document.getElementById("menu").addEventListener("click", function () {
     document.getElementById("quiz-links").classList.toggle("active");
