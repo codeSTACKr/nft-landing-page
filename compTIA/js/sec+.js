@@ -122,7 +122,7 @@ function displayQuestions(questions) {
     quizContainer.innerHTML = quizHtml;
 }
 
-function getOptionText(option) {
+function getOptionText(option, question) {
     switch (option) {
         case 1:
             return question.option1;
