@@ -98,7 +98,7 @@ function displayQuestions(questions) {
         const correctOptionText = getOptionText(question.correctOption, question);
         quizHtml += `
         <div class="quiz-container">
-            <p><strong>Q${index + 1}:</strong> ${question.questionText}</p>
+            <p><strong>Q${index + 1}: ${question.questionText}</strong></p>
             <ul>
                 <li>${question.option1}</li>
                 <li>${question.option2}</li>

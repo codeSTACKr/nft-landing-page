@@ -97,8 +97,9 @@ h2 {
     padding: 0;
 }
 
-.quiz-container li {
+.quiz-container ul li {
     margin-bottom: 5px; /* Adjust spacing between answer options */
+    list-style-type: disc; /* Add bullets to list items */
 }
 
 .quiz-container p.correct-option {
