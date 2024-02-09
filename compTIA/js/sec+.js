@@ -1,5 +1,17 @@
-const quizContainer = document.getElementById('quiz-container');
+//sec+.js
 
+const quizContainer = document.getElementById('quiz-container');
+const quizLinks = document.getElementById('quiz-links');
+
+// Add event listeners to quiz links
+document.getElementById('quiz1').addEventListener('click', () => loadQuiz(1));
+document.getElementById('quiz2').addEventListener('click', () => loadQuiz(2));
+document.getElementById('quiz3').addEventListener('click', () => loadQuiz(3));
+document.getElementById('quiz4').addEventListener('click', () => loadQuiz(4));
+document.getElementById('quiz5').addEventListener('click', () => loadQuiz(5));
+document.getElementById('quiz6').addEventListener('click', () => loadQuiz(6));
+document.getElementById('quiz7').addEventListener('click', () => loadQuiz(7));
+document.getElementById('quiz8').addEventListener('click', () => loadQuiz(8));
 async function loadQuiz(quizId) {
     try {
         const response = await fetchQuestions(quizId);
@@ -15,8 +27,8 @@ async function loadQuiz(quizId) {
 }
 
 async function fetchQuestions(quizId) {
-    const apiUrl = 'https://alienznbotz.xyz/.netlify/functions/getQuiz'; // Update with the correct URL
-    return await fetch(`${apiUrl}/questions?quizId=${quizId}`);
+    const apiUrl = 'https://alienznbotz.xyz/.netlify/functions/getQuiz';
+    return await fetch(`${apiUrl}?quizId=${quizId}`);
 }
 
 function displayQuestions(questions) {
