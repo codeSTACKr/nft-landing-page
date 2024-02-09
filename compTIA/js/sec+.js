@@ -101,7 +101,8 @@ async function fetchQuestions(quizId) {
 function displayQuestions(questions) {
     let quizHtml = '<h2>Quiz ${quizId} Questions</h2>';
 
-    questions.forEach(question => {
+    questions.forEach((question, index) => {
+        const correctOptionText = getOptionText(question.correctOption);
         quizHtml += `
             <div>
                 <p>Q${index + 1}: ${question.questionText}</p>
@@ -111,11 +112,26 @@ function displayQuestions(questions) {
                     <li>${question.option3}</li>
                     <li>${question.option4}</li>
                 </ul>
-                <p>Correct Option: ${question.correctOption}</p>
+                <p>Correct Option: ${correctOptionText}</p>
                 <p>Explanation: ${question.explanation}</p>
             </div>
         `;
     });
 
     quizContainer.innerHTML = quizHtml;
+}
+
+function getOptionText(option) {
+    switch (option) {
+        case 1:
+            return question.option1;
+        case 2:
+            return question.option2;
+        case 3:
+            return question.option3;
+        case 4:
+            return question.option4;
+        default:
+            return 'Unknown Option';
+    }
 }
