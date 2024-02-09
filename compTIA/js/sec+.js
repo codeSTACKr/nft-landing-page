@@ -101,7 +101,7 @@ async function loadQuiz(quizId) {
             toggleQuizOptionsAlignment(true); // Align quiz options to the left
 
             // Change the URL without triggering a full page reload
-            const quizName = `Quiz ${quizId}`;
+            const quizName = `Quiz-${quizId}`;
             const newUrl = window.location.href.split('#')[0] + '#' + quizName;
             history.pushState(null, null, newUrl);
 
