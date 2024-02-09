@@ -12,66 +12,79 @@ document.getElementById("menu").addEventListener("click", function () {
 document.getElementById('quiz1').addEventListener('click', () => {
     loadQuiz(1);
     closeMenu();
+    toggleQuizOptionsAlignment(false);
 });
 
 document.getElementById('quiz2').addEventListener('click', () => {
     loadQuiz(2);
     closeMenu();
+    toggleQuizOptionsAlignment(false);
 });
 
 document.getElementById('quiz3').addEventListener('click', () => {
     loadQuiz(3);
     closeMenu();
+    toggleQuizOptionsAlignment(false);
 });
 
 document.getElementById('quiz4').addEventListener('click', () => {
     loadQuiz(4);
     closeMenu();
+    toggleQuizOptionsAlignment(false);
 });
 
 document.getElementById('quiz5').addEventListener('click', () => {
     loadQuiz(5);
     closeMenu();
+    toggleQuizOptionsAlignment(false);
 });
 
 document.getElementById('quiz6').addEventListener('click', () => {
     loadQuiz(6);
     closeMenu();
+    toggleQuizOptionsAlignment(false);
 });
 
 document.getElementById('quiz7').addEventListener('click', () => {
     loadQuiz(7);
     closeMenu();
+    toggleQuizOptionsAlignment(false);
 });
 
 document.getElementById('quiz8').addEventListener('click', () => {
     loadQuiz(8);
     closeMenu();
+    toggleQuizOptionsAlignment(false);
 });
 
 document.getElementById('quiz9').addEventListener('click', () => {
     loadQuiz(9);
     closeMenu();
+    toggleQuizOptionsAlignment(false);
 });
 
 document.getElementById('quiz10').addEventListener('click', () => {
     loadQuiz(10);
     closeMenu();
+    toggleQuizOptionsAlignment(false);
 });
 
 document.getElementById('quiz11').addEventListener('click', () => {
     loadQuiz(11);
     closeMenu();
+    toggleQuizOptionsAlignment(false);
 });
 
 document.getElementById('quiz12').addEventListener('click', () => {
     loadQuiz(12);
     closeMenu();
+    toggleQuizOptionsAlignment(false);
 });
 
 document.getElementById('quiz13').addEventListener('click', () => {
     loadQuiz(13);
     closeMenu();
+    toggleQuizOptionsAlignment(false);
 });
 
 function closeMenu() {
@@ -85,11 +98,21 @@ async function loadQuiz(quizId) {
         if (response.ok) {
             const questions = await response.json();
             displayQuestions(questions);
+            toggleQuizOptionsAlignment(true); // Align quiz options to the left
         } else {
             throw new Error(`Failed to fetch questions: ${response.statusText}`);
         }
     } catch (error) {
         console.error('Error loading quiz:', error.message);
+    }
+}
+
+function toggleQuizOptionsAlignment(alignLeft) {
+    const quizOptions = document.getElementById('quiz-links');
+    if (alignLeft) {
+        quizOptions.classList.add('quiz-options');
+    } else {
+        quizOptions.classList.remove('quiz-options');
     }
 }
 
@@ -99,7 +122,7 @@ async function fetchQuestions(quizId) {
 }
 
 function displayQuestions(questions) {
-    let quizHtml = '<h2>Quiz ${quizId} Questions</h2>';
+    let quizHtml = `<h2>Quiz ${quizId} Questions</h2>`;
 
     questions.forEach((question, index) => {
         // Passing the question object as a parameter to the getOptionText function to access properties like question.option1, since the question variable is not defined within the scope of the getOptionText function.
