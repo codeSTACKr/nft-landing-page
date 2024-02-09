@@ -1,101 +1,29 @@
-// sec+.js
-
-const quizContainer = document.getElementById('quiz-container');
-const quizLinks = document.getElementById('quiz-links');
-
 document.addEventListener('DOMContentLoaded', function () {
     // Use a timeout to trigger click event after a short delay
-    setTimeout(function() {
+    setTimeout(function () {
         document.getElementById("menu").click();
     }, 100);
 
+    const quizContainer = document.getElementById('quiz-container');
+    const quizLinks = document.getElementById('quiz-links');
+
     // Add JavaScript to toggle the active class on click
     document.getElementById("menu").addEventListener("click", function () {
-        document.getElementById("quiz-links").classList.toggle("active");
+        quizLinks.classList.toggle("active");
     });
 
     // Add event listeners to quiz links
-    document.getElementById('quiz1').addEventListener('click', () => {
-        loadQuiz(1);
-        closeMenu();
-        toggleQuizOptionsAlignment(false);
-    });
-
-    document.getElementById('quiz2').addEventListener('click', () => {
-        loadQuiz(2);
-        closeMenu();
-        toggleQuizOptionsAlignment(false);
-    });
-
-    document.getElementById('quiz3').addEventListener('click', () => {
-        loadQuiz(3);
-        closeMenu();
-        toggleQuizOptionsAlignment(false);
-    });
-
-    document.getElementById('quiz4').addEventListener('click', () => {
-        loadQuiz(4);
-        closeMenu();
-        toggleQuizOptionsAlignment(false);
-    });
-
-    document.getElementById('quiz5').addEventListener('click', () => {
-        loadQuiz(5);
-        closeMenu();
-        toggleQuizOptionsAlignment(false);
-    });
-
-    document.getElementById('quiz6').addEventListener('click', () => {
-        loadQuiz(6);
-        closeMenu();
-        toggleQuizOptionsAlignment(false);
-    });
-
-    document.getElementById('quiz7').addEventListener('click', () => {
-        loadQuiz(7);
-        closeMenu();
-        toggleQuizOptionsAlignment(false);
-    });
-
-    document.getElementById('quiz8').addEventListener('click', () => {
-        loadQuiz(8);
-        closeMenu();
-        toggleQuizOptionsAlignment(false);
-    });
-
-    document.getElementById('quiz9').addEventListener('click', () => {
-        loadQuiz(9);
-        closeMenu();
-        toggleQuizOptionsAlignment(false);
-    });
-
-    document.getElementById('quiz10').addEventListener('click', () => {
-        loadQuiz(10);
-        closeMenu();
-        toggleQuizOptionsAlignment(false);
-    });
-
-    document.getElementById('quiz11').addEventListener('click', () => {
-        loadQuiz(11);
-        closeMenu();
-        toggleQuizOptionsAlignment(false);
-    });
-
-    document.getElementById('quiz12').addEventListener('click', () => {
-        loadQuiz(12);
-        closeMenu();
-        toggleQuizOptionsAlignment(false);
-    });
-
-    document.getElementById('quiz13').addEventListener('click', () => {
-        loadQuiz(13);
-        closeMenu();
-        toggleQuizOptionsAlignment(false);
-    });
+    for (let i = 2; i <= 27; i++) {
+        document.getElementById(`quiz${i}`).addEventListener('click', () => {
+            loadQuiz(i);
+            closeMenu();
+            toggleQuizOptionsAlignment(false);
+        });
+    }
 
     function closeMenu() {
         // Close the menu by removing the active class
-        document.getElementById("quiz-links").classList.remove("active");
+        quizLinks.classList.remove("active");
     }
 
     async function loadQuiz(quizId) {
@@ -108,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // Change the URL without triggering a full page reload
                 const quizName = `Quiz-${quizId}`;
-                const newUrl = window.location.href.split('#')[0] + '#' + quizName;
+                const newUrl = `${window.location.href.split('#')[0]}#${quizName}`;
                 history.pushState(null, null, newUrl);
 
             } else {
@@ -120,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function toggleQuizOptionsAlignment(alignLeft) {
-        const quizOptions = document.getElementById('quiz-links');
+        const quizOptions = quizLinks;
         if (alignLeft) {
             quizOptions.classList.add('quiz-options');
         } else {
@@ -131,6 +59,34 @@ document.addEventListener('DOMContentLoaded', function () {
     async function fetchQuestions(quizId) {
         const apiUrl = 'https://alienznbotz.xyz/.netlify/functions/getQuiz';
         return await fetch(`${apiUrl}?quizId=${quizId}`);
+    }
+
+    function showAnswer(index) {
+        const correctOptionElement = document.getElementById(`correct-option-${index}`);
+        const explanationElement = document.getElementById(`explanation-${index}`);
+
+        // Toggle the visibility of correct option and explanation
+        if (correctOptionElement && explanationElement) {
+            correctOptionElement.style.display = (correctOptionElement.style.display === 'none' || !correctOptionElement.style.display) ? 'block' : 'none';
+            explanationElement.style.display = (explanationElement.style.display === 'none' || !explanationElement.style.display) ? 'block' : 'none';
+        } else {
+            console.error('Elements not found for index:', index);
+        }
+    }
+
+    function getOptionText(option, question) {
+        switch (option) {
+            case 1:
+                return question.option1;
+            case 2:
+                return question.option2;
+            case 3:
+                return question.option3;
+            case 4:
+                return question.option4;
+            default:
+                return 'Unknown Option';
+        }
     }
 
     function displayQuestions(questions) {
@@ -155,29 +111,5 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         quizContainer.innerHTML = quizHtml;
-    }
-
-    function showAnswer(index) {
-        const correctOptionElement = document.getElementById(`correct-option-${index}`);
-        const explanationElement = document.getElementById(`explanation-${index}`);
-
-        // Toggle the visibility of correct option and explanation
-        correctOptionElement.style.display = (correctOptionElement.style.display === 'none' || !correctOptionElement.style.display) ? 'block' : 'none';
-        explanationElement.style.display = (explanationElement.style.display === 'none' || !explanationElement.style.display) ? 'block' : 'none';
-    }
-
-    function getOptionText(option, question) {
-        switch (option) {
-            case 1:
-                return question.option1;
-            case 2:
-                return question.option2;
-            case 3:
-                return question.option3;
-            case 4:
-                return question.option4;
-            default:
-                return 'Unknown Option';
-        }
     }
 });
