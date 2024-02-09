@@ -1,11 +1,11 @@
+const quizContainer = document.getElementById('quiz-container');
+const quizLinks = document.getElementById('quiz-links');
+
 document.addEventListener('DOMContentLoaded', function () {
     // Use a timeout to trigger click event after a short delay
     setTimeout(function () {
         document.getElementById("menu").click();
     }, 100);
-
-    const quizContainer = document.getElementById('quiz-container');
-    const quizLinks = document.getElementById('quiz-links');
 
     // Add JavaScript to toggle the active class on click
     document.getElementById("menu").addEventListener("click", function () {
@@ -60,56 +60,57 @@ document.addEventListener('DOMContentLoaded', function () {
         const apiUrl = 'https://alienznbotz.xyz/.netlify/functions/getQuiz';
         return await fetch(`${apiUrl}?quizId=${quizId}`);
     }
-
-    function showAnswer(index) {
-        const correctOptionElement = document.getElementById(`correct-option-${index}`);
-        const explanationElement = document.getElementById(`explanation-${index}`);
-
-        // Toggle the visibility of correct option and explanation
-        if (correctOptionElement && explanationElement) {
-            correctOptionElement.style.display = (correctOptionElement.style.display === 'none' || !correctOptionElement.style.display) ? 'block' : 'none';
-            explanationElement.style.display = (explanationElement.style.display === 'none' || !explanationElement.style.display) ? 'block' : 'none';
-        } else {
-            console.error('Elements not found for index:', index);
-        }
-    }
-
-    function getOptionText(option, question) {
-        switch (option) {
-            case 1:
-                return question.option1;
-            case 2:
-                return question.option2;
-            case 3:
-                return question.option3;
-            case 4:
-                return question.option4;
-            default:
-                return 'Unknown Option';
-        }
-    }
-
-    function displayQuestions(questions) {
-        let quizHtml = ''; /* Remove the initial heading */
-
-        questions.forEach((question, index) => {
-            const correctOptionText = getOptionText(question.correctOption, question);
-            quizHtml += `
-            <div class="quiz-container">
-                <p>Q${index + 1}: ${question.questionText}</p>
-                <ul>
-                    <li>${question.option1}</li>
-                    <li>${question.option2}</li>
-                    <li>${question.option3}</li>
-                    <li>${question.option4}</li>
-                </ul>
-                <button class="show-answer-btn" onclick="showAnswer(${index})">Show Answer</button>
-                <p class="correct-option" id="correct-option-${index}">Correct Option: ${correctOptionText}</p>
-                <p class="explanation" id="explanation-${index}">Explanation: ${question.explanation}</p>
-            </div>
-        `;
-        });
-
-        quizContainer.innerHTML = quizHtml;
-    }
 });
+
+// Move the showAnswer function outside the DOMContentLoaded event listener
+function showAnswer(index) {
+    const correctOptionElement = document.getElementById(`correct-option-${index}`);
+    const explanationElement = document.getElementById(`explanation-${index}`);
+
+    // Toggle the visibility of correct option and explanation
+    if (correctOptionElement && explanationElement) {
+        correctOptionElement.style.display = (correctOptionElement.style.display === 'none' || !correctOptionElement.style.display) ? 'block' : 'none';
+        explanationElement.style.display = (explanationElement.style.display === 'none' || !explanationElement.style.display) ? 'block' : 'none';
+    } else {
+        console.error('Elements not found for index:', index);
+    }
+}
+
+function getOptionText(option, question) {
+    switch (option) {
+        case 1:
+            return question.option1;
+        case 2:
+            return question.option2;
+        case 3:
+            return question.option3;
+        case 4:
+            return question.option4;
+        default:
+            return 'Unknown Option';
+    }
+}
+
+function displayQuestions(questions) {
+    let quizHtml = ''; /* Remove the initial heading */
+
+    questions.forEach((question, index) => {
+        const correctOptionText = getOptionText(question.correctOption, question);
+        quizHtml += `
+        <div class="quiz-container">
+            <p>Q${index + 1}: ${question.questionText}</p>
+            <ul>
+                <li>${question.option1}</li>
+                <li>${question.option2}</li>
+                <li>${question.option3}</li>
+                <li>${question.option4}</li>
+            </ul>
+            <button class="show-answer-btn" onclick="showAnswer(${index})">Show Answer</button>
+            <p class="correct-option" id="correct-option-${index}">Correct Option: ${correctOptionText}</p>
+            <p class="explanation" id="explanation-${index}">Explanation: ${question.explanation}</p>
+        </div>
+    `;
+    });
+
+    quizContainer.innerHTML = quizHtml;
+}
