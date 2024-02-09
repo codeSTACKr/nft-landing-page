@@ -12,6 +12,12 @@ document.getElementById('quiz5').addEventListener('click', () => loadQuiz(5));
 document.getElementById('quiz6').addEventListener('click', () => loadQuiz(6));
 document.getElementById('quiz7').addEventListener('click', () => loadQuiz(7));
 document.getElementById('quiz8').addEventListener('click', () => loadQuiz(8));
+document.getElementById('quiz9').addEventListener('click', () => loadQuiz(9));
+document.getElementById('quiz10').addEventListener('click', () => loadQuiz(10));
+document.getElementById('quiz11').addEventListener('click', () => loadQuiz(11));
+document.getElementById('quiz12').addEventListener('click', () => loadQuiz(12));
+document.getElementById('quiz13').addEventListener('click', () => loadQuiz(13));
+
 async function loadQuiz(quizId) {
     try {
         const response = await fetchQuestions(quizId);
