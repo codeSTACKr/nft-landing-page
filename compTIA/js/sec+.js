@@ -140,21 +140,5 @@ function displayQuestions(questions) {
             </div>
         `;
     });
-
     quizContainer.innerHTML = quizHtml;
-}
-
-function getOptionText(option) {
-    switch (option) {
-        case 1:
-            return question.option1;
-        case 2:
-            return question.option2;
-        case 3:
-            return question.option3;
-        case 4:
-            return question.option4;
-        default:
-            return 'Unknown Option';
-    }
 }
