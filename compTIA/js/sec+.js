@@ -99,12 +99,12 @@ async function fetchQuestions(quizId) {
 }
 
 function displayQuestions(questions) {
-    let quizHtml = '<h2>Quiz Questions</h2>';
+    let quizHtml = '<h2>Quiz ${quizId} Questions</h2>';
 
     questions.forEach(question => {
         quizHtml += `
             <div>
-                <p>${question.questionText}</p>
+                <p>Q${index + 1}: ${question.questionText}</p>
                 <ul>
                     <li>${question.option1}</li>
                     <li>${question.option2}</li>
