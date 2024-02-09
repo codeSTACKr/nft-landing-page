@@ -18,20 +18,16 @@ nav {
     padding: 10px;
 }
 
-
-nav ul {
-    text-align: center;
-}
-
 ul {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-li {
+nav li {
     margin-bottom: 5px;
     /* Adjust the spacing between quiz links */
+    text-align: center;
 }
 
 a {
