@@ -102,7 +102,8 @@ function displayQuestions(questions) {
     let quizHtml = '<h2>Quiz ${quizId} Questions</h2>';
 
     questions.forEach((question, index) => {
-        const correctOptionText = getOptionText(question.correctOption);
+        // Passing the question object as a parameter to the getOptionText function to access properties like question.option1, since the question variable is not defined within the scope of the getOptionText function.
+        const correctOptionText = getOptionText(question.correctOption, question);
         quizHtml += `
             <div>
                 <p>Q${index + 1}: ${question.questionText}</p>
