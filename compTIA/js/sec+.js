@@ -125,7 +125,7 @@ function displayQuestions(questions) {
     let quizHtml = ''; /* Remove the initial heading */
 
     questions.forEach((question, index) => {
-        const correctOptionText = getOptionText(question.correctOption);
+        const correctOptionText = getOptionText(question.correctOption, question);
         quizHtml += `
             <div class="quiz-container">
                 <p>Q${index + 1}: ${question.questionText}</p>
@@ -143,7 +143,7 @@ function displayQuestions(questions) {
     quizContainer.innerHTML = quizHtml;
 }
 
-function getOptionText(option) {
+function getOptionText(option, question) {
     switch (option) {
         case 1:
             return question.option1;
