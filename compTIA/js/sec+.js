@@ -144,7 +144,7 @@ function displayQuestions(questions) {
     quizContainer.innerHTML = quizHtml;
 }
 
-function getOptionText(option, question) {
+function getOptionText(option) {
     switch (option) {
         case 1:
             return question.option1;
