@@ -407,5 +407,9 @@ body {
 .footer h4 a:hover {
     color: goldenrod;
     font-family: 'Courier New', Courier, monospace;
+}
+
+.footer h4 a,
+.footer h4 a:hover {
     text-decoration: underline;
 }
