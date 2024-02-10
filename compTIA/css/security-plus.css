@@ -414,7 +414,7 @@ body {
     text-decoration: underline;
 }
 
-.new701link a,
-.new701link a:hover {
+.new701link,
+.new701link:hover {
     text-decoration: none;
 }
