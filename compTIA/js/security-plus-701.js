@@ -21,9 +21,20 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Add event listener for id=quiz1
-    document.getElementById(`quiz1`).addEventListener('click', () => {
+    document.getElementById("quiz1").addEventListener("click", (event) => {
+        // Prevent the default behavior (navigation)
+        event.preventDefault();
+    
+        // Play the click sound
         playClickSound();
+    
+        // Get the href attribute from the clicked link
+        const linkHref = event.currentTarget.getAttribute("href");
+    
+        // Navigate immediately after playing the sound
+        window.location.href = linkHref;
     });
+    
 
     // Add event listeners to quiz links
     for (let i = 2; i <= 27; i++) {
