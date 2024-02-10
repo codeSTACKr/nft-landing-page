@@ -1,4 +1,4 @@
-/* sec+.css */
+/* security-plus-701.css */
 
 body {
     font-family: 'Arial', sans-serif;
@@ -163,6 +163,5 @@ h2 {
 
 .footer a, 
 .footer a:hover {
-    display: inline;
     text-decoration: none;
 }

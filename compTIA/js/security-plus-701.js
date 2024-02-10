@@ -1,4 +1,4 @@
-//sec+.js
+//security-plus-701.js
 
 const quizContainer = document.getElementById('quiz-container');
 const quizLinks = document.getElementById('quiz-links');

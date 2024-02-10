@@ -407,3 +407,7 @@ body {
     color: goldenrod;
     font-family: 'Courier New', Courier, monospace;
 }
+
+.new701link a {
+    text-decoration: none;
+}
