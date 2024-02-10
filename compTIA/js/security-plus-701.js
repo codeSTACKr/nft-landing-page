@@ -31,8 +31,10 @@ document.addEventListener('DOMContentLoaded', function () {
         // Get the href attribute from the clicked link
         const linkHref = event.currentTarget.getAttribute("href");
     
-        // Navigate immediately after playing the sound
+        // Simulate navigation after the sound has played
+    setTimeout(() => {
         window.location.href = linkHref;
+    }, 1000); // Adjust the delay (in milliseconds) as needed
     });
     
 
