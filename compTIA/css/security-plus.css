@@ -405,7 +405,6 @@ body {
 .footer h4,
 .footer h4 a,
 .footer h4 a:hover {
-    font-size: 12px;
     color: goldenrod;
     font-family: 'Courier New', Courier, monospace;
 }
