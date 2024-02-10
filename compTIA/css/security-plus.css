@@ -413,3 +413,8 @@ body {
 .footer h4 a:hover {
     text-decoration: underline;
 }
+
+.new701link a,
+.new701link a:hover {
+    text-decoration: none;
+}
