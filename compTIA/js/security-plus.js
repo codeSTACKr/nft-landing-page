@@ -1919,7 +1919,7 @@ window.onload = function () {
 
         // Handle chapter selector clicks
         if (target.classList.contains("chapter-selector")) {
-            const selectedChapterIndex = parseInt(target.getAttribute("data-chapter"), 10);
+            const selectedChapterIndex = parseInt(target.getAttribute("data-chapter"), 11);
             playClickSound();
             changeChapter(selectedChapterIndex);
             window.location.href = `security-plus.html?chapter=${selectedChapterIndex}`;
