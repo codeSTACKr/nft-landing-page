@@ -1,5 +1,13 @@
+//sec+.js
+
 const quizContainer = document.getElementById('quiz-container');
 const quizLinks = document.getElementById('quiz-links');
+
+// Function to play click sound when user clicks over chapter selection
+function playClickSound() {
+    const clickSound = document.getElementById("clickSound");
+    clickSound.play();
+}
 
 document.addEventListener('DOMContentLoaded', function () {
     // Use a timeout to trigger click event after a short delay
@@ -15,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Add event listeners to quiz links
     for (let i = 2; i <= 27; i++) {
         document.getElementById(`quiz${i}`).addEventListener('click', () => {
+            playClickSound();
             loadQuiz(i);
             closeMenu();
             toggleQuizOptionsAlignment(false);

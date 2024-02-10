@@ -1,3 +1,5 @@
+/* sec+.css */
+
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -78,43 +80,57 @@ h2 {
     display: block;
     /* Show the quiz links when active */
 }
+
 /* Add styles for quiz container */
 .quiz-container {
-    background-color: #fff; /* Background color for the quiz container */
-    padding: 15px; /* Padding for spacing inside the quiz container */
-    margin-bottom: 20px; /* Adjust margin between quiz containers */
-    border-radius: 5px; /* Add rounded corners to the quiz container */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+    background-color: #fff;
+    /* Background color for the quiz container */
+    padding: 15px;
+    /* Padding for spacing inside the quiz container */
+    margin-bottom: 20px;
+    /* Adjust margin between quiz containers */
+    border-radius: 5px;
+    /* Add rounded corners to the quiz container */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Add a subtle box shadow */
 }
 
 /* Adjust styles for quiz content */
 .quiz-container p {
-    margin-bottom: 10px; /* Adjust spacing between paragraphs */
-    white-space: pre-line; /* Preserve line breaks */
+    margin-bottom: 10px;
+    /* Adjust spacing between paragraphs */
+    white-space: pre-line;
+    /* Preserve line breaks */
 }
 
 .quiz-container ul {
     list-style: none;
     padding: 0;
-    margin-left: 20px; /* Add left margin to align with the question */
+    margin-left: 20px;
+    /* Add left margin to align with the question */
 }
 
 .quiz-container ul li {
-    margin-bottom: 5px; /* Adjust spacing between answer options */
-    list-style-type: disc; /* Add bullets to list items */
+    margin-bottom: 5px;
+    /* Adjust spacing between answer options */
+    list-style-type: disc;
+    /* Add bullets to list items */
 }
 
 .quiz-container p.correct-option {
-    color: #27ae60; /* Color for the correct option text */
+    color: #27ae60;
+    /* Color for the correct option text */
     font-weight: bold;
 }
 
 .quiz-container p.explanation {
-    color: #3498db; /* Color for the explanation text */
+    color: #3498db;
+    /* Color for the explanation text */
     font-style: italic;
 }
 
-.correct-option, .explanation {
+.correct-option,
+.explanation {
     display: none;
 }
 
@@ -130,7 +146,8 @@ h2 {
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
     cursor: pointer;
-    margin-top: 10px; /* Adjust margin from the top */
+    margin-top: 10px;
+    /* Adjust margin from the top */
 }
 
 .show-answer-btn:hover {

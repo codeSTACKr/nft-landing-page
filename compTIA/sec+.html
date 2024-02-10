@@ -3,15 +3,38 @@
 
 <head>
     <meta charset="UTF-8">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B9HSGCSFRH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-B9HSGCSFRH');
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/sec+.css">
+    <meta name="description" content="Test your knowledge with these CompTIA Security+ quizes.">
+    <meta name="author" content="AlienznBotz">
     <title>CompTIA Security+</title>
+    <link rel="stylesheet" href="css/sec+.css">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <script defer src="js/sec+.js"></script>
 </head>
 
 <body>
+    <audio id="clickSound">
+        <source src="av/click-sound.mp3" type="audio/mp3">
+        </source>
+        <source src="av/click-sound.wav" type="audio/wav">
+        </source>
+        Your browser does not support the audio element.
+    </audio>
+
     <header><a href="#" id="menu">SY0-701 Quizzes</a></header>
     <nav>
         <ul id="quiz-links" class="quiz-options">
+            <li><a href="security-plus.html">Section 1: Review Quizzes from SY0-601</a></li>
             <li><a href="#" id="quiz2">Section 2: Fundamentals of Security</a></li>
             <li><a href="#" id="quiz3">Section 3: Threat Actors</a></li>
             <li><a href="#" id="quiz4">Section 4: Physical Security</a></li>
@@ -41,7 +64,9 @@
         </ul>
     </nav>
     <main id="quiz-container"></main>
-    <script src="js/sec+.js" defer></script>
+    <footer class="footer">
+        <h4>Copyright &copy; 2024 <a href="https://alienznbotz.xyz">AlienznBotz</a>. All rights reserved.</h4>
+    </footer>
 </body>
 
 </html>
