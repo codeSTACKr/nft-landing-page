@@ -154,8 +154,11 @@ h2 {
     background-color: #3498db;
 }
 
-.footer h4 {
+.footer {
     font-size: 12px;
     color: goldenrod;
     font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    display: inline ;
+    text-decoration: none;
 }
