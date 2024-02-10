@@ -161,7 +161,7 @@ h2 {
     text-align: center;
 }
 
-.footer a, 
-.footer a:hover {
+.footer h4 a, 
+.footer h4 a:hover {
     text-decoration: none;
 }
