@@ -1914,7 +1914,7 @@ window.onload = function () {
     resetQuizPopup = document.querySelector("#resetQuizPopup");
 
     // Add event listener for id=quiz1
-    document.getElementsByClassName(".new701link").addEventListener("click", (event) => {
+    document.getElementsByClassName("new701link")[0].addEventListener("click", (event) => {
         // Prevent the default behavior (navigation)
         event.preventDefault();
     
