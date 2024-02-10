@@ -163,6 +163,7 @@ h2 {
 
 .footer h4 a, 
 .footer h4 a:hover {
+    background-color: #fff ;
     display: inline;
     text-decoration: none;
 }
