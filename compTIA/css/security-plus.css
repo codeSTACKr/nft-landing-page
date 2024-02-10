@@ -407,6 +407,7 @@ body {
 .footer h4 a:hover {
     color: goldenrod;
     font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
 }
 
 .footer h4 a,
@@ -420,4 +421,5 @@ body {
 .new701link:active {
     text-decoration: none;
     color: #000 ;
+    font-size: 12px;
 }

@@ -158,6 +158,7 @@ h2 {
     color: goldenrod;
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
+    font-size: 12px;
 }
 
 .footer h4 a,
@@ -166,4 +167,5 @@ h2 {
     color: goldenrod;
     background-color: transparent;
     text-decoration: underline;
+    font-size: 12px;
 }
