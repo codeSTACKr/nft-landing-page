@@ -161,7 +161,8 @@ h2 {
     text-align: center;
 }
 
-.footer a {
+.footer a, 
+.footer a:hoover {
     display: inline;
     text-decoration: none;
 }
