@@ -20,6 +20,11 @@ document.addEventListener('DOMContentLoaded', function () {
         quizLinks.classList.toggle("active");
     });
 
+    // Add event listener for id=quiz1
+    document.getElementById(`quiz1`).addEventListener('click', () => {
+        playClickSound();
+    });
+
     // Add event listeners to quiz links
     for (let i = 2; i <= 27; i++) {
         document.getElementById(`quiz${i}`).addEventListener('click', () => {

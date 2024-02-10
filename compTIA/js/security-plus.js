@@ -1913,6 +1913,12 @@ window.onload = function () {
     backToChapterPopup = document.querySelector("#backToChapterPopup");
     resetQuizPopup = document.querySelector("#resetQuizPopup");
 
+    // Attach event listener to the new701link
+
+    document.getElementsByClassName(`.new701link`).addEventListener('click', () => {
+        playClickSound();
+    })
+
     // Attach event listener to the document to handle clicks
     document.addEventListener("click", function (event) {
         const target = event.target;
