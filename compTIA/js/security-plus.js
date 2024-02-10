@@ -1913,11 +1913,22 @@ window.onload = function () {
     backToChapterPopup = document.querySelector("#backToChapterPopup");
     resetQuizPopup = document.querySelector("#resetQuizPopup");
 
-    // Attach event listener to the new701link
-
-    document.getElementsByClassName(`.new701link`).addEventListener('click', () => {
+    // Add event listener for id=quiz1
+    document.getElementsByClassName(".new701link").addEventListener("click", (event) => {
+        // Prevent the default behavior (navigation)
+        event.preventDefault();
+    
+        // Play the click sound
         playClickSound();
-    })
+    
+        // Get the href attribute from the clicked link
+        const linkHref = event.currentTarget.getAttribute("href");
+    
+        // Simulate navigation after the sound has played
+    setTimeout(() => {
+        window.location.href = linkHref;
+    }, 1000); // Adjust the delay (in milliseconds) as needed
+    });
 
     // Attach event listener to the document to handle clicks
     document.addEventListener("click", function (event) {
