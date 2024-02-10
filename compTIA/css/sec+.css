@@ -159,6 +159,9 @@ h2 {
     color: goldenrod;
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
-    display: inline ;
+}
+
+.footer a {
+    display: inline;
     text-decoration: none;
 }
