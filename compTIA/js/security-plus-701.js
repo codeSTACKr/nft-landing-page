@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Simulate navigation after the sound has played
     setTimeout(() => {
         window.location.href = linkHref;
-    }, 1000); // Adjust the delay (in milliseconds) as needed
+    }, 500); // Adjust the delay (in milliseconds) as needed
     });
     
 
