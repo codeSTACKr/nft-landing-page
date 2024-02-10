@@ -90,6 +90,7 @@ h2 {
 /* Adjust styles for quiz content */
 .quiz-container p {
     margin-bottom: 10px; /* Adjust spacing between paragraphs */
+    white-space: pre-line; /* Preserve line breaks */
 }
 
 .quiz-container ul {
