@@ -161,9 +161,12 @@ h2 {
     text-align: center;
 }
 
-.footer h4 a, 
+.footer h4 a {
+    background-color: transparent;
+}
+
 .footer h4 a:hover {
-    background-color: #fff ;
     display: inline;
-    text-decoration: none;
+    background-color: transparent;
+    text-decoration: transparent;
 }
