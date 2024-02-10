@@ -415,6 +415,8 @@ body {
 }
 
 .new701link,
-.new701link:hover {
+.new701link:hover,
+.new701link:visited,
+.new701link:active {
     text-decoration: none;
 }
