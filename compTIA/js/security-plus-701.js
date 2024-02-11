@@ -135,8 +135,8 @@ function displayQuestions(questions) {
         const correctOptionText = getOptionText(question.correctOption, question);
         quizHtml += `
         <div class="quiz-container">
-            <p><strong>Q${index + 1}: ${question.questionText}</strong></p>
-            <img src="../img/sound-icon.png" alt="Sound Icon" class="sound-icon" onclick="readQuestion('${question.questionText}')">
+            <p><strong>Q${index + 1}: ${question.questionText}</strong>
+            <img src="../img/sound-icon.png" alt="Sound Icon" class="sound-icon" onclick="readQuestion('${question.questionText}')"></p>
             <ul>
                 <li>${question.option1}</li>
                 <li>${question.option2}</li>
