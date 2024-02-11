@@ -24,19 +24,19 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("quiz1").addEventListener("click", (event) => {
         // Prevent the default behavior (navigation)
         event.preventDefault();
-    
+
         // Play the click sound
         playClickSound();
-    
+
         // Get the href attribute from the clicked link
         const linkHref = event.currentTarget.getAttribute("href");
-    
+
         // Simulate navigation after the sound has played
-    setTimeout(() => {
-        window.location.href = linkHref;
-    }, 500); // Adjust the delay (in milliseconds) as needed
+        setTimeout(() => {
+            window.location.href = linkHref;
+        }, 500); // Adjust the delay (in milliseconds) as needed
     });
-    
+
 
     // Add event listeners to quiz links
     for (let i = 2; i <= 27; i++) {
@@ -118,6 +118,16 @@ function getOptionText(option, question) {
     }
 }
 
+// Add a new function for text-to-speech
+function readQuestion(questionText) {
+    // Use a text-to-speech API or library to read out the question
+    // For example, you can use the Web Speech API if supported by the browser
+    const synth = window.speechSynthesis;
+    const utterance = new SpeechSynthesisUtterance(questionText);
+    synth.speak(utterance);
+}
+
+// Modify your existing displayQuestions function to include the sound icon
 function displayQuestions(questions) {
     let quizHtml = '';
 
@@ -126,6 +136,7 @@ function displayQuestions(questions) {
         quizHtml += `
         <div class="quiz-container">
             <p><strong>Q${index + 1}: ${question.questionText}</strong></p>
+            <img src="../img/sound-icon.png" alt="Sound Icon" class="sound-icon" onclick="readQuestion('${question.questionText}')">
             <ul>
                 <li>${question.option1}</li>
                 <li>${question.option2}</li>
@@ -142,4 +153,3 @@ function displayQuestions(questions) {
     // Display the HTML
     document.getElementById('quiz-container').innerHTML = quizHtml;
 }
-
