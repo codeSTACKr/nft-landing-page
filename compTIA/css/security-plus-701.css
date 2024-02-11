@@ -169,3 +169,8 @@ h2 {
     text-decoration: underline;
     font-size: 12px;
 }
+
+.sound-icon {
+    width: 20px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+}
