@@ -54,14 +54,30 @@ document.addEventListener('DOMContentLoaded', function () {
         quizLinks.classList.remove("active");
     }
 
+    async function fetchQuestions(quizId) {
+        const apiUrl = 'https://alienznbotz.xyz/.netlify/functions/getQuiz';
+        try {
+            const response = await fetch(`${apiUrl}?quizId=${quizId}`);
+            if (!response.ok) {
+                throw new Error(`Failed to fetch questions: ${response.statusText}`);
+            }
+            // Parse the JSON response
+            const questions = await response.json();
+            return questions;
+        } catch (error) {
+            console.error('Error fetching questions:', error.message);
+            throw error;
+        }
+    }
+
     async function loadQuiz(quizId) {
         const response = await fetchQuestions(quizId);
-    
+
         if (response.ok) {
             const questions = await response.json();
             displayQuestions(questions);
             toggleQuizOptionsAlignment(true); // Align quiz options to the left
-    
+
             // Change the URL without triggering a full page reload
             const quizName = `Quiz-${quizId}`;
             const newUrl = `${window.location.href.split('#')[0]}#${quizName}`;
@@ -70,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error(`Failed to fetch questions: ${response.statusText}`);
         }
     }
-    
+
 
     function toggleQuizOptionsAlignment(alignLeft) {
         const quizOptions = quizLinks;
