@@ -124,18 +124,19 @@ function readQuestion(questionText) {
     // For example, you can use the Web Speech API if supported by the browser
     const synth = window.speechSynthesis;
 
-    // URL encode the text containing apostrophes
-    const encodedText = encodeURIComponent(questionText);
+    // Escape the text containing apostrophes
+    const escapedText = escape(questionText);
 
-    // Log the encoded text for debugging
-    console.log('Encoded Text:', encodedText);
+    // Log the escaped text for debugging
+    console.log('Escaped Text:', escapedText);
 
-    // Create a SpeechSynthesisUtterance with the encoded text
-    const utterance = new SpeechSynthesisUtterance(encodedText);
+    // Create a SpeechSynthesisUtterance with the escaped text
+    const utterance = new SpeechSynthesisUtterance(escapedText);
 
     // Speak the utterance
     synth.speak(utterance);
 }
+
 
 
 // Modify your existing displayQuestions function to include the sound icon
