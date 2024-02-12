@@ -86,8 +86,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     async function fetchQuestions(quizId) {
         const apiUrl = 'https://alienznbotz.xyz/.netlify/functions/getQuiz';
-        return await fetch(`${apiUrl}?quizId=${quizId}`);
+        try {
+            const response = await fetch(`${apiUrl}?quizId=${quizId}`);
+    
+            if (!response.ok) {
+                throw new Error(`Failed to fetch questions: ${response.statusText}`);
+            }
+    
+            // Parse the JSON response
+            const questions = await response.json();
+    
+            return questions;
+        } catch (error) {
+            console.error('Error fetching questions:', error.message);
+            throw error; // Rethrow the error to handle it at the caller's level
+        }
     }
+        
 });
 
 // Move the showAnswer function outside the DOMContentLoaded event listener
