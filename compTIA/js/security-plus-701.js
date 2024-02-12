@@ -9,7 +9,24 @@ function playClickSound() {
     clickSound.play();
 }
 
+// Function to initialize speech synthesis
+function initializeSpeechSynthesis() {
+    const synth = window.speechSynthesis;
+
+    // Check if voices are loaded
+    if (synth.getVoices().length === 0) {
+        // Wait for the voices to be loaded
+        synth.onvoiceschanged = function () {
+            // Now you can use the readQuestion function with voice selection
+            readQuestion(''); // Dummy call to ensure voices are loaded
+        };
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function () {
+    // Call the initializeSpeechSynthesis function when the DOM is loaded
+    initializeSpeechSynthesis();
+
     // Use a timeout to trigger click event after a short delay
     setTimeout(function () {
         document.getElementById("menu").click();
