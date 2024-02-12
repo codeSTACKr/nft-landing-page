@@ -177,9 +177,10 @@ function displayQuestions(questions) {
             <p class="correct-option" id="correct-option-${index}"><strong>Correct Option:</strong> ${correctOptionText}</p>
             <p class="explanation" id="explanation-${index}"><strong>Explanation:</strong> ${question.explanation}</p>
         </div>
-    `;
+        `;
     });
 
     // Display the HTML
     document.getElementById('quiz-container').innerHTML = quizHtml;
 }
+
