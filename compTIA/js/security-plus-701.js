@@ -58,12 +58,15 @@ document.addEventListener('DOMContentLoaded', function () {
         const apiUrl = 'https://alienznbotz.xyz/.netlify/functions/getQuiz';
         try {
             const response = await fetch(`${apiUrl}?quizId=${quizId}`);
+            console.log('Full response object:', response); // Log the complete response object
+    
             if (!response.ok) {
                 console.error('Failed to fetch questions:', response.statusText);
                 // Log the complete error object
                 console.error(response);
                 throw new Error(`Failed to fetch questions: ${response.statusText}`);
             }
+    
             // Parse the JSON response
             const questions = await response.json();
             return questions;
@@ -72,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
             throw error;
         }
     }
+    
 
     async function loadQuiz(quizId) {
         try {
