@@ -127,10 +127,10 @@ function getOptionText(option, question) {
 //     synth.speak(utterance);
 
 // Add a new function for text-to-speech
-function readQuestion(questionText) {
+// function readQuestion(questionText) {
     // Use a text-to-speech API or library to read out the question
     // For example, you can use the Web Speech API if supported by the browser
-    const synth = window.speechSynthesis;
+    // const synth = window.speechSynthesis;
 
     // Encode the text containing special character for single quote
     // const encodedText = questionText.replace(/'/g, '%27');
@@ -142,13 +142,26 @@ function readQuestion(questionText) {
     // const utterance = new SpeechSynthesisUtterance(decodedText);
 
     // Wrap the text in double quotes
-    const wrappedText = `"${questionText}"`;
+    // const wrappedText = `"${questionText}"`;
 
-    const utterance = new SpeechSynthesisUtterance(wrappedText);
+    // const utterance = new SpeechSynthesisUtterance(wrappedText);
 
     // Speak the utterance
+    // synth.speak(utterance);
+// }
+
+// Add a new function for text-to-speech
+function readQuestion(questionText) {
+    // Replace single quotes with the HTML entity &apos;
+    const replacedText = questionText.replace(/'/g, '&apos;');
+
+    // Use a text-to-speech API or library to read out the question
+    // For example, you can use the Web Speech API if supported by the browser
+    const synth = window.speechSynthesis;
+    const utterance = new SpeechSynthesisUtterance(replacedText);
     synth.speak(utterance);
 }
+
 
 // Modify your existing displayQuestions function to include the sound icon
 function displayQuestions(questions) {
