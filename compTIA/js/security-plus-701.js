@@ -145,7 +145,6 @@ function readQuestion(questionText) {
     const wrappedText = `"${questionText}"`;
 
     const utterance = new SpeechSynthesisUtterance(wrappedText);
-    synth.speak(utterance);
 
     // Speak the utterance
     synth.speak(utterance);
