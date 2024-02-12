@@ -10,8 +10,6 @@ function playClickSound() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Call the initializeSpeechSynthesis function when the DOM is loaded
-    initializeSpeechSynthesis();
 
     // Use a timeout to trigger click event after a short delay
     setTimeout(function () {
