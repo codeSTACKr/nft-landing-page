@@ -123,9 +123,22 @@ function readQuestion(questionText) {
     // Use a text-to-speech API or library to read out the question
     // For example, you can use the Web Speech API if supported by the browser
     const synth = window.speechSynthesis;
-    const utterance = new SpeechSynthesisUtterance(questionText);
-    synth.speak(utterance);
+
+    // Check if voices are loaded
+    if (synth.getVoices().length === 0) {
+        // Wait for the voices to be loaded
+        synth.onvoiceschanged = function () {
+            // Now you can use the readQuestion function with voice selection
+            const utterance = new SpeechSynthesisUtterance(questionText);
+            synth.speak(utterance);
+        };
+    } else {
+        // Voices are already loaded, proceed with speaking
+        const utterance = new SpeechSynthesisUtterance(questionText);
+        synth.speak(utterance);
+    }
 }
+
 
 // Modify your existing displayQuestions function to include the sound icon
 function displayQuestions(questions) {
