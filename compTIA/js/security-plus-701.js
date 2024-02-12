@@ -88,6 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 history.pushState(null, null, newUrl);
             } else {
                 console.error(`Failed to fetch questions: ${response.statusText || 'Unknown error'}`);
+                console.error(response);
             }
         } catch (error) {
             console.error('Error loading quiz:', error.message);
