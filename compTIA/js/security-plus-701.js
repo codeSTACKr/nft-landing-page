@@ -123,9 +123,17 @@ function readQuestion(questionText) {
     // Use a text-to-speech API or library to read out the question
     // For example, you can use the Web Speech API if supported by the browser
     const synth = window.speechSynthesis;
-    const utterance = new SpeechSynthesisUtterance(questionText);
+
+    // URL encode the text containing apostrophes
+    const encodedText = encodeURIComponent(questionText);
+
+    // Create a SpeechSynthesisUtterance with the encoded text
+    const utterance = new SpeechSynthesisUtterance(encodedText);
+
+    // Speak the utterance
     synth.speak(utterance);
 }
+
 
 // Modify your existing displayQuestions function to include the sound icon
 function displayQuestions(questions) {
