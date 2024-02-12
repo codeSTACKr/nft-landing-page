@@ -118,24 +118,39 @@ function getOptionText(option, question) {
     }
 }
 
+// // Add a new function for text-to-speech
+// function readQuestion(questionText) {
+//     // Use a text-to-speech API or library to read out the question
+//     // For example, you can use the Web Speech API if supported by the browser
+//     const synth = window.speechSynthesis;
+//     const utterance = new SpeechSynthesisUtterance(questionText);
+//     synth.speak(utterance);
+
 // Add a new function for text-to-speech
 function readQuestion(questionText) {
     // Use a text-to-speech API or library to read out the question
     // For example, you can use the Web Speech API if supported by the browser
     const synth = window.speechSynthesis;
 
-    // Escape the text containing apostrophes
-    const escapedText = escape(questionText);
+    // Encode the text containing special characters
+    const encodedText = encodeURIComponent(questionText);
 
-    // Log the escaped text for debugging
-    console.log('Escaped Text:', escapedText);
+    // Log the encoded text for debugging
+    console.log('Encoded Text:', encodedText);
 
-    // Create a SpeechSynthesisUtterance with the escaped text
-    const utterance = new SpeechSynthesisUtterance(escapedText);
+    // Decode the encoded text to handle special characters correctly
+    const decodedText = decodeURIComponent(encodedText);
+
+    // Log the decoded text for debugging
+    console.log('Decoded Text:', decodedText);
+
+    // Create a SpeechSynthesisUtterance with the decoded text
+    const utterance = new SpeechSynthesisUtterance(decodedText);
 
     // Speak the utterance
     synth.speak(utterance);
 }
+
 
 
 
