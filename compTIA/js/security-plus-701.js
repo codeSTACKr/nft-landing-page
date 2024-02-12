@@ -152,15 +152,14 @@ function getOptionText(option, question) {
 
 // Add a new function for text-to-speech
 function readQuestion(questionText) {
-    // Replace single quotes with the HTML entity &apos;
-    const replacedText = questionText.replace(/'/g, '&apos;');
-
     // Use a text-to-speech API or library to read out the question
     // For example, you can use the Web Speech API if supported by the browser
     const synth = window.speechSynthesis;
-    const utterance = new SpeechSynthesisUtterance(replacedText);
+    const utterance = new SpeechSynthesisUtterance();
+    utterance.text = questionText.replace(/'/g, '&apos;');
     synth.speak(utterance);
 }
+
 
 
 // Modify your existing displayQuestions function to include the sound icon
