@@ -39,33 +39,24 @@ exports.handler = async function (event, context) {
     console.log('Quiz ID:', quizId); // Log the quizId
 
     const connection = await pool.getConnection();
-
-    // Use a prepared statement to prevent SQL injection
     const [rows] = await connection.query('SELECT * FROM Questions WHERE quizID = ?', [quizId]);
+    connection.release();
 
-    console.log('Executing SQL query:', 'SELECT * FROM Questions WHERE quizID = ?', [quizId]);
-
-    // Log the fetched rows
-    console.log('Fetched rows:', rows);
+    console.log('Fetched rows:', rows); // Log the fetched rows
 
     return {
       statusCode: 200,
       body: JSON.stringify(rows),
     };
   } catch (error) {
-    console.error('Error executing SQL query:', error.message);
+    console.error('Error fetching questions:', error.message);
 
     return {
       statusCode: 500,
       body: 'Internal Server Error',
     };
-  } finally {
-    connection.release(); // Always release the connection, even if an error occurs
   }
 };
-
-
-
 
 
 
