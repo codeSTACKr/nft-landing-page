@@ -127,6 +127,9 @@ function readQuestion(questionText) {
     // URL encode the text containing apostrophes
     const encodedText = encodeURIComponent(questionText);
 
+    // Log the encoded text for debugging
+    console.log('Encoded Text:', encodedText);
+
     // Create a SpeechSynthesisUtterance with the encoded text
     const utterance = new SpeechSynthesisUtterance(encodedText);
 
