@@ -57,18 +57,18 @@ document.addEventListener('DOMContentLoaded', function () {
     async function loadQuiz(quizId) {
         try {
             const response = await fetchQuestions(quizId);
-    
+
             if (response) {
                 if (response.ok) {
                     const questions = await response.json();
                     displayQuestions(questions);
                     toggleQuizOptionsAlignment(true); // Align quiz options to the left
-    
+
                     // Change the URL without triggering a full page reload
                     const quizName = `Quiz-${quizId}`;
                     const newUrl = `${window.location.href.split('#')[0]}#${quizName}`;
                     history.pushState(null, null, newUrl);
-    
+
                 } else {
                     throw new Error(`Failed to fetch questions: ${response.statusText || 'Unknown error'}`);
                 }
@@ -79,8 +79,8 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('Error loading quiz:', error.message);
         }
     }
-    
-    
+
+
     function toggleQuizOptionsAlignment(alignLeft) {
         const quizOptions = quizLinks;
         if (alignLeft) {
@@ -94,67 +94,67 @@ document.addEventListener('DOMContentLoaded', function () {
         const apiUrl = 'https://alienznbotz.xyz/.netlify/functions/getQuiz';
         try {
             const response = await fetch(`${apiUrl}?quizId=${quizId}`);
-    
+
             if (!response.ok) {
                 throw new Error(`Failed to fetch questions. Status: ${response.status}, StatusText: ${response.statusText}`);
             }
-    
+
             // Parse the JSON response
             const questions = await response.json();
-    
+
             return questions;
         } catch (error) {
             console.error('Error fetching questions:', error.message);
             throw error; // Rethrow the error to handle it at the caller's level
         }
     }
-    
 
-// Move the showAnswer function outside the DOMContentLoaded event listener
-function showAnswer(index) {
-    const correctOptionElement = document.getElementById(`correct-option-${index}`);
-    const explanationElement = document.getElementById(`explanation-${index}`);
 
-    // Toggle the visibility of correct option and explanation
-    if (correctOptionElement && explanationElement) {
-        correctOptionElement.style.display = (correctOptionElement.style.display === 'none' || !correctOptionElement.style.display) ? 'block' : 'none';
-        explanationElement.style.display = (explanationElement.style.display === 'none' || !explanationElement.style.display) ? 'block' : 'none';
-    } else {
-        console.error('Elements not found for index:', index);
+    // Move the showAnswer function outside the DOMContentLoaded event listener
+    function showAnswer(index) {
+        const correctOptionElement = document.getElementById(`correct-option-${index}`);
+        const explanationElement = document.getElementById(`explanation-${index}`);
+
+        // Toggle the visibility of correct option and explanation
+        if (correctOptionElement && explanationElement) {
+            correctOptionElement.style.display = (correctOptionElement.style.display === 'none' || !correctOptionElement.style.display) ? 'block' : 'none';
+            explanationElement.style.display = (explanationElement.style.display === 'none' || !explanationElement.style.display) ? 'block' : 'none';
+        } else {
+            console.error('Elements not found for index:', index);
+        }
     }
-}
 
-function getOptionText(option, question) {
-    switch (option) {
-        case 1:
-            return question.option1;
-        case 2:
-            return question.option2;
-        case 3:
-            return question.option3;
-        case 4:
-            return question.option4;
-        default:
-            return 'Unknown Option';
+    function getOptionText(option, question) {
+        switch (option) {
+            case 1:
+                return question.option1;
+            case 2:
+                return question.option2;
+            case 3:
+                return question.option3;
+            case 4:
+                return question.option4;
+            default:
+                return 'Unknown Option';
+        }
     }
-}
 
-// Add a new function for text-to-speech
-function readQuestion(questionText) {
-    // Use a text-to-speech API or library to read out the question
-    // For example, you can use the Web Speech API if supported by the browser
-    const synth = window.speechSynthesis;
-    const utterance = new SpeechSynthesisUtterance(questionText);
-    synth.speak(utterance);
-}
+    // Add a new function for text-to-speech
+    function readQuestion(questionText) {
+        // Use a text-to-speech API or library to read out the question
+        // For example, you can use the Web Speech API if supported by the browser
+        const synth = window.speechSynthesis;
+        const utterance = new SpeechSynthesisUtterance(questionText);
+        synth.speak(utterance);
+    }
 
-// Modify your existing displayQuestions function to include the sound icon
-function displayQuestions(questions) {
-    let quizHtml = '';
+    // Modify your existing displayQuestions function to include the sound icon
+    function displayQuestions(questions) {
+        let quizHtml = '';
 
-    questions.forEach((question, index) => {
-        const correctOptionText = getOptionText(question.correctOption, question);
-        quizHtml += `
+        questions.forEach((question, index) => {
+            const correctOptionText = getOptionText(question.correctOption, question);
+            quizHtml += `
         <div class="quiz-container">
         <p><strong>Q${index + 1}: ${question.questionText}</strong>
         <img src="img/sound-icon.png" alt="Sound Icon" class="sound-icon" onclick="readQuestion('${question.questionText}')"></p>
@@ -169,9 +169,9 @@ function displayQuestions(questions) {
             <p class="explanation" id="explanation-${index}"><strong>Explanation:</strong> ${question.explanation}</p>
         </div>
         `;
-    });
+        });
 
-    // Display the HTML
-    document.getElementById('quiz-container').innerHTML = quizHtml;
-}
-
+        // Display the HTML
+        document.getElementById('quiz-container').innerHTML = quizHtml;
+    }
+});
