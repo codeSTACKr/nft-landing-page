@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const newUrl = `${window.location.href.split('#')[0]}#${quizName}`;
             history.pushState(null, null, newUrl);
         } else {
-            console.error(`Failed to fetch questions:`);
+            console.error(`Failed to fetch questions: ${response.statusText}`);
         }
     }
 
