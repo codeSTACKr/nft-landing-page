@@ -76,24 +76,33 @@ document.addEventListener('DOMContentLoaded', function () {
     async function loadQuiz(quizId) {
         try {
             const response = await fetchQuestions(quizId);
-
+    
+            console.log('Response status:', response.status);
+            console.log('Response statusText:', response.statusText);
+    
             if (response.ok) {
                 const questions = await response.json();
                 displayQuestions(questions);
                 toggleQuizOptionsAlignment(true); // Align quiz options to the left
-
+    
                 // Change the URL without triggering a full page reload
                 const quizName = `Quiz-${quizId}`;
                 const newUrl = `${window.location.href.split('#')[0]}#${quizName}`;
                 history.pushState(null, null, newUrl);
             } else {
-                console.error(`Failed to fetch questions: ${response.statusText || 'Unknown error'}`);
+                console.error('Failed to fetch questions:', response.statusText || 'Unknown error');
+                // Log the complete response object
                 console.error(response);
+    
+                // Log the response body as well
+                const responseBody = await response.text();
+                console.error('Response body:', responseBody);
             }
         } catch (error) {
             console.error('Error loading quiz:', error.message);
         }
     }
+    
 
 
 
