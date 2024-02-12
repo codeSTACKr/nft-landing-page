@@ -133,20 +133,23 @@ function readQuestion(questionText) {
     const synth = window.speechSynthesis;
 
     // Encode the text containing special character for single quote
-    const encodedText = questionText.replace(/'/g, '%27');
+    // const encodedText = questionText.replace(/'/g, '%27');
 
     // Decode the text containing special characters
-    const decodedText = decodeURIComponent(encodedText);
+    // const decodedText = decodeURIComponent(encodedText);
 
     // Create a SpeechSynthesisUtterance with the decoded text
-    const utterance = new SpeechSynthesisUtterance(decodedText);
+    // const utterance = new SpeechSynthesisUtterance(decodedText);
+
+    // Wrap the text in double quotes
+    const wrappedText = `"${questionText}"`;
+
+    const utterance = new SpeechSynthesisUtterance(wrappedText);
+    synth.speak(utterance);
 
     // Speak the utterance
     synth.speak(utterance);
 }
-
-
-
 
 // Modify your existing displayQuestions function to include the sound icon
 function displayQuestions(questions) {
