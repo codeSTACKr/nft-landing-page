@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const response = await fetch(`${apiUrl}?quizId=${quizId}`);
     
             if (!response.ok) {
-                throw new Error(`Failed to fetch questions: ${response.statusText}`);
+                throw new Error(`Failed to fetch questions. Status: ${response.status}, StatusText: ${response.statusText}`);
             }
     
             // Parse the JSON response
@@ -108,8 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
             throw error; // Rethrow the error to handle it at the caller's level
         }
     }
-        
-});
+    
 
 // Move the showAnswer function outside the DOMContentLoaded event listener
 function showAnswer(index) {
