@@ -132,17 +132,11 @@ function readQuestion(questionText) {
     // For example, you can use the Web Speech API if supported by the browser
     const synth = window.speechSynthesis;
 
-    // Encode the text containing special characters
-    const encodedText = encodeURIComponent(questionText);
+    // Encode the text containing special character for single quote
+    const encodedText = questionText.replace(/'/g, '%27');
 
-    // Log the encoded text for debugging
-    console.log('Encoded Text:', encodedText);
-
-    // Decode the encoded text to handle special characters correctly
+    // Decode the text containing special characters
     const decodedText = decodeURIComponent(encodedText);
-
-    // Log the decoded text for debugging
-    console.log('Decoded Text:', decodedText);
 
     // Create a SpeechSynthesisUtterance with the decoded text
     const utterance = new SpeechSynthesisUtterance(decodedText);
