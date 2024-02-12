@@ -3,7 +3,7 @@
 const quizContainer = document.getElementById('quiz-container');
 const quizLinks = document.getElementById('quiz-links');
 
-// Function to play click sound when user clicks over chapter selection
+// Function to play click sound when the user clicks over chapter selection
 function playClickSound() {
     const clickSound = document.getElementById("clickSound");
     clickSound.play();
@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 500); // Adjust the delay (in milliseconds) as needed
     });
 
-
     // Add event listeners to quiz links
     for (let i = 2; i <= 27; i++) {
         document.getElementById(`quiz${i}`).addEventListener('click', () => {
@@ -58,28 +57,23 @@ document.addEventListener('DOMContentLoaded', function () {
         try {
             const response = await fetchQuestions(quizId);
 
-            if (response) {
-                if (response.ok) {
-                    const questions = await response.json();
-                    displayQuestions(questions);
-                    toggleQuizOptionsAlignment(true); // Align quiz options to the left
+            if (response.ok) {
+                const questions = await response.json();
+                displayQuestions(questions);
+                toggleQuizOptionsAlignment(true); // Align quiz options to the left
 
-                    // Change the URL without triggering a full page reload
-                    const quizName = `Quiz-${quizId}`;
-                    const newUrl = `${window.location.href.split('#')[0]}#${quizName}`;
-                    history.pushState(null, null, newUrl);
+                // Change the URL without triggering a full page reload
+                const quizName = `Quiz-${quizId}`;
+                const newUrl = `${window.location.href.split('#')[0]}#${quizName}`;
+                history.pushState(null, null, newUrl);
 
-                } else {
-                    throw new Error(`Failed to fetch questions: ${response.statusText || 'Unknown error'}`);
-                }
             } else {
-                throw new Error('Response is undefined');
+                throw new Error(`Failed to fetch questions: ${response.statusText || 'Unknown error'}`);
             }
         } catch (error) {
             console.error('Error loading quiz:', error.message);
         }
     }
-
 
     function toggleQuizOptionsAlignment(alignLeft) {
         const quizOptions = quizLinks;
@@ -109,13 +103,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-
     // Move the showAnswer function outside the DOMContentLoaded event listener
     function showAnswer(index) {
         const correctOptionElement = document.getElementById(`correct-option-${index}`);
         const explanationElement = document.getElementById(`explanation-${index}`);
 
-        // Toggle the visibility of correct option and explanation
+        // Toggle the visibility of the correct option and explanation
         if (correctOptionElement && explanationElement) {
             correctOptionElement.style.display = (correctOptionElement.style.display === 'none' || !correctOptionElement.style.display) ? 'block' : 'none';
             explanationElement.style.display = (explanationElement.style.display === 'none' || !explanationElement.style.display) ? 'block' : 'none';
