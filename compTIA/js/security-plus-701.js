@@ -84,23 +84,26 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    async function fetchQuestions(quizId) {
-        const apiUrl = 'https://alienznbotz.xyz/.netlify/functions/getQuiz';
+    async function loadQuiz(quizId) {
         try {
-            const response = await fetch(`${apiUrl}?quizId=${quizId}`);
-    
+            const response = await fetchQuestions(quizId);
             if (response.ok) {
-                // Parse the JSON response
                 const questions = await response.json();
-                return questions;
+                displayQuestions(questions);
+                toggleQuizOptionsAlignment(true); // Align quiz options to the left
+    
+                // Change the URL without triggering a full page reload
+                const quizName = `Quiz-${quizId}`;
+                const newUrl = `${window.location.href.split('#')[0]}#${quizName}`;
+                history.pushState(null, null, newUrl);
             } else {
-                throw new Error(`Failed to fetch questions. Status: ${response.status}, StatusText: ${response.statusText}`);
+                throw new Error(`Failed to fetch questions: ${response.statusText}`);
             }
         } catch (error) {
-            console.error('Error fetching questions:', error.message);
-            throw error; // Rethrow the error to handle it at the caller's level
+            console.error('Error loading quiz:', error);
         }
     }
+    
     
         
 });
