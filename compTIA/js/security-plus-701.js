@@ -59,6 +59,9 @@ document.addEventListener('DOMContentLoaded', function () {
         try {
             const response = await fetch(`${apiUrl}?quizId=${quizId}`);
             if (!response.ok) {
+                console.error('Failed to fetch questions:', response.statusText);
+                // Log the complete error object
+                console.error(response);
                 throw new Error(`Failed to fetch questions: ${response.statusText}`);
             }
             // Parse the JSON response
@@ -73,12 +76,12 @@ document.addEventListener('DOMContentLoaded', function () {
     async function loadQuiz(quizId) {
         try {
             const response = await fetchQuestions(quizId);
-    
+
             if (response.ok) {
                 const questions = await response.json();
                 displayQuestions(questions);
                 toggleQuizOptionsAlignment(true); // Align quiz options to the left
-    
+
                 // Change the URL without triggering a full page reload
                 const quizName = `Quiz-${quizId}`;
                 const newUrl = `${window.location.href.split('#')[0]}#${quizName}`;
@@ -90,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('Error loading quiz:', error.message);
         }
     }
-    
+
 
 
     function toggleQuizOptionsAlignment(alignLeft) {
