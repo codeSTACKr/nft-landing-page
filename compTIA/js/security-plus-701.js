@@ -156,7 +156,7 @@ function readQuestion(questionText) {
     // For example, you can use the Web Speech API if supported by the browser
     const synth = window.speechSynthesis;
     const utterance = new SpeechSynthesisUtterance();
-    utterance.text = questionText.replace(/'/g, '\\\'');
+    utterance.text = questionText.replace(/'/g, '"');
     synth.speak(utterance);
 }
 
