@@ -80,6 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
     
+    
     function toggleQuizOptionsAlignment(alignLeft) {
         const quizOptions = quizLinks;
         if (alignLeft) {
