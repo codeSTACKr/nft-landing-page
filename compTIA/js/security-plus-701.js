@@ -155,9 +155,11 @@ function readQuestion(questionText) {
     // Use a text-to-speech API or library to read out the question
     // For example, you can use the Web Speech API if supported by the browser
     const synth = window.speechSynthesis;
-    const utterance = new SpeechSynthesisUtterance(encodedQuestionText);
+    const encodedText = encodeURI(questionText);
+    const utterance = new SpeechSynthesisUtterance(encodedText);
     synth.speak(utterance);
 }
+
 
 
 
@@ -167,8 +169,6 @@ function displayQuestions(questions) {
 
     questions.forEach((question, index) => {
         const correctOptionText = getOptionText(question.correctOption, question);
-        // Encode questionText before constructing the HTML
-        const encodedQuestionText = question.questionText.replace(/'/g, '\u0027');
         quizHtml += `
         <div class="quiz-container">
         <p><strong>Q${index + 1}: ${question.questionText}</strong>
