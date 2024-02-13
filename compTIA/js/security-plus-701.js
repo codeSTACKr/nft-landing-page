@@ -155,11 +155,10 @@ function readQuestion(questionText) {
     // Use a text-to-speech API or library to read out the question
     // For example, you can use the Web Speech API if supported by the browser
     const synth = window.speechSynthesis;
-    const encodedText = encodeURI(questionText);
-    const utterance = new SpeechSynthesisUtterance(encodedText);
+    const utterance = new SpeechSynthesisUtterance();
+    utterance.text = questionText.replace(/'/g, '\u0027');
     synth.speak(utterance);
 }
-
 
 
 
